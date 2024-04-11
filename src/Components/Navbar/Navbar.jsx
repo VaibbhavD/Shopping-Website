@@ -146,7 +146,7 @@ export default function Navber() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-white sticky">
+    <div className="bg-white ">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -306,7 +306,7 @@ export default function Navber() {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-gray-200 ">
+      <header className="relative bg-gray-200">
         <nav aria-label="Top" className="mx-auto sm:px-6 lg:px-8">
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center">
@@ -321,7 +321,7 @@ export default function Navber() {
               </button>
 
               {/* Logo */}
-              <div className="ml-4 flex lg:ml-0">
+              <div className=" flex lg:ml-0">
                 <a href="#">
                   <span className="sr-only">Your Company</span>
                   <img

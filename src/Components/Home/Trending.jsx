@@ -140,17 +140,17 @@ export default function Trending() {
     //     </div>
     //   </div>
     // </div>
-    <div class="flex flex-col bg-white m-auto p-auto">
-      <h1 class="flex py-5 mx-5  font-bold text-4xl text-gray-800">
-        New Arrivals
+    <div class="flex flex-col bg-white m-auto ">
+      <h1 class="flex py-5 mx-5 font-bold text-4xl text-center text-gray-800 ">
+        Categeories
       </h1>
-      <div class="flex pb-10 overflow-auto hide-scroll-bar">
-        <div class="flex flex-nowrap overflow-auto hide-scroll-bar">
+      <div class="flex pb-10 overflow-auto ">
+        <div class="flex flex-nowrap overflow-auto scrollbar-hide">
           {products.map((product) => (
-            <div class="inline-block px-3 p-5">
-              <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+            <div class="inline-block px-3 p-5 transition duration-300 hover:scale-105">
+              <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl hover: transition-shadow duration-300 ">
                 <img
-                  src={product.imageSrc}
+                  src="https://assets.ajio.com/cms/AJIO/WEB/D-1.0-UHP-05042024-westernwear-Z17-header.jpg"
                   alt={product.imageAlt}
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
