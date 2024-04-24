@@ -1,17 +1,17 @@
 import React from "react";
-import nike from "../../assets/nike.png";
-import adidas from "../../assets/Adidas.png";
-import hm from "../../assets/H&Mlogo.png";
-import Reebok from "../../assets/Reebok.png";
-import allen from "../../assets/Allen.png";
-import polo from "../../assets/polo.png";
+import nike from "../../assets/Brand/nike.png";
+import adidas from "../../assets/Brand/Adidas.png";
+import hm from "../../assets/Brand/H&Mlogo.png";
+import Reebok from "../../assets/Brand/Reebok.png";
+import allen from "../../assets/Brand/Allen.png";
+import polo from "../../assets/Brand/polo.png";
 
 const Brand = () => {
   return (
     <>
       {/* ====== Brands Section Start */}
 
-      <section className=" bg-gray-100 dark:bg-dark mt-5 ">
+      <section className=" bg-gray-100 dark:bg-dark mt-7 ">
         <div className="container mx-auto">
           <div className="flex">
             <div className="w-full px-4">
@@ -63,7 +63,7 @@ const SingleImage = ({ href, imgSrc, Alt }) => {
     <>
       <a
         href={href}
-        className="mx-6 flex w-[80px] items-center justify-center hover:scale-105 transition duration-800"
+        className="mx-6 flex w-[70px] items-center justify-center hover:scale-110 transition duration-800"
       >
         <img src={imgSrc} alt={Alt} className="w-full h-1/10" />
       </a>
