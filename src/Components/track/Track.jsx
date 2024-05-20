@@ -12,11 +12,11 @@ function Track() {
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div className="container md:py-5 ">
-          <div className="grid grid-cols-3  w-full md:px-5">
-            <div className="p-2  w-full mx-auto text-center">
+          <div className="grid grid-cols-3 w-full md:px-4 gap-0">
+            <div className="pl-2 p-1 w-full text-center">
               <div
-                className={`shadow-xl hover:shadow-md hover:shadow-gray-200 bg-pink-100 py-4 rounded-lg ${
-                  mode == "dark" ? "bg-gray-600 text-white " : ""
+                className={`shadow-xl hover:shadow-md hover:shadow-gray-200  py-7 rounded-lg ${
+                  mode === "dark" ? "bg-gray-600 text-white " : "bg-pink-100"
                 }`}
               >
                 <svg
@@ -45,10 +45,10 @@ function Track() {
                 </p>
               </div>
             </div>
-            <div className="p-2 w-full mx-auto text-center">
+            <div className="p-1 w-full mx-auto text-center">
               <div
-                className={`shadow-xl hover:shadow-md hover:shadow-gray-200 bg-pink-100 py-4 rounded-lg ${
-                  mode == "dark" ? "bg-gray-600 text-white " : ""
+                className={`shadow-xl hover:shadow-md hover:shadow-gray-200  py-7 rounded-lg ${
+                  mode == "dark" ? "bg-gray-600 text-white " : "bg-pink-100"
                 }`}
               >
                 <svg
@@ -77,10 +77,10 @@ function Track() {
                 </p>
               </div>
             </div>
-            <div className="p-2 w-full text-center">
+            <div className="p-1 pr-2 w-full text-center">
               <div
-                className={`shadow-xl hover:shadow-md hover:shadow-gray-200 bg-pink-100 py-4 rounded-lg ${
-                  mode == "dark" ? "bg-gray-600 text-white " : ""
+                className={`shadow-xl hover:shadow-md hover:shadow-gray-200  py-7 rounded-lg ${
+                  mode == "dark" ? "bg-gray-600 text-white " : "bg-pink-100"
                 }`}
               >
                 <svg
