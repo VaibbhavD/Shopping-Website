@@ -1,5 +1,6 @@
 import React from "react";
-import Navber from "../nowork'/Navbar/Navbar";
+import Navber from "../Header/navbar";
+import Footer from "../Footer/footer";
 
 function Layout({ children }) {
   return (

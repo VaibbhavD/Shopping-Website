@@ -1,8 +1,10 @@
-import React from "react";
-import Layout from "../../Components/layout/Layout";
+import React, { useContext } from "react";
+import Context from "../../context/data/Context";
 
 function Home() {
-  return <Layout>Home</Layout>;
+  const context = useContext(Context);
+  console.log(context);
+  return <div>Home Page</div>;
 }
 
 export default Home;

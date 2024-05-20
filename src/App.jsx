@@ -5,18 +5,24 @@ import Order from "./pages/Order/Order";
 import Cart from "./pages/cart/Cart";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import NoPage from "./pages/nopage/NoPage";
+import Layout from "./Components/layout/Layout";
+import ContextProider from "./context/data/ContextProvider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/nopage" element={<NoPage />} />
-      </Routes>
-    </BrowserRouter>
+    <ContextProider>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/nopage" element={<NoPage />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </ContextProider>
   );
 }
 
