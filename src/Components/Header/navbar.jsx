@@ -10,10 +10,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const context = useContext(Context);
-  const { toggleMode, mode } = context;
+  const { toggle, mode } = context;
 
   return (
-    <div className="bg-white sticky top-0 z-50  ">
+    <div className="bg-white sticky top-0 z-50">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -40,16 +40,16 @@ export default function Navbar() {
               leaveTo="-translate-x-full"
             >
               <Dialog.Panel
-                className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl"
+                className="relative flex w-full max-w-60 flex-col overflow-y-auto bg-white pb-12 shadow-xl"
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(40, 44, 52)" : "",
                   color: mode === "dark" ? "white" : "",
                 }}
               >
-                <div className="flex px-4 pb-2 pt-28">
+                <div className="flex px-4 pb-2 pt-28 justify-end ">
                   <button
                     type="button"
-                    className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                    className="-m-2 inline-flex rounded-md p-2 text-gray-900 "
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close menu</span>
@@ -240,8 +240,8 @@ export default function Navbar() {
                 <div className="hidden lg:ml-8 lg:flex">
                   <a href="#" className="flex items-center text-gray-700 ">
                     <img
-                      className="inline-block w-10 h-10 rounded-full"
-                      src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+                      className="inline-block w-8 h-8 rounded-full"
+                      src="https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
                       alt="Dan_Abromov"
                     />
                   </a>
@@ -249,7 +249,7 @@ export default function Navbar() {
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <button className="" onClick={toggleMode}>
+                  <button className="" onClick={toggle}>
                     {/* <MdDarkMode size={35} style={{ color: mode === 'dark' ? 'white' : '' }} /> */}
                     {mode === "light" ? (
                       <FiSun className="" size={30} />
