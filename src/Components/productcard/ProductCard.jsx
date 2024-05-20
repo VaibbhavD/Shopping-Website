@@ -18,7 +18,7 @@ function ProductCard() {
   return (
     <section>
       <div
-        class="w-full h-full select-none p-3 lg:p-10"
+        class="w-full h-full select-none p-2 lg:p-10"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <h1
@@ -28,9 +28,9 @@ function ProductCard() {
           Our Latest Collection
         </h1>
         <div class="h-1 w-20 bg-pink-600 rounded"></div>
-        <ul class="grid grid-cols-2 gap-10 lg:grid-cols-4 m-4">
+        <ul class="grid grid-cols-2 gap-4 md:gap-10 lg:grid-cols-4 m-2">
           {pics.map((url) => (
-            <li className="">
+            <li>
               <div
                 className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out    border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
                 style={{
@@ -41,7 +41,7 @@ function ProductCard() {
                 <div className="flex justify-center cursor-pointer ">
                   <img
                     src={url}
-                    class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4] hover:scale-105 duration-300"
+                    class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
                     alt="photo gallery image 07"
                   />
                 </div>
