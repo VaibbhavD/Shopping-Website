@@ -131,22 +131,28 @@ export default function Navbar() {
       {/* desktop  */}
       <header className="relative bg-white">
         <p
-          className="flex h-10 items-center justify-center bg-pink-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
-          style={{
-            backgroundColor: mode === "dark" ? "rgb(62 64 66)" : "",
-            color: mode === "dark" ? "#e75480" : "",
-          }}
+          className={`flex h-10 items-center justify-center  px-4 text-sm font-medium  sm:px-6 lg:px-8 ${
+            mode === "dark"
+              ? "bg-gray-800 text-pink-600"
+              : "bg-pink-600 text-white"
+          }`}
+          // style={{
+          //   backgroundColor: mode === "dark" ? "rgb(62 64 66)" : "",
+          // color: mode === "dark" ? "#e75480" : "",
+          // }}
         >
           Get free delivery on orders over ₹300
         </p>
 
         <nav
           aria-label="Top"
-          className="bg-gray-100 px-4 sm:px-6 lg:px-8 shadow-xl "
-          style={{
-            backgroundColor: mode === "dark" ? "#282c34" : "",
-            color: mode === "dark" ? "white" : "",
-          }}
+          className={` px-4 sm:px-6 lg:px-8 shadow-xl ${
+            mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-gray-100"
+          }`}
+          //   style={{
+          //     backgroundColor: mode === "dark" ? "#282c34" : "",
+          //     color: mode === "dark" ? "white" : "",
+          //   }}
         >
           <div className="">
             <div className="flex h-16 items-center">
