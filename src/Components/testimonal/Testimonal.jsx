@@ -2,46 +2,39 @@ import React, { useContext } from "react";
 import Context from "../../context/data/Context";
 
 function Testimonal() {
-  const context = useContext;
+  const context = useContext(Context);
   const { mode } = context;
 
   return (
     <>
-      <div class=" mt-0 relative bg-white p-5">
-        {/* <!-- Decorative background image and gradient --> */}
-        {/* <!-- Callout --> */}
-        <section
-          aria-labelledby="sale-heading"
-          class="relative mx-auto flex max-w-7xl flex-col items-center rounded-2xl p-4 pt-5 text-stone-100 bg-gray-900 text-center sm:px-6 lg:px-6 mb-5"
-        >
-          <div class="mx-auto max-w-2xl lg:max-w-none p-5">
-            <h3
-              id="sale-heading"
-              class="text-3xl font-bold tracking-tight  sm:text-5xl lg:text-6xl"
-            >
-              Get 25% off during our one-time sale
-            </h3>
-            <p class="mx-auto mt-4 max-w-xl text-xl text-gray-200">
-              Most of our products are limited releases that won't come back.
-              Get your favorite items while they're in stock.
-            </p>
-          </div>
-        </section>
-
-        {/* <!-- Testimonials --> */}
+      <div
+        class={`mt-0 relative bg-white pt-10 px-10${
+          mode === "dark" ? "bg-[rgb(46 49 55)]" : "white"
+        }`}
+        style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
+      >
         <section>
-          <div class="flex flex-col bg-white mt-4 p-auto  ">
+          <div
+            class={`flex flex-col bg-white mt-4 p-auto ${
+              mode === "dark" ? "bg-gray-700" : "white"
+            }`}
+            style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
+          >
             <h2
-              className=" text-center text-3xl font-semibold mb-10"
+              className=" text-center text-3xl md:text-4xl font-semibold mb-10"
               style={{ color: mode === "dark" ? "white" : "" }}
             >
               What our <span className=" text-pink-500">customers</span> are
               saying
             </h2>
-            <div class="flex pb-10 overflow-auto lg:mx-40 gap-10">
-              <div class=" min-w-screen ">
+            <div class="flex pb-10 overflow-auto lg:mx-36 gap-10">
+              <div class="min-w-screen ">
                 {/* <div class="inline-block px-3"> */}
-                <div class=" h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                <div
+                  class={`h-fit p-2 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-700" : "white"
+                  }`}
+                >
                   <img
                     alt="testimonial"
                     className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
@@ -74,11 +67,16 @@ function Testimonal() {
 
               <div class="  w-screen ">
                 {/* <div class="inline-block px-3"> */}
-                <div class=" h-fit p-5 w-screen text-center  lg:w-96   rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                <div
+                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-700" : "white"
+                  }`}
+                >
+                  {" "}
                   <img
                     alt="testimonial"
                     className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                    src="https://cdn-icons-png.flaticon.com/128/2763/2763444.png"
+                    src="https://ecommerce-sk.vercel.app/img/kamal.png"
                   />
                   <p
                     style={{ color: mode === "dark" ? "white" : "" }}
@@ -106,11 +104,16 @@ function Testimonal() {
               </div>
               <div class="  w-screen ">
                 {/* <div class="inline-block px-3"> */}
-                <div class=" h-fit p-5 w-screen text-center  lg:w-96   rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                <div
+                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-700" : "white"
+                  }`}
+                >
+                  {" "}
                   <img
                     alt="testimonial"
                     className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                    src="https://cdn-icons-png.flaticon.com/128/2763/2763444.png"
+                    src="https://webknudocs.vercel.app/logo/react.png"
                   />
                   <p
                     style={{ color: mode === "dark" ? "white" : "" }}
@@ -138,7 +141,12 @@ function Testimonal() {
               </div>
               <div class="  w-screen ">
                 {/* <div class="inline-block px-3"> */}
-                <div class=" h-fit p-5 w-screen text-center lg:w-96   rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                <div
+                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-700" : "white"
+                  }`}
+                >
+                  {" "}
                   <img
                     alt="testimonial"
                     className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
