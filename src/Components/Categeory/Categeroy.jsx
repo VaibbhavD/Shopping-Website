@@ -7,7 +7,7 @@ function Categeroy() {
 
   return (
     <div
-      class="bg-white dark:bg-gray-800  h-full "
+      class="bg-white dark:bg-gray-800  h-full pt-5"
       style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
     >
       <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
