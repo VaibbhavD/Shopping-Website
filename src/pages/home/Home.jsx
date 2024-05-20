@@ -4,6 +4,8 @@ import HeroSection from "../../Components/herosection/HeroSection";
 import Filter from "../../Components/filter/Filter";
 import ProductCard from "../../Components/productcard/ProductCard";
 import Categeroy from "../../Components/Categeory/Categeroy";
+import Track from "../../Components/track/Track";
+import Testimonal from "../../Components/testimonal/Testimonal";
 
 function Home() {
   const context = useContext(Context);
@@ -12,8 +14,10 @@ function Home() {
     <>
       <HeroSection />
       {/* <Filter /> */}
-      <ProductCard />
       <Categeroy />
+      <ProductCard />
+      <Track />
+      <Testimonal />
     </>
   );
 }
