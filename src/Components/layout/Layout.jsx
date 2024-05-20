@@ -1,7 +1,14 @@
 import React from "react";
+import Navber from "../nowork'/Navbar/Navbar";
 
 function Layout({ children }) {
-  return <div className="content">{children}</div>;
+  return (
+    <div>
+      <Navber />
+      <div className="content">{children}</div>
+      <Footer />
+    </div>
+  );
 }
 
 export default Layout;
