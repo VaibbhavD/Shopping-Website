@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../../context/data/Context";
+import { Link } from "react-router-dom";
 
 function Login() {
   const context = useContext(Context);
@@ -16,7 +17,7 @@ function Login() {
           // style="background-image:url('')"
         >
           <img
-            src="https://databox.com/wp-content/themes/databox/inc/img/templates/ecommerce.jpg"
+            src="https://png.pngtree.com/png-clipart/20220930/original/pngtree-mobile-shopping-concept-a-man-and-woman-buy-things-in-the-png-image_8644437.png"
             className="w-full h-full object-cover"
           />
         </div>
@@ -69,19 +70,17 @@ function Login() {
           <div class="mt-4">
             <label class="block  text-sm font-bold mb-2">Email Address</label>
             <input
-              class="bg-gray-200  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+              class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
               type="email"
             />
           </div>
           <div class="mt-4">
             <div class="flex justify-between">
               <label class="block  text-sm font-bold mb-2">Password</label>
-              <a href="#" class="text-xs ">
-                Forget Password?
-              </a>
+              <Link class="text-xs hover:text-blue-800 ">Forget Password?</Link>
             </div>
             <input
-              class="bg-gray-200  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+              class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
               type="password"
             />
           </div>
@@ -92,9 +91,9 @@ function Login() {
           </div>
           <div class="mt-4 flex items-center justify-between">
             <span class="border-b w-1/5 md:w-1/4"></span>
-            <a href="#" class="text-xs  uppercase">
-              or sign up
-            </a>
+            <Link to="/signup" class="text-xs  uppercase">
+              Create New ? <b className="hover:text-blue-600">sign up</b>
+            </Link>
             <span class="border-b w-1/5 md:w-1/4"></span>
           </div>
         </div>
