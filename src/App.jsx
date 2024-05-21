@@ -8,6 +8,7 @@ import NoPage from "./pages/nopage/NoPage";
 import Layout from "./Components/layout/Layout";
 import ContextProider from "./context/data/ContextProvider";
 import Login from "./pages/registration/Login";
+import SignUp from "./pages/registration/SignUp";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/nopage" element={<NoPage />} />
             <Route path="/allproducts" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </Layout>
       </BrowserRouter>
