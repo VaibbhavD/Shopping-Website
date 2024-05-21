@@ -1,23 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductReview1 from "./Rating";
 import Highlight1 from "./Highlights";
+import Context from "../../context/data/Context";
 
 function ProductInfo() {
+  const context = useContext(Context);
+  const { mode } = context;
+
   return (
     <>
-      <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container  pt-5 md:py-10 md:pl-20">
-          <div className="lg:w-4/6 mx-auto flex flex-wrap gap-2">
+      <section
+        className="text-gray-600 body-font overflow-hidden "
+        style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
+      >
+        <div className="container pt-5 md:py-10 md:pl-20">
+          <div
+            className={`lg:w-4/6 mx-auto flex flex-wrap gap-2 p-1 ${
+              mode === "dark" ? "bg-gray-500 text-stone-100" : ""
+            }`}
+          >
             <img
               alt="ecommerce"
-              className="lg:w-2/5 w-full lg:h-auto h-80 object-contain object-center rounded "
+              className={`lg:w-2/5 w-full lg:h-auto h-80 object-contain object-center rounded `}
               src="https://i5.walmartimages.com/asr/2c527618-c5c6-4a85-8605-dc24ebb83520.52f170610ca3b994bf53d6d4694b2228.jpeg"
             />
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 pl-2">
-              <h2 className="text-sm title-font text-gray-500 tracking-widest">
+            <div
+              className={`lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 pl-2 ${
+                mode === "dark" ? "bg-gray-500 text-stone-100" : ""
+              }`}
+            >
+              <h2 className="text-sm title-font  tracking-widest">
                 BRAND NAME
               </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+              <h1
+                className={`text-gray-900 text-3xl title-font font-medium mb-1 ${
+                  mode === "dark" ? "bg-gray-500 text-stone-100" : ""
+                }`}
+              >
                 The Catcher in the Rye
               </h1>
               <div className=" mb-4">
@@ -142,6 +161,7 @@ function ProductInfo() {
                 </button>
               </div>
               <p className="font-bold">Description</p>
+              <p class="h-1 w-20  bg-pink-600 rounded"></p>
               <p className="leading-relaxed border-b-2 mb-5 ">
                 Fam locavore kickstarter distillery. Mixtape chillwave tumeric
                 sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
