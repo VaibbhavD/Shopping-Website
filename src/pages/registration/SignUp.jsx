@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import Context from "../../context/data/Context";
+import { Link } from "react-router-dom";
 
 function SignUp() {
+  const context = useContext(Context);
+  const { mode } = context;
   return (
     <div
       class="py-16 "
@@ -12,12 +16,12 @@ function SignUp() {
           // style="background-image:url('')"
         >
           <img
-            src="https://png.pngtree.com/png-clipart/20220930/original/pngtree-mobile-shopping-concept-a-man-and-woman-buy-things-in-the-png-image_8644437.png"
+            src="https://static.vecteezy.com/system/resources/previews/002/459/314/large_2x/shopping-online-store-for-sale-mobile-ecommerce-3d-blue-background-shop-online-on-mobile-app-24-hours-shopping-cart-credit-card-minimal-store-online-device-3d-rendered-free-vector.jpg"
             className="w-full h-full object-cover"
           />
         </div>
         <div
-          class={`w-full p-8 lg:w-1/2  ${
+          class={`w-full p-8 pt-4 lg:w-1/2  ${
             mode === "dark"
               ? "bg-gray-500 text-stone-100"
               : "bg-white text-gray-600"
@@ -78,16 +82,27 @@ function SignUp() {
               type="password"
             />
           </div>
+          <div class="mt-4">
+            <div class="flex justify-between">
+              <label class="block  text-sm font-bold mb-2">
+                Confirm Password
+              </label>
+            </div>
+            <input
+              class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+              type="password"
+            />
+          </div>
           <div class="mt-8">
             <button class="bg-pink-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
-              Login
+              Sign Up
             </button>
           </div>
           <div class="mt-4 flex items-center justify-between">
             <span class="border-b w-1/5 md:w-1/4"></span>
-            <a href="#" class="text-xs  uppercase">
-              or sign up
-            </a>
+            <Link to={"/allproducts"} class="text-xs  uppercase">
+              If You Have Account ? <b className="hover:text-blue-600">Login</b>
+            </Link>
             <span class="border-b w-1/5 md:w-1/4"></span>
           </div>
         </div>
