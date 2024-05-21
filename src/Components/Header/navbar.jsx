@@ -229,7 +229,10 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 ">
+                  <Link
+                    to={"/signup"}
+                    className="flex items-center text-gray-700 "
+                  >
                     <img
                       src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
                       alt=""
@@ -241,7 +244,7 @@ export default function Navbar() {
                     >
                       INDIA
                     </span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="hidden lg:ml-8 lg:flex">
                   <a href="#" className="flex items-center text-gray-700 ">
