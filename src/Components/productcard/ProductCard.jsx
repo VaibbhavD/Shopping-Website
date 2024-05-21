@@ -18,17 +18,17 @@ function ProductCard() {
   return (
     <section>
       <div
-        class="w-full h-full select-none p-2 lg:p-10"
+        class="w-full h-full select-none p-2 lg:p-6"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <h1
-          class="sm:text-3xl text-2xl font-bold title-font mb-2 text-gray-900"
+          class="sm:text-3xl text-2xl pt-5 font-bold title-font mb-2 text-gray-900"
           style={{ color: mode === "dark" ? "white" : "" }}
         >
           Our Latest Collection
         </h1>
         <div class="h-1 w-20 bg-pink-600 rounded"></div>
-        <ul class="grid grid-cols-2 gap-4 md:gap-10 lg:grid-cols-4 m-2">
+        <ul class="grid grid-cols-2 gap-4 md:gap-10 lg:grid-cols-4 m-2 md:px-20 md:pt-4">
           {pics.map((url) => (
             <li>
               <div

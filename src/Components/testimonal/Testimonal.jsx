@@ -31,10 +31,11 @@ function Testimonal() {
               <div class="min-w-screen ">
                 {/* <div class="inline-block px-3"> */}
                 <div
-                  class={`h-fit p-2 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
-                    mode === "dark" ? "bg-gray-700" : "white"
+                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-500" : "white"
                   }`}
                 >
+                  {" "}
                   <img
                     alt="testimonial"
                     className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
@@ -68,8 +69,8 @@ function Testimonal() {
               <div class="  w-screen ">
                 {/* <div class="inline-block px-3"> */}
                 <div
-                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
-                    mode === "dark" ? "bg-gray-700" : "white"
+                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-500" : "white"
                   }`}
                 >
                   {" "}
@@ -105,8 +106,8 @@ function Testimonal() {
               <div class="  w-screen ">
                 {/* <div class="inline-block px-3"> */}
                 <div
-                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
-                    mode === "dark" ? "bg-gray-700" : "white"
+                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-500" : "white"
                   }`}
                 >
                   {" "}
@@ -142,8 +143,8 @@ function Testimonal() {
               <div class="  w-screen ">
                 {/* <div class="inline-block px-3"> */}
                 <div
-                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out ${
-                    mode === "dark" ? "bg-gray-700" : "white"
+                  class={`h-fit p-5 w-screen text-center lg:w-96  rounded-lg shadow-md  hover:shadow-xl transition-shadow duration-300 ease-in-out ${
+                    mode === "dark" ? "bg-gray-500" : "white"
                   }`}
                 >
                   {" "}

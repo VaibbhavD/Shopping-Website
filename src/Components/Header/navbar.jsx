@@ -129,7 +129,7 @@ export default function Navbar() {
       </Transition.Root>
 
       {/* desktop  */}
-      <header className="relative bg-white">
+      <header className="relative ">
         <p
           className={`flex h-10 items-center justify-center  px-4 text-sm font-medium  sm:px-6 lg:px-8 ${
             mode === "dark"
@@ -147,7 +147,7 @@ export default function Navbar() {
         <nav
           aria-label="Top"
           className={` px-4 sm:px-6 lg:px-8 shadow-xl ${
-            mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-gray-100"
+            mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-stone-200"
           }`}
           //   style={{
           //     backgroundColor: mode === "dark" ? "#282c34" : "",
