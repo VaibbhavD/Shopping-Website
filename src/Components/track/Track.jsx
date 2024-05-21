@@ -35,7 +35,7 @@ function Track() {
                 </svg>
 
                 <h2
-                  className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 w-full"
+                  className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 duration-500 w-full"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Quality Shirts
@@ -67,7 +67,7 @@ function Track() {
                 </svg>
 
                 <h2
-                  className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 w-full"
+                  className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 duration-500 w-full"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Free Shipping
@@ -99,7 +99,7 @@ function Track() {
                 </svg>
 
                 <h2
-                  className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 w-full"
+                  className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 duration-500 w-full"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Exciting Offers
