@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import Context from "../../context/data/Context";
 
 const Highlight1 = () => {
+  const context = useContext(Context);
+  const { mode } = context;
+
   return (
     <div className="2xl:container 2xl:mx-auto ">
-      <div className=" bg-gray-50 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 lg:gap-8 md:gap-12 gap-14 lg:px-20 lg:py-12 py-10 md:px-12 px-4">
+      <div
+        className=" bg-gray-50 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 lg:gap-8 md:gap-12 gap-14 lg:px-20 lg:py-12 py-10 md:px-12 px-4"
+        style={{
+          backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
+          color: mode === "dark" ? "white" : "grey",
+        }}
+      >
         {/* Delivery grid Card */}
-        <div className="text-center">
+        <div className={`text-center`}>
           <svg
             width="50"
             height="50"
             viewBox="0 0 32 32"
-            fill="none"
+            fill={`${mode === "dark" ? "white" : "grey"}`}
             xmlns="http://www.w3.org/2000/svg"
-            className=" m-auto"
+            className=" m-auto "
           >
             <path
               d="M21.3334 4H1.33337V21.3333H21.3334V4Z"
@@ -46,7 +56,7 @@ const Highlight1 = () => {
           <h3 className=" text-xl leading-5 font-semibold text-pink-500 lg:mt-10 mt-8 ">
             Delivery
           </h3>
-          <p className=" text-base leading-6 font-normal text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">
+          <p className=" text-base leading-6 font-normal  mt-4 lg:w-full md:w-9/12 w-full">
             Free worldwide delivery over orders above $100
           </p>
         </div>
@@ -58,7 +68,7 @@ const Highlight1 = () => {
             width="50"
             height="50"
             viewBox="0 0 32 32"
-            fill="none"
+            fill={`${mode === "dark" ? "white" : "grey"}`}
             xmlns="http://www.w3.org/2000/svg"
             className=" m-auto"
           >
@@ -73,7 +83,7 @@ const Highlight1 = () => {
           <h3 className=" text-xl leading-5 font-semibold text-pink-500  lg:mt-10 mt-8 ">
             Customer Care
           </h3>
-          <p className=" text-base leading-6 font-normal text-gray-600 mt-4 lg:w-full md:w-9/12 ">
+          <p className=" text-base leading-6 font-normal  mt-4 lg:w-full md:w-9/12 ">
             Our customer care is available 24/7 at{" "}
             <span className=" font-semibold cursor-pointer">+495-589-509</span>{" "}
             and{" "}
@@ -90,7 +100,7 @@ const Highlight1 = () => {
             width="50"
             height="50"
             viewBox="0 0 32 32"
-            fill="none"
+            fill={`${mode === "dark" ? "white" : "grey"}`}
             xmlns="http://www.w3.org/2000/svg"
             className="text-center m-auto"
           >
@@ -126,7 +136,7 @@ const Highlight1 = () => {
           <h3 className=" text-xl leading-5 font-semibold text-pink-500  lg:mt-10 mt-8 ">
             Recycle
           </h3>
-          <p className=" text-base leading-6 font-normal text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">
+          <p className=" text-base leading-6 font-normal  mt-4 lg:w-full md:w-9/12 w-full">
             All out products are 100 percent recycable
           </p>
         </div>
@@ -138,7 +148,7 @@ const Highlight1 = () => {
             width="50"
             height="50"
             viewBox="0 0 32 32"
-            fill="none"
+            fill={`${mode === "dark" ? "white" : "grey"}`}
             xmlns="http://www.w3.org/2000/svg"
             className="text-center m-auto"
           >
@@ -153,7 +163,7 @@ const Highlight1 = () => {
           <h3 className=" text-xl leading-5 font-semibold text-pink-500 lg:mt-10 mt-8 ">
             Secure Payment
           </h3>
-          <p className=" text-base leading-6 font-normal text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">
+          <p className=" text-base leading-6 font-normal  mt-4 lg:w-full md:w-9/12 w-full">
             Transaction process has end to end encryption
           </p>
         </div>
