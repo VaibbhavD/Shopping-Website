@@ -9,7 +9,7 @@ import Layout from "./Components/layout/Layout";
 import ContextProider from "./context/data/ContextProvider";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
-import ProductInfo from "./pages/produxtInfp/ProductInfo";
+import ProductInfo from "./pages/productInfo/ProductInfo";
 
 function App() {
   return (
