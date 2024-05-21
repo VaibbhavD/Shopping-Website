@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="flex  md:text-left text-center justify-center md:text-lg text-xs order-first">
           <div className="lg:w-1/4 md:w-1/2 w-full px-4 ">
             <h2
-              className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+              className="title-font font-medium text-gray-900 tracking-widest mb-3"
               style={{ color: mode === "dark" ? "white" : "" }}
             >
               CATEGORIES
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2
-              className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 uppercase"
+              className="title-font font-medium text-gray-900 tracking-widest mb-3 uppercase"
               style={{ color: mode === "dark" ? "white" : "" }}
             >
               Customer Service
@@ -100,7 +100,7 @@ export default function Footer() {
 
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2
-              className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+              className="title-font font-medium text-gray-900 tracking-widest mb-3"
               style={{ color: mode === "dark" ? "white" : "" }}
             >
               Services
@@ -146,16 +146,16 @@ export default function Footer() {
             </div>
           </Link>
           <p
-            className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4"
-            style={{ color: mode === "dark" ? "white" : "" }}
+            className="text-sm text-white sm:ml-6 sm:mt-0 mt-4"
+            // style={{ color: mode === "dark" ? "white" : "white" }}
           >
             © 2023 E-bharat —
             <a
               href="https://twitter.com/knyttneve"
               rel="noopener noreferrer"
-              className="text-gray-600 ml-1"
+              className="text-white ml-1"
               target="_blank"
-              style={{ color: mode === "dark" ? "white" : "" }}
+              // style={{ color: mode === "dark" ? "white" : "white" }}
             >
               www.ebharat.com
             </a>
