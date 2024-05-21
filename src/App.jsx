@@ -9,6 +9,7 @@ import Layout from "./Components/layout/Layout";
 import ContextProider from "./context/data/ContextProvider";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
+import ProductInfo from "./pages/produxtInfp/ProductInfo";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/nopage" element={<NoPage />} />
             <Route path="/allproducts" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/product/:id" element={<ProductInfo />} />
           </Routes>
         </Layout>
       </BrowserRouter>
