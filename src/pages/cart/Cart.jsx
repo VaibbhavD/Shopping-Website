@@ -16,11 +16,12 @@ function Cart() {
       <div class="grid lg:grid-cols-3 lg:h-screen">
         <div class="lg:col-span-2 bg-white divide-y h-4/6 ">
           <h3
-            className={`p-3 text-2xl font-bold text-gray-700   ${
+            className={`px-2 text-2xl font-bold text-gray-700   ${
               mode === "dark" ? "bg-gray-400" : ""
             }`}
           >
             Shopping Cart
+            <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
           </h3>
           {/* order cards */}
           <div
