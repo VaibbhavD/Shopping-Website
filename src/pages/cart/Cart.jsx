@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../../context/data/Context";
+import Modal from "../../Components/modal/Modal";
 
 function Cart() {
   const context = useContext(Context);
@@ -519,14 +520,7 @@ function Cart() {
             </li>
           </ul>
 
-          <button
-            type="button"
-            class={`mt-6 text-base px-6 py-2.5 w-full  hover:bg-gray-900 text-white rounded ${
-              mode === "dark" ? "bg-gray-700" : " bg-pink-600 hover:bg-pink-700"
-            }`}
-          >
-            Check out
-          </button>
+          {<Modal />}
         </div>
       </div>
     </div>
