@@ -20,6 +20,10 @@ export default {
         },
       },
     },
+    plugins: [
+      require("tailwind-scrollbar-hide"),
+      // ...
+    ],
     fontFamily: {
       body: [
         "Inter",
