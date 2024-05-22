@@ -27,7 +27,7 @@ function Testimonal() {
               What our <span className=" text-pink-500">customers</span> are
               saying
             </h2>
-            <div class="flex pb-10 overflow-auto lg:mx-36 gap-10">
+            <div class="flex pb-10 md:pb-20 overflow-auto lg:mx-36 gap-10 no-scrollbar">
               <div class="min-w-screen ">
                 {/* <div class="inline-block px-3"> */}
                 <div
