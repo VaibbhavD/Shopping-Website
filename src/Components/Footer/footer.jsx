@@ -141,7 +141,7 @@ export default function Footer() {
                 className=" text-2xl font-bold text-black  px-2 py-1 rounded"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                E-Bharat
+                <span className="text-pink-500">E-Bh</span>arat
               </h1>
             </div>
           </Link>

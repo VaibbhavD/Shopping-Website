@@ -22,11 +22,13 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/nopage" element={<NoPage />} />
-            <Route path="/allproducts" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/product/:id" element={<ProductInfo />} />
+            <Route path="/product/" element={<ProductInfo />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/allproducts" element={<Login />} />
           </Routes>
         </Layout>
+        <Routes></Routes>
       </BrowserRouter>
     </ContextProider>
   );

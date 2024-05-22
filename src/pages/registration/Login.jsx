@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Context from "../../context/data/Context";
 import { Link } from "react-router-dom";
+import Modal from "../../Components/modal/Modal";
 
 function Login() {
   const context = useContext(Context);

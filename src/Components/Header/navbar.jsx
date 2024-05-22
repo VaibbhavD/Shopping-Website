@@ -147,7 +147,7 @@ export default function Navbar() {
         <nav
           aria-label="Top"
           className={` px-4 sm:px-6 lg:px-8 ${
-            mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-stone-200"
+            mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-stone-100"
           }`}
           //   style={{
           //     backgroundColor: mode === "dark" ? "#282c34" : "",
