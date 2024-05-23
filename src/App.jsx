@@ -12,6 +12,7 @@ import SignUp from "./pages/registration/SignUp";
 import ProductInfo from "./pages/productInfo/ProductInfo";
 import AddProduct from "./pages/admin/pages/AddProduct";
 import UpdateProduct from "./pages/admin/pages/UpdatProduct";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/allproducts" element={<Login />} />
             <Route path="/addproduct" element={<AddProduct />} />
             <Route path="/updateproduct" element={<UpdateProduct />} />
+            <Route path="/aboutus" element={<AboutUs />} />
           </Routes>
         </Layout>
         <ToastContainer />
