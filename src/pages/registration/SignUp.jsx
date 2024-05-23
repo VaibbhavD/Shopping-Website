@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Auth, fireDB } from "../../firebase/FirebaseConfig";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
+import Loader from "../../Components/Loader/Loader";
 
 function SignUp() {
   const context = useContext(Context);
@@ -18,6 +19,7 @@ function SignUp() {
 
   const SignUp = async (e) => {
     e.preventDefault;
+    Setloader(true);
     if (password != RepasswordRef.current.value) {
       toast.error("Please Check Password!");
     }
@@ -36,14 +38,15 @@ function SignUp() {
       const Userref = collection(fireDB, "Users");
       await addDoc(Userref, UserDetails);
       toast.success("SignUp Scccesfully");
+      Setloader(false);
       Setemail("");
       Setlastname("");
       Setfirstname("");
       Setpassword("");
       RepasswordRef.current.value = "";
     } catch (error) {
-      // console.log(error);
       toast.error(error.message);
+      Setloader(false);
     }
   };
 
@@ -124,6 +127,7 @@ function SignUp() {
                   class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded w-full px-4 py-2 appearance-none"
                   type="text"
                   placeholder="John"
+                  value={firstname}
                   required
                   onChange={(e) => Setfirstname(e.target.value)}
                 />
@@ -134,7 +138,7 @@ function SignUp() {
                   class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 w-full px-4 appearance-none"
                   type="text"
                   placeholder="Sena"
-                  // required
+                  value={lastname}
                   onChange={(e) => Setlastname(e.target.value)}
                 />
               </div>
@@ -145,6 +149,7 @@ function SignUp() {
                 class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="email"
                 placeholder="john@gmail.com"
+                value={email}
                 required
                 onChange={(e) => Setemail(e.target.value)}
               />
@@ -158,6 +163,7 @@ function SignUp() {
                 type="text"
                 placeholder="********"
                 required
+                value={password}
                 onChange={(e) => Setpassword(e.target.value)}
               />
             </div>
@@ -175,12 +181,13 @@ function SignUp() {
                 ref={RepasswordRef}
               />
             </div>
-            <div class="mt-7">
+            <div class="mt-7 ">
               <button
                 type="submit"
-                class="bg-pink-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600"
+                class="bg-pink-600 text-white text-md font-bold flex justify-center cursor-pointer py-2 px-4 w-full rounded hover:bg-pink-500"
+                disabled={loader ? true : false}
               >
-                Sign Up
+                {loader ? <Loader /> : "Sign Up"}
               </button>
             </div>
           </form>
