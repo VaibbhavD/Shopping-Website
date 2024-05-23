@@ -57,13 +57,15 @@ export default function Navbar() {
                   </button>
                 </div>
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <Link
-                    to={"/allproducts"}
-                    className="text-sm font-medium text-gray-900 "
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    All Products
-                  </Link>
+                  <div className="flow-root">
+                    <Link
+                      to={"/"}
+                      className="text-sm font-medium text-gray-900 "
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Home
+                    </Link>
+                  </div>
                   <div className="flow-root">
                     <Link
                       to={"/order"}
@@ -83,14 +85,23 @@ export default function Navbar() {
                       admin
                     </Link>
                   </div>
+                  <div className="flow-root">
+                    <Link
+                      to={"/login"}
+                      className="-m-2 block p-2 font-medium text-gray-900"
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Login
+                    </Link>
+                  </div>
 
                   <div className="flow-root">
-                    <a
+                    <Link
                       className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Logout
-                    </a>
+                    </Link>
                   </div>
                   <div className="flow-root">
                     <Link
@@ -199,11 +210,11 @@ export default function Navbar() {
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
-                    to={"/allproducts"}
+                    to={"/"}
                     className="text-sm font-medium text-gray-700 "
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
-                    All Products
+                    Home
                   </Link>
                   <Link
                     to={"/order"}
@@ -218,6 +229,13 @@ export default function Navbar() {
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     Admin
+                  </Link>
+                  <Link
+                    to={"/aboutus"}
+                    className="text-sm font-medium text-gray-700 "
+                    style={{ color: mode === "dark" ? "white" : "" }}
+                  >
+                    About US
                   </Link>
 
                   <a
