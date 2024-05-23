@@ -10,6 +10,8 @@ import ContextProider from "./context/data/ContextProvider";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
 import ProductInfo from "./pages/productInfo/ProductInfo";
+import AddProduct from "./pages/admin/pages/AddProduct";
+import UpdateProduct from "./pages/admin/pages/UpdatProduct";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path="/product/" element={<ProductInfo />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/allproducts" element={<Login />} />
+            <Route path="/addproduct" element={<AddProduct />} />
+            <Route path="/updateproduct" element={<UpdateProduct />} />
           </Routes>
         </Layout>
         <Routes></Routes>

@@ -25,7 +25,7 @@ function DashboardTab() {
       >
         <div className="tab container mx-auto ">
           <Tabs defaultIndex={0} className=" ">
-            <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-3 text-center gap-3   md:justify-end md:pr-5 pb-5 ">
+            <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-3 text-center    md:justify-end md:pr-5 pb-5 ">
               <Tab>
                 <button
                   type="button"
