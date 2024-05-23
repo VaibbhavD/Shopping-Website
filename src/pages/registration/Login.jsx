@@ -30,7 +30,9 @@ function Login() {
           }`}
         >
           <h2 class="text-2xl font-semibold  text-center">Brand</h2>
-          <p class="text-xl text-center">Welcome back!</p>
+          <p class="text-xl text-center">
+            Welcome <span className="text-pink-500">back!</span>
+          </p>
           <a
             href="#"
             class={`flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100 ${

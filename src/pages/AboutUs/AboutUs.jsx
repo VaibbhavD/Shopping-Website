@@ -17,7 +17,7 @@ function AboutUs() {
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
       </h1>
 
-      <div class="sm:flex items-center max-w-screen-xl">
+      <div class="sm:flex items-center max-w-screen-xl md:pl-16">
         <div class="sm:w-1/2 p-10">
           <div class="image object-center text-center">
             <img src="https://www.shopweb.in/images/imageforecommercewebsite.jpg" />
