@@ -1,16 +1,59 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Context from "../../context/data/Context";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Auth, fireDB } from "../../firebase/FirebaseConfig";
+import { Timestamp, addDoc, collection } from "firebase/firestore";
 
 function SignUp() {
   const context = useContext(Context);
-  const { mode } = context;
+  const { mode, loader, Setloader } = context;
+
+  const [firstname, Setfirstname] = useState("");
+  const [lastname, Setlastname] = useState("");
+  const [email, Setemail] = useState("");
+  const [password, Setpassword] = useState("");
+  const RepasswordRef = useRef();
+
+  const SignUp = async (e) => {
+    e.preventDefault;
+    if (password != RepasswordRef.current.value) {
+      toast.error("Please Check Password!");
+    }
+    // Firebase Authentication
+
+    try {
+      const User = await createUserWithEmailAndPassword(Auth, email, password);
+
+      const UserDetails = {
+        name: firstname + " " + lastname,
+        email: email,
+        uid: User.user.uid,
+        time: Timestamp.now(),
+      };
+
+      const Userref = collection(fireDB, "Users");
+      await addDoc(Userref, UserDetails);
+      toast.success("SignUp Scccesfully");
+      Setemail("");
+      Setlastname("");
+      Setfirstname("");
+      Setpassword("");
+      RepasswordRef.current.value = "";
+    } catch (error) {
+      // console.log(error);
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div
-      class="py-16 "
+      class="p-4 py-8 lg:py-4 "
       style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
     >
       <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+        {/* left Section image */}
         <div
           class="hidden lg:block lg:w-1/2 bg-cover"
           // style="background-image:url('')"
@@ -20,6 +63,7 @@ function SignUp() {
             className="w-full h-full object-cover"
           />
         </div>
+        {/*Right Section form*/}
         <div
           class={`w-full p-8 pt-4 lg:w-1/2  ${
             mode === "dark"
@@ -28,10 +72,14 @@ function SignUp() {
           }`}
         >
           <h2 class="text-2xl font-semibold  text-center">Welcome</h2>
-          <p class="text-xl text-center">Create New Account</p>
+          <p class="text-xl text-center">
+            Create <span className="text-pink-600">New Account</span>
+          </p>
+
+          {/* Google Signup */}
           <a
             href="#"
-            class={`flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100 ${
+            class={`flex items-center justify-center mt-1  rounded-lg shadow-md hover:bg-gray-100 ${
               mode === "dark" ? "bg-gray-600" : ""
             }`}
           >
@@ -60,44 +108,82 @@ function SignUp() {
             </h1>
           </a>
           <div class="mt-4 flex items-center justify-between">
-            <span class="border-b w-1/5 lg:w-1/4"></span>
+            <span class="border-b w-1/5 lg:w-1/4 "></span>
             <a href="#" class="text-xs text-center  uppercase">
               or Sign up with email
             </a>
-            <span class="border-b w-1/5 lg:w-1/4"></span>
+            <span class="border-b w-1/5 lg:w-1/4 "></span>
           </div>
-          <div class="mt-4">
-            <label class="block  text-sm font-bold mb-2">Email Address</label>
-            <input
-              class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-              type="email"
-            />
-          </div>
-          <div class="mt-4">
-            <div class="flex justify-between">
-              <label class="block  text-sm font-bold mb-2">Password</label>
+
+          {/* Input Section */}
+          <form onSubmit={SignUp}>
+            <div class="mt-3 flex gap-2 w-full">
+              <div className="w-1/2">
+                <label class="block text-sm font-bold mb-2">First Name</label>
+                <input
+                  class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded w-full px-4 py-2 appearance-none"
+                  type="text"
+                  placeholder="John"
+                  required
+                  onChange={(e) => Setfirstname(e.target.value)}
+                />
+              </div>
+              <div className="w-1/2">
+                <label class="block text-sm font-bold mb-2">Last Name</label>
+                <input
+                  class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 w-full px-4 appearance-none"
+                  type="text"
+                  placeholder="Sena"
+                  // required
+                  onChange={(e) => Setlastname(e.target.value)}
+                />
+              </div>
             </div>
-            <input
-              class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-              type="password"
-            />
-          </div>
-          <div class="mt-4">
-            <div class="flex justify-between">
-              <label class="block  text-sm font-bold mb-2">
-                Confirm Password
-              </label>
+            <div class="mt-3">
+              <label class="block  text-sm font-bold mb-2">Email Address</label>
+              <input
+                class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                type="email"
+                placeholder="john@gmail.com"
+                required
+                onChange={(e) => Setemail(e.target.value)}
+              />
             </div>
-            <input
-              class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-              type="password"
-            />
-          </div>
-          <div class="mt-8">
-            <button class="bg-pink-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
-              Sign Up
-            </button>
-          </div>
+            <div class="mt-3">
+              <div class="flex justify-between">
+                <label class="block  text-sm font-bold mb-2">Password</label>
+              </div>
+              <input
+                class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                type="text"
+                placeholder="********"
+                required
+                onChange={(e) => Setpassword(e.target.value)}
+              />
+            </div>
+            <div class="mt-3">
+              <div class="flex justify-between">
+                <label class="block  text-sm font-bold mb-2">
+                  Confirm Password
+                </label>
+              </div>
+              <input
+                class="bg-gray-100 text-gray-600  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                type="password"
+                placeholder="********"
+                required
+                ref={RepasswordRef}
+              />
+            </div>
+            <div class="mt-7">
+              <button
+                type="submit"
+                class="bg-pink-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600"
+              >
+                Sign Up
+              </button>
+            </div>
+          </form>
           <div class="mt-4 flex items-center justify-between">
             <span class="border-b w-1/5 md:w-1/4"></span>
             <Link to={"/allproducts"} class="text-xs  uppercase">
