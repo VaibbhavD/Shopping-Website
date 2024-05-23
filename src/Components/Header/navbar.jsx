@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 import Context from "../../context/data/Context";
@@ -39,6 +39,7 @@ export default function Navbar() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
+              {/* for Mobile Start */}
               <Dialog.Panel
                 className="relative flex w-full max-w-60 flex-col overflow-y-auto bg-white pb-12 shadow-xl"
                 style={{
@@ -58,53 +59,53 @@ export default function Navbar() {
                 </div>
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                    <Link
+                    <NavLink
                       to={"/"}
                       className="text-sm font-medium text-gray-900 "
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Home
-                    </Link>
+                    </NavLink>
                   </div>
                   <div className="flow-root">
-                    <Link
+                    <NavLink
                       to={"/order"}
                       style={{ color: mode === "dark" ? "white" : "" }}
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
                       Order
-                    </Link>
+                    </NavLink>
                   </div>
 
                   <div className="flow-root">
-                    <Link
+                    <NavLink
                       to={"/dashboard"}
                       className="-m-2 block p-2 font-medium text-gray-900"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       admin
-                    </Link>
+                    </NavLink>
                   </div>
                   <div className="flow-root">
-                    <Link
+                    <NavLink
                       to={"/login"}
                       className="-m-2 block p-2 font-medium text-gray-900"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Login
-                    </Link>
+                    </NavLink>
                   </div>
 
                   <div className="flow-root">
-                    <Link
+                    <NavLink
                       className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Logout
-                    </Link>
+                    </NavLink>
                   </div>
                   <div className="flow-root">
-                    <Link
+                    <NavLink
                       to={"/"}
                       className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
                     >
@@ -113,7 +114,7 @@ export default function Navbar() {
                         src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
                         alt="Dan_Abromov"
                       />{" "}
-                    </Link>
+                    </NavLink>
                   </div>
                 </div>
 
@@ -193,9 +194,9 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              {/* Logo */}
+              {/* Logo E-commerce*/}
               <div className="ml-4 flex lg:ml-0">
-                <Link to={"/"} className="flex">
+                <NavLink to={"/"} className="flex">
                   <div className="flex ">
                     <h1
                       className=" text-2xl font-bold text-black  px-2 py-1 rounded"
@@ -204,40 +205,60 @@ export default function Navbar() {
                       E-Commerce
                     </h1>
                   </div>
-                </Link>
+                </NavLink>
               </div>
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <Link
+                  {/* Home */}
+                  <NavLink
                     to={"/"}
-                    className="text-sm font-medium text-gray-700 "
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
+                        : "text-sm font-medium text-gray-700"
+                    }
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     Home
-                  </Link>
-                  <Link
+                  </NavLink>
+                  {/* Order */}
+                  <NavLink
                     to={"/order"}
-                    className="text-sm font-medium text-gray-700 "
                     style={{ color: mode === "dark" ? "white" : "" }}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
+                        : "text-sm font-medium text-gray-700"
+                    }
                   >
-                    Order
-                  </Link>
-                  <Link
+                    order
+                  </NavLink>
+                  {/* Admin */}
+                  <NavLink
                     to={"/dashboard"}
-                    className="text-sm font-medium text-gray-700 "
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
+                        : "text-sm font-medium text-gray-700"
+                    }
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     Admin
-                  </Link>
-                  <Link
+                  </NavLink>
+                  {/* About Us */}
+                  <NavLink
                     to={"/aboutus"}
-                    className="text-sm font-medium text-gray-700 "
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
+                        : "text-sm font-medium text-gray-700"
+                    }
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     About US
-                  </Link>
-
+                  </NavLink>
+                  {/* logout */}
                   <a
                     className="text-sm font-medium text-gray-700 cursor-pointer  "
                     style={{ color: mode === "dark" ? "white" : "" }}
@@ -245,9 +266,9 @@ export default function Navbar() {
                     Logout
                   </a>
                 </div>
-
+                {/* India */}
                 <div className="hidden lg:ml-8 lg:flex">
-                  <Link
+                  <NavLink
                     to={"/signup"}
                     className="flex items-center text-gray-700 "
                   >
@@ -257,47 +278,29 @@ export default function Navbar() {
                       className="block h-auto w-5 flex-shrink-0"
                     />
                     <span
-                      className="ml-3 block text-sm font-medium"
+                      className="ml-3 block text-sm font-medium text-center"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      INDIA
+                      Hand Made
                     </span>
-                  </Link>
-                </div>
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 ">
-                    <img
-                      className="inline-block w-8 h-8 rounded-full"
-                      src="https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
-                      alt="Dan_Abromov"
-                    />
-                  </a>
-                </div>
-
-                {/* Search */}
-                <div className="flex lg:ml-6">
-                  <button className="" onClick={toggle}>
-                    {/* <MdDarkMode size={35} style={{ color: mode === 'dark' ? 'white' : '' }} /> */}
-                    {mode === "light" ? (
-                      <FiSun className="" size={30} />
-                    ) : "dark" ? (
-                      <BsFillCloudSunFill size={30} />
-                    ) : (
-                      ""
-                    )}
-                  </button>
+                  </NavLink>
                 </div>
 
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
-                  <Link
+                <div className="ml-4 flow-root lg:ml-6 pr-2 md:pr-0">
+                  <NavLink
                     to={"/cart"}
-                    className="group -m-2 flex items-center p-2"
+                    // className="group -m-2 flex items-center p-2"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "group -m-2 flex items-center p-2 border-b-2 border-pink-500"
+                        : "group -m-2 flex items-center p-2"
+                    }
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
+                      fill="black"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
@@ -311,14 +314,51 @@ export default function Navbar() {
                     </svg>
 
                     <span
-                      className="ml-2 text-sm font-medium text-gray-700 group-"
+                      className="ml-1 text-md font-medium text-gray-700 group-"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       0
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
-                  </Link>
+                  </NavLink>
                 </div>
+
+                {/* Dark Mode */}
+                <div className="flex lg:ml-6">
+                  <button className="" onClick={toggle}>
+                    {/* <MdDarkMode size={35} style={{ color: mode === 'dark' ? 'white' : '' }} /> */}
+                    {mode === "light" ? (
+                      <FiSun className="" size={30} />
+                    ) : "dark" ? (
+                      <BsFillCloudSunFill size={30} />
+                    ) : (
+                      ""
+                    )}
+                  </button>
+                </div>
+                {/* Profile */}
+                <div className="hidden lg:ml-8 lg:flex">
+                  <NavLink
+                    to={"/signup"}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "flex items-center text-gray-700 border-b-4 border-pink-500"
+                        : "flex items-center text-gray-700"
+                    }
+                  >
+                    <img
+                      className="inline-block w-8 h-8 rounded-full"
+                      src="https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
+                      alt="Dan_Abromov"
+                    />
+                  </NavLink>
+                </div>
+
+                {/* Search */}
+                <div className="flex lg:ml-6"></div>
+
+                {/* Cart */}
+                <div className="ml-4 flow-root lg:ml-6"></div>
               </div>
             </div>
           </div>
