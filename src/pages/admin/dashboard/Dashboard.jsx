@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import Context from "../../../context/data/Context";
 import DashboardTab from "./DashboardTabs";
+import Navbar from "../../../Components/Header/navbar";
 
 function Dashboard() {
   const context = useContext(Context);
   const { mode } = context;
   return (
     <>
+      <Navbar />
       <div
         class="md:p-10 p-4 "
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}

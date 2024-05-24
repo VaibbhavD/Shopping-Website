@@ -1,7 +1,13 @@
 import React from "react";
+import Navbar from "../../Components/Header/navbar";
 
 function Order() {
-  return <div>Order</div>;
+  return (
+    <div>
+      <Navbar />
+      Order
+    </div>
+  );
 }
 
 export default Order;

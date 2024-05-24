@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import ProductReview1 from "./Rating";
 import Highlight1 from "./Highlights";
 import Context from "../../context/data/Context";
+import Layout from "../../Components/layout/Layout";
 
 function ProductInfo() {
   const context = useContext(Context);
   const { mode } = context;
 
   return (
-    <>
+    <Layout>
       <section
         className="text-gray-600 body-font overflow-hidden "
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
@@ -176,7 +177,7 @@ function ProductInfo() {
       </section>
       <Highlight1 />
       <ProductReview1 />
-    </>
+    </Layout>
   );
 }
 
