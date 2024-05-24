@@ -141,7 +141,7 @@ export default function Footer() {
                 className=" text-2xl font-bold text-black  px-2 py-1 rounded"
                 style={{ color: mode === "dark" ? "white" : "" }}
               >
-                <span className="text-pink-500">E-Bh</span>arat
+                <span className="text-pink-500">Vaib</span>hav D
               </h1>
             </div>
           </Link>
@@ -149,15 +149,15 @@ export default function Footer() {
             className="text-sm text-white sm:ml-6 sm:mt-0 mt-4"
             // style={{ color: mode === "dark" ? "white" : "white" }}
           >
-            © 2023 E-bharat —
+            © 2024 Vaibhav D —
             <a
-              href="https://twitter.com/knyttneve"
+              href="https://my-portfolio-puxr.vercel.app/"
               rel="noopener noreferrer"
               className="text-white ml-1"
               target="_blank"
               // style={{ color: mode === "dark" ? "white" : "white" }}
             >
-              www.ebharat.com
+              www.Vaibhav_D.com
             </a>
           </p>
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
