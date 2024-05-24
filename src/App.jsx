@@ -15,12 +15,11 @@ import UpdateProduct from "./pages/admin/pages/UpdatProduct";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthActions } from "./redux/AuthSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.authUser.isLoggedin);
+  const isAdmin = useSelector((state) => state.authUser.isAdmin);
 
   return (
     <ContextProider>
@@ -30,14 +29,16 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/product/" element={<ProductInfo />} />
           {isLoggedIn && <Route path="/order" element={<Order />} />}
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {isLoggedIn && <Route path="/cart" element={<Cart />} />}
+          {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
           <Route path="/nopage" element={<NoPage />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/addproduct" element={<AddProduct />} />
-          <Route path="/updateproduct" element={<UpdateProduct />} />
+          <Route path="/*" element={<Login />} />
+          {isAdmin && <Route path="/addproduct" element={<AddProduct />} />}
+          {isAdmin && (
+            <Route path="/updateproduct" element={<UpdateProduct />} />
+          )}
         </Routes>
 
         <ToastContainer />
