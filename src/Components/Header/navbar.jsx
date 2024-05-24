@@ -1,16 +1,31 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 import Context from "../../context/data/Context";
 import { RxCross2 } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthActions } from "../../redux/AuthSlice";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const context = useContext(Context);
   const { toggle, mode } = context;
+
+  const isLoggedin = useSelector((state) => state.authUser.isLoggedin);
+  const isAdmin = useSelector((state) => state.authUser.isAdmin);
+
+  const LogoutHandler = () => {
+    localStorage.removeItem("User");
+    dispatch(AuthActions.Logout());
+    toast.success("Logout Successfull");
+    navigate("/login");
+  };
 
   return (
     <div className="bg-white sticky top-0 z-50">
@@ -223,29 +238,33 @@ export default function Navbar() {
                     Home
                   </NavLink>
                   {/* Order */}
-                  <NavLink
-                    to={"/order"}
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
-                        : "text-sm font-medium text-gray-700"
-                    }
-                  >
-                    Order
-                  </NavLink>
+                  {isLoggedin && (
+                    <NavLink
+                      to={"/order"}
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
+                          : "text-sm font-medium text-gray-700"
+                      }
+                    >
+                      Order
+                    </NavLink>
+                  )}
                   {/* Admin */}
-                  <NavLink
-                    to={"/dashboard"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
-                        : "text-sm font-medium text-gray-700"
-                    }
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    Admin
-                  </NavLink>
+                  {isAdmin && (
+                    <NavLink
+                      to={"/dashboard"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
+                          : "text-sm font-medium text-gray-700"
+                      }
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Admin
+                    </NavLink>
+                  )}
                   {/* About Us */}
                   <NavLink
                     to={"/aboutus"}
@@ -284,41 +303,44 @@ export default function Navbar() {
                 </div>
 
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6 pr-2 md:pr-0">
-                  <NavLink
-                    to={"/cart"}
-                    // className="group -m-2 flex items-center p-2"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "group -m-2 flex items-center p-2 border-b-2 border-pink-500"
-                        : "group -m-2 flex items-center p-2"
-                    }
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill={`${mode == "dark" ? "#FF0090" : "black"}`}
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-                      />
-                    </svg>
 
-                    <span
-                      className="ml-1 text-md font-medium text-gray-700 group-"
+                {isLoggedin && (
+                  <div className="ml-4 flow-root lg:ml-6 pr-2 md:pr-0">
+                    <NavLink
+                      to={"/cart"}
+                      // className="group -m-2 flex items-center p-2"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "group -m-2 flex items-center p-2 border-b-2 border-pink-500"
+                          : "group -m-2 flex items-center p-2"
+                      }
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      0
-                    </span>
-                    <span className="sr-only">items in cart, view bag</span>
-                  </NavLink>
-                </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill={`${mode == "dark" ? "#FF0090" : "black"}`}
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                        />
+                      </svg>
+
+                      <span
+                        className="ml-1 text-md font-medium text-gray-700 group-"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        0
+                      </span>
+                      <span className="sr-only">items in cart, view bag</span>
+                    </NavLink>
+                  </div>
+                )}
 
                 {/* Dark Mode */}
                 <div className="flex mr-0 ml-2 lg:ml-6">
@@ -334,33 +356,47 @@ export default function Navbar() {
                   </button>
                 </div>
                 {/* Profile */}
-                <div className="hidden lg:ml-6 lg:flex">
-                  <NavLink
-                    to={"/signup"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "flex items-center text-gray-700 border-b-4 border-pink-500"
-                        : "flex items-center text-gray-700"
-                    }
-                  >
-                    <img
-                      className="inline-block w-8 h-8 rounded-full"
-                      src="https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
-                      alt="Dan_Abromov"
-                    />
-                  </NavLink>
-                </div>
+                {isLoggedin && (
+                  <div className="hidden lg:ml-6 lg:flex">
+                    <NavLink
+                      to={"/signup"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "flex items-center text-gray-700 border-b-4 border-pink-500"
+                          : "flex items-center text-gray-700"
+                      }
+                    >
+                      <img
+                        className="inline-block w-8 h-8 rounded-full"
+                        src="https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
+                        alt="Dan_Abromov"
+                      />
+                    </NavLink>
+                  </div>
+                )}
+                {/* Login */}
+                {!isLoggedin && (
+                  <div className="hidden lg:ml-6 lg:-mr-10 lg:flex bg-pink-600 p-1.5 px-3 rounded-md shadow-sm hover:shadow-pink-300  text-white">
+                    <Link
+                      to={"/login"}
+                      className={`text-md font-bold cursor-pointer`}
+                    >
+                      Login
+                    </Link>
+                  </div>
+                )}
                 {/* Logout */}
-                {/* <div className="hidden lg:ml-6 lg:-mr-10 lg:flex bg-pink-600 p-1.5 px-3 rounded-md shadow-sm hover:shadow-pink-300  text-white">
-                  <Link className={`text-md font-bold cursor-pointer`}>
-                    Login
-                  </Link>
-                </div> */}
-                <div className="hidden lg:ml-6 lg:-mr-10 lg:flex bg-pink-600 p-1 px-3 rounded-md shadow-md hover:shadow-pink-300  text-white">
-                  <Link className={`text-md font-bold cursor-pointer`}>
-                    Logout
-                  </Link>
-                </div>
+                {isLoggedin && (
+                  <div className="hidden lg:ml-6 lg:-mr-10 lg:flex bg-pink-600 p-1 px-3 rounded-md shadow-md hover:shadow-pink-300  text-white">
+                    <button
+                      type="button"
+                      onClick={LogoutHandler}
+                      className={`text-md font-bold cursor-pointer`}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
 
                 {/* Search */}
                 <div className="flex lg:ml-6"></div>
