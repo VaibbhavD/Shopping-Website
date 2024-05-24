@@ -1,15 +1,19 @@
 import React, { useContext, useState } from "react";
 import Context from "../../context/data/Context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Header/navbar";
 import Loader from "../../Components/Loader/Loader";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../../firebase/FirebaseConfig";
+import { AuthActions } from "../../redux/AuthSlice";
+import { useDispatch } from "react-redux";
 
 function Login() {
   const context = useContext(Context);
   const { mode, loader, Setloader } = context;
+  const naviget = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, Setemail] = useState("");
   const [password, Setpassword] = useState("");
@@ -20,8 +24,11 @@ function Login() {
     try {
       const user = await signInWithEmailAndPassword(Auth, email, password);
       localStorage.setItem("User", JSON.stringify(user));
+      dispatch(AuthActions.Login(email));
+
       toast.success("Signin Successfully");
       Setloader(false);
+      naviget("/");
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
