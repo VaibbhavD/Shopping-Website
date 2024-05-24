@@ -334,7 +334,7 @@ export default function Navbar() {
                   </button>
                 </div>
                 {/* Profile */}
-                <div className="hidden lg:ml-8 lg:flex">
+                <div className="hidden lg:ml-6 lg:flex">
                   <NavLink
                     to={"/signup"}
                     className={({ isActive }) =>
@@ -351,8 +351,13 @@ export default function Navbar() {
                   </NavLink>
                 </div>
                 {/* Logout */}
-                <div className="hidden lg:ml-8 lg:-mr-10 lg:flex bg-red-600 p-1 rounded-md shadow-md hover:shadow-red-700  text-white">
-                  <Link className={`text-md font-medium cursor-pointer`}>
+                {/* <div className="hidden lg:ml-6 lg:-mr-10 lg:flex bg-pink-600 p-1.5 px-3 rounded-md shadow-sm hover:shadow-pink-300  text-white">
+                  <Link className={`text-md font-bold cursor-pointer`}>
+                    Login
+                  </Link>
+                </div> */}
+                <div className="hidden lg:ml-6 lg:-mr-10 lg:flex bg-pink-600 p-1 px-3 rounded-md shadow-md hover:shadow-pink-300  text-white">
+                  <Link className={`text-md font-bold cursor-pointer`}>
                     Logout
                   </Link>
                 </div>
