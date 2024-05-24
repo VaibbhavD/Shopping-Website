@@ -7,16 +7,15 @@ function Cart() {
   const context = useContext(Context);
   const { mode } = context;
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: mode === "dark" ? "#282c34" : "",
+        color: mode === "dark" ? "white" : "",
+      }}
+    >
       <Navbar />
 
-      <div
-        className="  md:px-60 py-2 "
-        style={{
-          backgroundColor: mode === "dark" ? "#282c34" : "",
-          color: mode === "dark" ? "white" : "",
-        }}
-      >
+      <div className="  md:px-60 py-6 ">
         <div class="grid lg:grid-cols-3 max-h-screen ">
           <div class="lg:col-span-2 bg-white divide-y lg:h-full lg:-mb-64  ">
             <h3

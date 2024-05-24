@@ -63,10 +63,12 @@ export default function Modal(props) {
                   <div class="leading-loose md:pt-20 ">
                     <form
                       class={`max-w-xl md:m-4 m-2 md:px-8 p-5 border-1 border-white rounded shadow-xl ${
-                        mode === "dark" ? "bg-gray-400 text-black" : "bg-white"
+                        mode === "dark"
+                          ? "bg-gray-600 text-stone-100"
+                          : "bg-white"
                       }`}
                     >
-                      <p class="text-gray-800  text-center font-bold">
+                      <p class="  text-center font-bold">
                         Customer information
                       </p>
                       <div class="">
@@ -147,7 +149,7 @@ export default function Modal(props) {
                       </div>
                       <div class="inline-block mt-2 w-1/2 pr-1">
                         <label
-                          class="hidden block font-medium "
+                          class="hidden font-medium md:block "
                           for="cus_email"
                         >
                           State
