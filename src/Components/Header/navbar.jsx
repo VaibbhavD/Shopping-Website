@@ -31,7 +31,7 @@ export default function Navbar() {
     <div className="bg-white sticky top-0 z-50">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
+        <Dialog as="div" className="relative z-40  lg:hidden" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -73,81 +73,130 @@ export default function Navbar() {
                   </button>
                 </div>
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                  {/* Home */}
                   <div className="flow-root">
                     <NavLink
                       to={"/"}
-                      className="text-sm font-medium text-gray-900 "
+                      className={({ isActive }) =>
+                        isActive
+                          ? "font-medium text-pink-500 "
+                          : "font-medium text-gray-900 "
+                      }
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Home
                     </NavLink>
                   </div>
+                  {/* India */}
                   <div className="flow-root">
-                    <NavLink
-                      to={"/order"}
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Order
-                    </NavLink>
-                  </div>
-
-                  <div className="flow-root">
-                    <NavLink
-                      to={"/dashboard"}
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      admin
-                    </NavLink>
-                  </div>
-                  <div className="flow-root">
-                    <NavLink
-                      to={"/login"}
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      Login
-                    </NavLink>
-                  </div>
-
-                  <div className="flow-root">
-                    <NavLink
-                      className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      Logout
-                    </NavLink>
-                  </div>
-                  <div className="flow-root">
-                    <NavLink
-                      to={"/"}
-                      className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
-                    >
+                    <p className="-m-2 flex gap-2 items-center p-2">
+                      <NavLink
+                        to={"/handicraft"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium text-pink-500 mr-2 "
+                            : "font-medium text-gray-900 "
+                        }
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        HandiCrafts
+                      </NavLink>
                       <img
-                        className="inline-block w-10 h-10 rounded-full"
-                        src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
-                        alt="Dan_Abromov"
-                      />{" "}
-                    </NavLink>
+                        src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
+                        alt=""
+                        className="block h-auto w-5 flex-shrink-0"
+                      />
+                      <span className="sr-only">, change currency</span>
+                    </p>
                   </div>
-                </div>
-
-                <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="#" className="-m-2 flex items-center p-2">
-                    <img
-                      src="img/indiaflag.png"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span
-                      className="ml-3 block text-base font-medium text-gray-900"
+                  {/* Order */}
+                  {isLoggedin && (
+                    <div className="flow-root">
+                      <NavLink
+                        to={"/order"}
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium text-pink-500 "
+                            : "font-medium text-gray-900 "
+                        }
+                      >
+                        Order
+                      </NavLink>
+                    </div>
+                  )}
+                  {/* Admin */}
+                  {isAdmin && (
+                    <div className="flow-root">
+                      <NavLink
+                        to={"/dashboard"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium text-pink-500 "
+                            : "font-medium text-gray-900 "
+                        }
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Admin
+                      </NavLink>
+                    </div>
+                  )}
+                  {/* About */}
+                  <div className="flow-root">
+                    <NavLink
+                      to={"/about"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "font-medium text-pink-500 "
+                          : "font-medium text-gray-900 "
+                      }
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      INDIA
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
+                      About
+                    </NavLink>
+                  </div>
+                  {/* Login */}
+                  {!isLoggedin && (
+                    <div className="flow-root">
+                      <NavLink
+                        to={"/login"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium text-pink-500 "
+                            : "font-medium text-gray-900 "
+                        }
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Login
+                      </NavLink>
+                    </div>
+                  )}
+                  {/* Profile */}
+                  {isLoggedin && (
+                    <div className="flow-root">
+                      <NavLink
+                        to={"/profile"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium text-pink-500 "
+                            : "font-medium text-gray-900 "
+                        }
+                      >
+                        <span className="text-center">Profile</span>
+                      </NavLink>
+                    </div>
+                  )}
+                  {/* Logout */}
+                  {isLoggedin && (
+                    <div className="flow-root">
+                      <NavLink
+                        className="-m-2 block p-2 rounded-l-sm rounded-r-lg bg-red-500 text-white font-bold cursor-pointer"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Logout
+                      </NavLink>
+                    </div>
+                  )}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -185,7 +234,7 @@ export default function Navbar() {
             <div className="flex h-16 items-center w-full">
               <button
                 type="button"
-                className="rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                className="rounded-md bg-gray-500 p-2 text-stone-100 lg:hidden"
                 onClick={() => setOpen(true)}
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(80 82 87)" : "",
@@ -237,6 +286,29 @@ export default function Navbar() {
                   >
                     Home
                   </NavLink>
+                  {/* India */}
+                  <div className="hidden lg:ml-6 lg:flex">
+                    <NavLink
+                      to={"/handmade"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "group -m-2 flex items-center text-gray-700 p-2 border-b-2 border-pink-500"
+                          : "group -m-2 flex items-center p-2 text-gray-700"
+                      }
+                    >
+                      <img
+                        src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
+                        alt=""
+                        className="block h-auto w-5 flex-shrink-0"
+                      />
+                      <span
+                        className="ml-1 block text-sm font-medium text-center"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        HandiCrafts
+                      </span>
+                    </NavLink>
+                  </div>
                   {/* Order */}
                   {isLoggedin && (
                     <NavLink
@@ -276,29 +348,6 @@ export default function Navbar() {
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     About US
-                  </NavLink>
-                </div>
-                {/* India */}
-                <div className="hidden lg:ml-6 lg:flex">
-                  <NavLink
-                    to={"/handmade"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "group -m-2 flex items-center p-2 border-b-2 border-pink-500"
-                        : "group -m-2 flex items-center p-2"
-                    }
-                  >
-                    <img
-                      src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span
-                      className="ml-1 block text-sm font-medium text-center"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      Hand Made
-                    </span>
                   </NavLink>
                 </div>
 
