@@ -32,6 +32,7 @@ function ProductCard() {
           {pics.map((url) => (
             <li>
               <div
+                key={url}
                 className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
