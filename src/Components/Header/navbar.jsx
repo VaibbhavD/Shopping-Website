@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 import Context from "../../context/data/Context";
@@ -158,7 +158,7 @@ export default function Navbar() {
 
         <nav
           aria-label="Top"
-          className={` px-4 sm:px-6 lg:px-8 ${
+          className={` px-4  ${
             mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-stone-100"
           }`}
           //   style={{
@@ -166,8 +166,8 @@ export default function Navbar() {
           //     color: mode === "dark" ? "white" : "",
           //   }}
         >
-          <div className="">
-            <div className="flex h-16 items-center">
+          <div className="w-full">
+            <div className="flex h-16 items-center w-full">
               <button
                 type="button"
                 className="rounded-md bg-white p-2 text-gray-400 lg:hidden"
@@ -195,7 +195,7 @@ export default function Navbar() {
               </button>
 
               {/* Logo E-commerce*/}
-              <div className="ml-4 flex lg:ml-0">
+              <div className="ml-4 flex lg:ml-6">
                 <NavLink to={"/"} className="flex">
                   <div className="flex ">
                     <h1
@@ -232,7 +232,7 @@ export default function Navbar() {
                         : "text-sm font-medium text-gray-700"
                     }
                   >
-                    order
+                    Order
                   </NavLink>
                   {/* Admin */}
                   <NavLink
@@ -258,19 +258,16 @@ export default function Navbar() {
                   >
                     About US
                   </NavLink>
-                  {/* logout */}
-                  <a
-                    className="text-sm font-medium text-gray-700 cursor-pointer  "
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    Logout
-                  </a>
                 </div>
                 {/* India */}
-                <div className="hidden lg:ml-8 lg:flex">
+                <div className="hidden lg:ml-6 lg:flex">
                   <NavLink
-                    to={"/signup"}
-                    className="flex items-center text-gray-700 "
+                    to={"/handmade"}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "group -m-2 flex items-center p-2 border-b-2 border-pink-500"
+                        : "group -m-2 flex items-center p-2"
+                    }
                   >
                     <img
                       src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
@@ -278,7 +275,7 @@ export default function Navbar() {
                       className="block h-auto w-5 flex-shrink-0"
                     />
                     <span
-                      className="ml-3 block text-sm font-medium text-center"
+                      className="ml-1 block text-sm font-medium text-center"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Hand Made
@@ -300,7 +297,7 @@ export default function Navbar() {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="black"
+                      fill={`${mode == "dark" ? "#FF0090" : "black"}`}
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
@@ -324,7 +321,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Dark Mode */}
-                <div className="flex lg:ml-6">
+                <div className="flex mr-0 ml-2 lg:ml-6">
                   <button className="" onClick={toggle}>
                     {/* <MdDarkMode size={35} style={{ color: mode === 'dark' ? 'white' : '' }} /> */}
                     {mode === "light" ? (
@@ -352,6 +349,12 @@ export default function Navbar() {
                       alt="Dan_Abromov"
                     />
                   </NavLink>
+                </div>
+                {/* Logout */}
+                <div className="hidden lg:ml-8 lg:-mr-10 lg:flex bg-red-600 p-1 rounded-md shadow-md hover:shadow-red-700  text-white">
+                  <Link className={`text-md font-medium cursor-pointer`}>
+                    Logout
+                  </Link>
                 </div>
 
                 {/* Search */}
