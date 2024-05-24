@@ -14,8 +14,16 @@ const ContextProider = (props) => {
       document.body.style.backgroundColor = "white";
     }
   };
+
   return (
-    <Context.Provider value={{ mode, toggle, loader, Setloader }}>
+    <Context.Provider
+      value={{
+        mode,
+        toggle,
+        loader,
+        Setloader,
+      }}
+    >
       {props.children}
     </Context.Provider>
   );
