@@ -1,20 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Context from "../../context/data/Context";
 import { Link } from "react-router-dom";
 import Navbar from "../../Components/Header/navbar";
+import Loader from "../../Components/Loader/Loader";
+import { toast } from "react-toastify";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { Auth } from "../../firebase/FirebaseConfig";
 
 function Login() {
   const context = useContext(Context);
-  const { mode } = context;
+  const { mode, loader, Setloader } = context;
+
+  const [email, Setemail] = useState("");
+  const [password, Setpassword] = useState("");
+
+  const login = async (e) => {
+    Setloader(true);
+    e.preventDefault();
+    try {
+      const user = await signInWithEmailAndPassword(Auth, email, password);
+      localStorage.setItem("User", JSON.stringify(user));
+      toast.success("Signin Successfully");
+      Setloader(false);
+    } catch (error) {
+      toast.error(error.message);
+      Setloader(false);
+    }
+  };
 
   return (
     <>
       <Navbar />
       <div
-        class="py-16 "
+        class="py-16 m-4 md:m-0 "
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
-        <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+        <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl z-50 ">
           <div
             class="hidden lg:block lg:w-1/2 bg-cover"
             // style="background-image:url('')"
@@ -72,30 +93,44 @@ function Login() {
               </a>
               <span class="border-b w-1/5 lg:w-1/4"></span>
             </div>
-            <div class="mt-4">
-              <label class="block  text-sm font-bold mb-2">Email Address</label>
-              <input
-                class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                type="email"
-              />
-            </div>
-            <div class="mt-4">
-              <div class="flex justify-between">
-                <label class="block  text-sm font-bold mb-2">Password</label>
-                <Link class="text-xs hover:text-blue-800 ">
-                  Forget Password?
-                </Link>
+            <form onSubmit={login}>
+              <div class="mt-4">
+                <label class="block  text-sm font-bold mb-2">
+                  Email Address
+                </label>
+                <input
+                  class="bg-gray-100  focus:outline-none focus:shadow-outline border text-gray-600 border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                  type="email"
+                  value={email}
+                  placeholder="johnsena@gmail.com"
+                  onChange={(e) => Setemail(e.target.value)}
+                />
               </div>
-              <input
-                class="bg-gray-100  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                type="password"
-              />
-            </div>
-            <div class="mt-8">
-              <button class="bg-pink-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
-                Login
-              </button>
-            </div>
+              <div class="mt-4">
+                <div class="flex justify-between">
+                  <label class="block  text-sm font-bold mb-2">Password</label>
+                  <Link class="text-xs hover:text-blue-800 ">
+                    Forget Password?
+                  </Link>
+                </div>
+                <input
+                  class="bg-gray-100  focus:outline-none text-gray-600 focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                  type="text"
+                  value={password}
+                  placeholder="*******"
+                  onChange={(e) => Setpassword(e.target.value)}
+                />
+              </div>
+              <div class="mt-8">
+                <button
+                  type="submit"
+                  class="bg-pink-600 text-white text-md font-bold flex justify-center cursor-pointer py-2 px-4 w-full rounded hover:bg-pink-500"
+                  disabled={loader ? true : false}
+                >
+                  {loader ? <Loader /> : "Login"}
+                </button>
+              </div>
+            </form>
             <div class="mt-4 flex items-center justify-between">
               <span class="border-b w-1/5 md:w-1/4"></span>
               <Link to="/signup" class="text-xs  uppercase">
