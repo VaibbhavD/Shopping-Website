@@ -198,7 +198,7 @@ function SignUp() {
             </form>
             <div class="mt-4 flex items-center justify-between">
               <span class="border-b w-1/5 md:w-1/4"></span>
-              <Link to={"/allproducts"} class="text-xs  uppercase">
+              <Link to={"/login"} class="text-xs  uppercase">
                 If You Have Account ?{" "}
                 <b className="hover:text-blue-600">Login</b>
               </Link>
