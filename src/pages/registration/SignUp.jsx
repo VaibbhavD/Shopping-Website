@@ -7,10 +7,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Auth, fireDB } from "../../firebase/FirebaseConfig";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import Loader from "../../Components/Loader/Loader";
+import { AuthActions } from "../../redux/AuthSlice";
+import { useDispatch } from "react-redux";
 
 function SignUp() {
   const context = useContext(Context);
   const { mode, loader, Setloader } = context;
+
+  const dispatch = useDispatch();
 
   const [firstname, Setfirstname] = useState("");
   const [lastname, Setlastname] = useState("");
@@ -19,23 +23,22 @@ function SignUp() {
   const RepasswordRef = useRef();
 
   const SignUp = async (e) => {
-    e.preventDefault;
+    e.preventDefault();
     Setloader(true);
     if (password != RepasswordRef.current.value) {
       toast.error("Please Check Password!");
     }
     // Firebase Authentication
-
     try {
       const User = await createUserWithEmailAndPassword(Auth, email, password);
-
+      localStorage.setItem("User", JSON.stringify(User));
+      dispatch(AuthActions.Login(email));
       const UserDetails = {
         name: firstname + " " + lastname,
         email: email,
         uid: User.user.uid,
         time: Timestamp.now(),
       };
-
       const Userref = collection(fireDB, "Users");
       await addDoc(Userref, UserDetails);
       toast.success("SignUp Scccesfully");
