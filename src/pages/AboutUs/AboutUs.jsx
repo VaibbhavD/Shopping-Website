@@ -14,7 +14,7 @@ function AboutUs() {
           color: mode === "dark" ? "white" : "",
         }}
       >
-        <h1 className="text-2xl font-bold p-5">
+        <h1 className="text-2xl text-pink-500 font-bold p-5">
           About US
           <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
         </h1>

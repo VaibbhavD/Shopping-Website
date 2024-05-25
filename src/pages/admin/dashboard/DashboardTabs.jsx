@@ -4,6 +4,8 @@ import myContext from "../../../context/data/Context";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { FaUser, FaCartPlus } from "react-icons/fa";
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
+import AddProduct from "../pages/AddProduct";
+import Modal from "../../../Components/modal/Modal";
 
 function DashboardTab() {
   const context = useContext(myContext);
@@ -20,7 +22,7 @@ function DashboardTab() {
   return (
     <>
       <div
-        className="container mx-auto"
+        className="container mx-auto pt-10 -mt-12 md:mt-0"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div className="tab container mx-auto ">
@@ -69,14 +71,15 @@ function DashboardTab() {
                     Product Details
                   </span>
                 </h1>
-                <div className="flex justify-end">
+                <div className="flex justify-end md:mr-10">
                   <button
                     type="button"
                     className="focus:outline-none text-white bg-pink-600  border hover:bg-pink-700 outline-0 font-medium rounded-lg text-sm px-2 py-2  md:px-5 md:py-2.5 mb-2"
                     style={{
-                      backgroundColor: mode === "dark" ? "orange" : "",
+                      backgroundColor: mode === "dark" ? "" : "",
                       color: mode === "dark" ? "white" : "",
                     }}
+                    onClick={openModal}
                   >
                     {" "}
                     <div className="flex gap-2 items-center">
@@ -458,6 +461,9 @@ function DashboardTab() {
           </Tabs>
         </div>
       </div>
+      <Modal isopen={isOpen}>
+        <AddProduct close={closeModal} />
+      </Modal>
     </>
   );
 }

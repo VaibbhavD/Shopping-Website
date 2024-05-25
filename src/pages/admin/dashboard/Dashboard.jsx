@@ -10,7 +10,7 @@ function Dashboard() {
     <>
       <Navbar />
       <div
-        class="md:p-10 p-4 "
+        class="md:p-5 "
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <h1
@@ -22,7 +22,7 @@ function Dashboard() {
         </h1>
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
         <div class="mt-12">
-          <div class="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+          <div class="mb-12 grid gap-y-10 px-4 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
             <div
               class={`relative flex flex-col bg-clip-border rounded-xl   shadow-md ${
                 mode === "dark"
