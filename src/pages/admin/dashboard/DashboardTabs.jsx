@@ -8,20 +8,26 @@ import AddProduct from "../pages/AddProduct";
 import Modal from "../../../Components/modal/Modal";
 import PageLoader from "../../../Components/Loader/PageLoader";
 import Loader from "../../../Components/Loader/Loader";
+import UpdateProduct from "../pages/UpdateProduct";
 
 function DashboardTab() {
   const context = useContext(myContext);
-  const { mode, products, loader } = context;
-  let [isOpen, setIsOpen] = useState(false);
+  const { mode, products, loader, Editproduct, Deleteproduct } = context;
+  let [AddproductModal, SetAddproductModal] = useState(false);
+  let [UpdateModal, SetUpdateModal] = useState(false);
 
   // console.log(products);
 
   function closeModal() {
-    setIsOpen(false);
+    SetAddproductModal(false);
+    SetUpdateModal(false);
   }
 
-  function openModal() {
-    setIsOpen(true);
+  function OpenAddproModal() {
+    SetAddproductModal(true);
+  }
+  function OpenUpdateModal() {
+    SetUpdateModal(true);
   }
   return (
     <>
@@ -29,7 +35,6 @@ function DashboardTab() {
         className="container mx-auto pt-10 -mt-12 md:mt-0"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
-        {loader && <PageLoader />}
         <div className="tab container mx-auto ">
           <Tabs defaultIndex={0} className=" ">
             <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-3 text-center    md:justify-end md:pr-5 pb-5 ">
@@ -84,7 +89,7 @@ function DashboardTab() {
                       backgroundColor: mode === "dark" ? "" : "",
                       color: mode === "dark" ? "white" : "",
                     }}
-                    onClick={openModal}
+                    onClick={OpenAddproModal}
                   >
                     {" "}
                     <div className="flex gap-2 items-center">
@@ -93,6 +98,7 @@ function DashboardTab() {
                   </button>
                 </div>
                 <div className="relative overflow-x-auto md:px-10 md:min-h-40 ">
+                  {loader && <PageLoader />}
                   <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  ">
                     <thead
                       className="text-xs border text-center border-gray-600 text-black uppercase bg-gray-200 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]"
@@ -125,8 +131,8 @@ function DashboardTab() {
                         </th>
                       </tr>
                     </thead>
-                    {products.map((product) => (
-                      <tbody key={product.date} className="text-center">
+                    {products.map((product, index) => (
+                      <tbody key={index} className="text-center">
                         <tr
                           className="bg-gray-50 border-b  dark:border-gray-700"
                           style={{
@@ -139,7 +145,7 @@ function DashboardTab() {
                             className="px-6 py-4 text-black "
                             style={{ color: mode === "dark" ? "white" : "" }}
                           >
-                            1.
+                            {index + 1}
                           </td>
                           <th
                             scope="row"
@@ -183,14 +189,14 @@ function DashboardTab() {
                                   color: mode === "dark" ? "white" : "",
                                 }}
                               >
-                                <div>
+                                <div onClick={() => Deleteproduct(product)}>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     strokeWidth={1.5}
                                     stroke="currentColor"
-                                    className="w-6 h-6 text-red-600"
+                                    className="w-6 h-6 text-red-600 hover:scale-110"
                                   >
                                     <path
                                       strokeLinecap="round"
@@ -199,14 +205,19 @@ function DashboardTab() {
                                     />
                                   </svg>
                                 </div>
-                                <div>
+                                <div
+                                  onClick={() => {
+                                    Editproduct(product);
+                                    OpenUpdateModal();
+                                  }}
+                                >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     strokeWidth={1.5}
                                     stroke="currentColor"
-                                    className="w-6 h-6 text-blue-500"
+                                    className="w-6 h-6 text-blue-500 hover:scale-110"
                                   >
                                     <path
                                       strokeLinecap="round"
@@ -472,8 +483,11 @@ function DashboardTab() {
           </Tabs>
         </div>
       </div>
-      <Modal isopen={isOpen}>
+      <Modal isopen={AddproductModal}>
         <AddProduct close={closeModal} />
+      </Modal>
+      <Modal isopen={UpdateModal}>
+        <UpdateProduct close={closeModal} />
       </Modal>
     </>
   );
