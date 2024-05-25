@@ -12,8 +12,11 @@ import { fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
 
 const ContextProider = (props) => {
-  const [mode, Setmode] = useState("light");
+  // Loader
   const [loader, Setloader] = useState(false);
+
+  // Dark Mode Method
+  const [mode, Setmode] = useState("light");
 
   const toggle = () => {
     if (mode === "light") {
@@ -24,7 +27,9 @@ const ContextProider = (props) => {
       document.body.style.backgroundColor = "white";
     }
   };
+
   // Product State
+
   const [product, Setproduct] = useState({
     title: null,
     brand: null,
@@ -40,6 +45,7 @@ const ContextProider = (props) => {
     }),
   });
 
+  // Add Product
   const AddProduct = async () => {
     if (
       product.title == null ||
@@ -56,7 +62,7 @@ const ContextProider = (props) => {
       await addDoc(productref, product);
       toast.success("Product Add Successfully");
       Setloader(false);
-      window.location("/dashboard");
+      window.Location("/dashboard");
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
@@ -64,7 +70,11 @@ const ContextProider = (props) => {
     Setproduct("");
   };
 
+  // Products State
+
   const [products, Setproducts] = useState([]);
+
+  // get Products
 
   const getProducts = async () => {
     Setloader(true);
@@ -86,6 +96,7 @@ const ContextProider = (props) => {
     }
   };
 
+  // get Products UseEffect()
   useEffect(() => {
     getProducts();
   }, []);
