@@ -4,9 +4,12 @@ import {
   Timestamp,
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   onSnapshot,
   orderBy,
   query,
+  setDoc,
 } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
@@ -62,7 +65,7 @@ const ContextProider = (props) => {
       await addDoc(productref, product);
       toast.success("Product Add Successfully");
       Setloader(false);
-      window.Location("/dashboard");
+      window.location.href = "/dashboard";
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
@@ -101,6 +104,46 @@ const ContextProider = (props) => {
     getProducts();
   }, []);
 
+  // Edit Produst
+
+  const Editproduct = (item) => {
+    Setproduct(item);
+  };
+
+  // Update Product
+  const Updateproduct = async () => {
+    Setloader(true);
+
+    try {
+      await setDoc(doc(fireDB, "Products", product.id), product);
+      toast.success("Product Update Successfully");
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 1000);
+      getProducts();
+      Setloader(false);
+      Setproduct("");
+    } catch (error) {
+      toast.error(error.message);
+      Setloader(false);
+    }
+  };
+
+  // Delete Product
+
+  const Deleteproduct = async (item) => {
+    Setloader(true);
+    try {
+      await deleteDoc(doc(fireDB, "Products", item.id));
+      toast.success("Product Delete Successfully");
+      Setloader(false);
+      getProducts();
+    } catch (error) {
+      toast.error(error.message);
+      Setloader(false);
+    }
+  };
+
   return (
     <Context.Provider
       value={{
@@ -112,6 +155,9 @@ const ContextProider = (props) => {
         Setproduct,
         product,
         products,
+        Editproduct,
+        Updateproduct,
+        Deleteproduct,
       }}
     >
       {props.children}
