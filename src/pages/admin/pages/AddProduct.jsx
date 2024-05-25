@@ -14,7 +14,7 @@ function AddProduct(props) {
   return (
     <div className="">
       <div
-        className=" flex justify-center mt-16 md:mt-10"
+        className=" flex justify-center mt-16 md:mt-8"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div
