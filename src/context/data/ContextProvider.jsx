@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Context from "./Context";
 import {
-  QuerySnapshot,
   Timestamp,
   addDoc,
   collection,
@@ -57,30 +56,32 @@ const ContextProider = (props) => {
       await addDoc(productref, product);
       toast.success("Product Add Successfully");
       Setloader(false);
-      window.location = "/admin";
+      window.location("/dashboard");
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
     }
+    Setproduct("");
   };
 
-  const [Products, SetProducts] = useState([]);
+  const [products, Setproducts] = useState([]);
 
   const getProducts = async () => {
     Setloader(true);
     try {
-      const q = query(collection(fireDB, "products"), orderBy("time"));
+      const q = query(collection(fireDB, "Products"), orderBy("time"));
       const data = onSnapshot(q, (QuerySnapshot) => {
         let productsdata = [];
-        QuerySnapshot.forEach((data) => {
-          productsdata.push({ ...data, id: data.id });
+        QuerySnapshot.forEach((doc) => {
+          productsdata.push({ ...doc.data(), id: doc.id });
         });
-        SetProducts(productsdata);
+        Setproducts(productsdata);
         Setloader(false);
       });
       return () => data;
     } catch (error) {
       console.log(error);
+      toast.error;
       Setloader(False);
     }
   };
@@ -99,6 +100,7 @@ const ContextProider = (props) => {
         AddProduct,
         Setproduct,
         product,
+        products,
       }}
     >
       {props.children}
