@@ -57,6 +57,7 @@ const ContextProider = (props) => {
       await addDoc(productref, product);
       toast.success("Product Add Successfully");
       Setloader(false);
+      window.location = "/admin";
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
