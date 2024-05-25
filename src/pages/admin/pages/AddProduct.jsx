@@ -8,14 +8,7 @@ function AddProduct(props) {
   const { mode, Setproduct, AddProduct, product, loader } = context;
 
   const SubmitHandler = async () => {
-    console.log(product);
     await AddProduct();
-    product.title = null;
-    product.brand = null;
-    product.price = null;
-    product.imageUrl = null;
-    product.category = null;
-    product.description = null;
   };
 
   return (
