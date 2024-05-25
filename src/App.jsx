@@ -11,7 +11,6 @@ import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
 import ProductInfo from "./pages/productInfo/ProductInfo";
 import AddProduct from "./pages/admin/pages/AddProduct";
-import UpdateProduct from "./pages/admin/pages/UpdatProduct";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,9 +35,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={<Login />} />
           {isAdmin && <Route path="/addproduct" element={<AddProduct />} />}
-          {isAdmin && (
-            <Route path="/updateproduct" element={<UpdateProduct />} />
-          )}
         </Routes>
 
         <ToastContainer />
