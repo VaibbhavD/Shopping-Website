@@ -1,22 +1,22 @@
 import React, { useContext } from "react";
 import Context from "../../../context/data/Context";
 
-function AddProduct() {
+function AddProduct(props) {
   const context = useContext(Context);
   const { mode } = context;
 
   return (
-    <div>
+    <div className="">
       <div
-        className=" flex justify-center py-10 h-fit"
+        className=" flex justify-center mt-16 md:mt-10"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div
-          className={`px-5 md:px-10 py-5 rounded-xl ${
+          className={`px-5 md:px-10 py-5 max-w-screen rounded-xl ${
             mode == "dark" ? "bg-gray-500" : "bg-gray-100"
           }`}
         >
-          <div className="">
+          <div className="w-80">
             <h1 className="text-center text-black text-xl mb-4 border-b-4 border-pink-500 font-bold">
               Add Product
             </h1>
@@ -72,9 +72,17 @@ function AddProduct() {
               placeholder="Product title"
             ></textarea>
           </div>
-          <div className=" flex justify-center mb-3">
-            <button className=" bg-yellow-500 w-full text-black font-bold  px-2 py-2 rounded-lg">
+          <div className=" flex justify-center mb-1">
+            <button className=" bg-green-500 w-full hover:bg-green-400 hover:text-black font-bold  px-2 py-2 rounded-lg">
               Add Product
+            </button>
+          </div>
+          <div className=" flex justify-center ">
+            <button
+              className=" bg-red-500 w-full hover:bg-red-400  text-black font-bold  px-2 py-2 rounded-lg"
+              onClick={() => props.close()}
+            >
+              Cancel
             </button>
           </div>
         </div>
