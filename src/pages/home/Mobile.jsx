@@ -6,13 +6,13 @@ function Mobile() {
   const { mode } = context;
   return (
     <div
-      class="font-sans text-[#333]  max-md:max-w-md mx-auto pt-10  "
+      class="font-sans text-[#333]  max-md:max-w-md mx-auto pt-10 lg:px-6  "
       style={{
         backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
         color: mode === "dark" ? "white" : "",
       }}
     >
-      <h2 class="text-2xl font-bold lg:text-3xl ml-2  dark:text-white">
+      <h2 class="text-2xl font-bold lg:text-3xl ml-2  dark:text-white lg:pl-1">
         Mobile & Accessories
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
       </h2>
@@ -31,15 +31,15 @@ function Mobile() {
             sophistication."
           </p>
           <button
-            className="md:p-2 md:mt-5 mt-2 md:px-5 p-1  font-bold rounded-md text-white hover:text-black bg-pink-600
-hover:bg-stone-100 border-2 border-black"
+            className="md:p-2 md:mt-5 mt-2 md:px-5 p-1  font-bold rounded-md text-white hover:text-black bg-pink-500
+hover:bg-stone-100 border-2 "
           >
-            Explore
+            See Mobiles
           </button>
         </div>
         <div class="md:h-[450px] h-52  p-2">
           <img
-            src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/Wireless/tdhruvko/Stores/IPL/24thMay/D124266280_IN_WLD_IPL_Store_1242x600_1.jpg"
+            src="https://i1.wp.com/techbeasts.com/wp-content/uploads/2018/06/kraken-a8.png?fit=826%2C620&ssl=1"
             class="w-full h-full  shadow-[0_2px_22px_-10px_rgba(93,96,127,0.2)]"
             alt="Dining Experience"
           />

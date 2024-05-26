@@ -6,13 +6,13 @@ function FurnitureSection() {
   const { mode } = context;
   return (
     <div
-      class="font-sans text-[#333]  max-md:max-w-md mx-auto pt-10 pb-7 "
+      class="font-sans text-[#333]  max-md:max-w-md mx-auto pt-10 pb-7 lg:px-6 "
       style={{
         backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
         color: mode === "dark" ? "white" : "",
       }}
     >
-      <h2 class="text-2xl font-bold lg:text-3xl ml-2  dark:text-white">
+      <h2 class="text-2xl font-bold lg:text-3xl ml-2  dark:text-white  ">
         Furnitures & Home
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
       </h2>
@@ -31,10 +31,10 @@ function FurnitureSection() {
             sophistication."
           </p>
           <button
-            className="md:p-2 md:mt-5 mt-2 md:px-5 p-1 font-bold rounded-md text-white hover:text-black bg-[#CF5022]
- hover:bg-stone-100 border-2 border-black"
+            className="md:p-2 md:mt-5 mt-2 md:px-5 p-1 font-bold rounded-md text-white hover:text-black bg-pink-500
+ hover:bg-stone-100 border-2 "
           >
-            Explore
+            Sell Furnitures
           </button>
         </div>
         <div class="md:h-[450px] h-52  p-2">
