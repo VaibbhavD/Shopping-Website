@@ -39,7 +39,7 @@ function Login() {
     <>
       <Navbar />
       <div
-        class="py-16 m-4 md:m-0 "
+        class="py-16 p-4 md:m-0 lg:mb-0 pb-44 lg:pb-16 "
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl z-50 ">

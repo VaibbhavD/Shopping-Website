@@ -58,7 +58,7 @@ function SignUp() {
     <>
       <Navbar />
       <div
-        className="py-10 md:py-0"
+        className="py-14 pb-18 lg:pb-0 md:py-0"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
