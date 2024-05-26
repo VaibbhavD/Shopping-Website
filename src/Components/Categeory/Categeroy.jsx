@@ -20,12 +20,12 @@ function Categeroy() {
               Categeory
               <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
             </h2>
-            <p
+            {/* <p
               class="hidden max-w-screen-sm text-gray-500 dark:text-gray-300 md:block"
               style={{ color: mode === "dark" ? "white" : "" }}
             >
               New Trendy Latest Fashion And Design
-            </p>
+            </p> */}
           </div>
         </div>
 
