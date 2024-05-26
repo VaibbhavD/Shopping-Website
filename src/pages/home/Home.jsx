@@ -6,6 +6,8 @@ import Track from "../../Components/track/Track";
 import Testimonal from "../../Components/testimonal/Testimonal";
 import DiscountSection from "../../Components/Discountsection/DiscountSection";
 import Layout from "../../Components/layout/Layout";
+import FurnitureSection from "./FurnitureSection";
+import Mobile from "./Mobile";
 
 function Home() {
   return (
@@ -13,7 +15,9 @@ function Home() {
       <HeroSection />
       <DiscountSection />
       <Categeroy />
+      <Mobile />
       <ProductCard />
+      <FurnitureSection />
       <Track />
       <Testimonal />
     </Layout>
