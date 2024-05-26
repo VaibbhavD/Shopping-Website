@@ -12,7 +12,8 @@ import UpdateProduct from "../pages/UpdateProduct";
 
 function DashboardTab() {
   const context = useContext(myContext);
-  const { mode, products, loader, Editproduct, Deleteproduct } = context;
+  const { mode, products, loader, Editproduct, Deleteproduct, Pageloader } =
+    context;
   let [AddproductModal, SetAddproductModal] = useState(false);
   let [UpdateModal, SetUpdateModal] = useState(false);
 
@@ -98,7 +99,7 @@ function DashboardTab() {
                   </button>
                 </div>
                 <div className="relative overflow-x-auto md:px-10 md:min-h-40 ">
-                  {loader && <PageLoader />}
+                  {Pageloader && <PageLoader />}
                   <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  ">
                     <thead
                       className="text-xs border text-center border-gray-600 text-black uppercase bg-gray-200 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]"
