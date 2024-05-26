@@ -13,10 +13,15 @@ import {
 } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { json } from "react-router-dom";
 
 const ContextProider = (props) => {
+  const User = JSON.parse(localStorage.getItem("User"));
+
   // Loader
   const [loader, Setloader] = useState(false);
+  const [Pageloader, SetPageloader] = useState(false);
 
   // Dark Mode Method
   const [mode, Setmode] = useState("light");
@@ -80,7 +85,7 @@ const ContextProider = (props) => {
   // get Products
 
   const getProducts = async () => {
-    Setloader(true);
+    SetPageloader(true);
     try {
       const q = query(collection(fireDB, "Products"), orderBy("time"));
       const data = onSnapshot(q, (QuerySnapshot) => {
@@ -89,13 +94,13 @@ const ContextProider = (props) => {
           productsdata.push({ ...doc.data(), id: doc.id });
         });
         Setproducts(productsdata);
-        Setloader(false);
+        SetPageloader(false);
       });
       return () => data;
     } catch (error) {
       console.log(error);
-      toast.error;
-      Setloader(False);
+      toast.error(error.message);
+      SetPageloader(False);
     }
   };
 
@@ -144,12 +149,40 @@ const ContextProider = (props) => {
     }
   };
 
+  // Cart States
+  const { Cart, SetCart } = useState([]);
+
+  // Add To Cart
+  const AddtoCart = async (product) => {
+    if (!User) {
+      toast.warning("Please Login First");
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 500);
+    }
+    const userEmail = User.user.email;
+    console.log(User);
+
+    const userDocRef = doc(fireDB, "users", userEmail);
+
+    const cartCollectionRef = collection(userDocRef, "Cart");
+
+    try {
+      // Add the product to the 'Cart' sub-collection
+      await addDoc(cartCollectionRef, product);
+      toast.success("Product Added Into Cart");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <Context.Provider
       value={{
         mode,
         toggle,
         loader,
+        Pageloader,
         Setloader,
         AddProduct,
         Setproduct,
@@ -158,6 +191,7 @@ const ContextProider = (props) => {
         Editproduct,
         Updateproduct,
         Deleteproduct,
+        AddtoCart,
       }}
     >
       {props.children}
