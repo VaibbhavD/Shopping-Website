@@ -15,6 +15,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
+import MainProductPage from "./pages/MainProductPage.jsx/MainProductPage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.authUser.isLoggedin);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={<Login />} />
+          <Route path="/category/product" element={<MainProductPage />} />
           {isAdmin && <Route path="/addproduct" element={<AddProduct />} />}
         </Routes>
 
