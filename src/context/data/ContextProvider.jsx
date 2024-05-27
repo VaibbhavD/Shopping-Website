@@ -11,6 +11,8 @@ import {
   orderBy,
   query,
   setDoc,
+  updateDoc,
+  where,
 } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
@@ -160,22 +162,39 @@ const ContextProider = (props) => {
       return;
     }
     const userEmail = User.user.email;
-    console.log(User);
+    console.log(product);
 
     const userDocRef = doc(fireDB, "users", userEmail);
 
     const cartCollectionRef = collection(userDocRef, "Cart");
-    const same = Cart.find((pro) => pro.id === product.id);
-    console.log(same);
+
     try {
-      // Add the product to the 'Cart' sub-collection
-      await addDoc(cartCollectionRef, product);
-      toast.success("Product Added Into Cart");
+      // Query is product already exsist
+      const q = query(cartCollectionRef, where("id", "==", product.id));
+      const querysnapshot = await getDocs(q);
+
+      if (!querysnapshot.empty) {
+        const existproduct = querysnapshot.docs[0];
+        const existproductdata = existproduct.data();
+        const newQty = existproductdata.Qty + (product.Qty || 1);
+
+        await updateDoc(existproduct.ref, { Qty: newQty });
+        GetCart();
+        toast.success("Product Added Into Cart");
+      } else {
+        // Add the product to the 'Cart' sub-collection
+        await setDoc(doc(cartCollectionRef, product.id), {
+          ...product,
+          Qty: 1,
+        });
+
+        GetCart();
+        toast.success("Product Added Into Cart");
+      }
     } catch (error) {
       toast.error(error.message);
     }
   };
-
   // Get Cart
 
   const GetCart = async () => {
@@ -195,7 +214,9 @@ const ContextProider = (props) => {
           ...doc.data(),
         })
       );
-      console.log("Cart", cartitems);
+      for (const k of cartitems) {
+        console.log(k.id);
+      }
       SetCart(cartitems);
       SetPageloader(false);
     } catch (error) {
@@ -213,6 +234,7 @@ const ContextProider = (props) => {
   return (
     <Context.Provider
       value={{
+        User,
         mode,
         toggle,
         loader,
@@ -227,6 +249,7 @@ const ContextProider = (props) => {
         Deleteproduct,
         AddtoCart,
         Cart,
+        GetCart,
       }}
     >
       {props.children}
