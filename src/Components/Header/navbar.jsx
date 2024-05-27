@@ -27,6 +27,12 @@ export default function Navbar() {
     navigate("/login");
   };
 
+  const HandleChange = (e) => {
+    console.log(e.target.value);
+    navigate(`/category/ ${e.target.value}  `);
+    setOpen(false);
+  };
+
   return (
     <div className="bg-white sticky top-0 z-50">
       {/* Mobile menu */}
@@ -65,7 +71,9 @@ export default function Navbar() {
                 <div className="flex px-4 pb-2 pt-28 justify-end ">
                   <button
                     type="button"
-                    className="-m-2 inline-flex rounded-md p-2 text-gray-900 "
+                    className={`-m-2 inline-flex rounded-md font-bold p-2 ${
+                      mode == "dark" ? "test-white" : "text-gray-900"
+                    }`}
                     onClick={() => setOpen(false)}
                   >
                     <span className="sr-only">Close menu</span>
@@ -87,6 +95,72 @@ export default function Navbar() {
                       Home
                     </NavLink>
                   </div>
+                  <div className="flow-root -ml-1.5">
+                    {/* Category */}
+                    <select
+                      className={`${
+                        mode === "dark"
+                          ? " font-medium cursor-pointer bg-transparent "
+                          : " font-medium text-gray-700 cursor-pointer   "
+                      }`}
+                      defaultValue=""
+                      onChange={HandleChange}
+                    >
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? " text-xs font-medium bg-gray-700 cursor-pointer text-white"
+                            : "text-xs font-medium  cursor-pointer bg-stone-100"
+                        }`}
+                        value=""
+                        disabled
+                      >
+                        Categeory
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-xs font-medium  cursor-pointer bg-gray-700"
+                            : "text-xs font-medium text-gray-700 cursor-pointer bg-stone-100"
+                        }`}
+                        onClick={() => console.log("hi")}
+                        value="cloths"
+                      >
+                        Clothing
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-xs font-medium   cursor-pointer bg-gray-700"
+                            : "text-xs font-medium cursor-pointer text-gray-700 bg-stone-100"
+                        }`}
+                        value="mobiles"
+                      >
+                        Mobiles
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-xs font-medium  cursor-pointer  bg-gray-700"
+                            : "text-xs font-medium cursor-pointer text-gray-700 bg-stone-100"
+                        }`}
+                        value="furniture"
+                      >
+                        Furniture
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-xs font-medium  cursor-pointer  bg-gray-700"
+                            : "text-xs font-medium cursor-pointer text-gray-700 bg-stone-100"
+                        }`}
+                        value="kitchen"
+                      >
+                        Kitchen
+                      </option>
+                    </select>
+                  </div>
+
                   {/* India */}
                   <div className="flow-root">
                     <p className="-m-2 flex gap-2 items-center p-2">
@@ -212,10 +286,6 @@ export default function Navbar() {
               ? "bg-gray-800 text-pink-600"
               : "bg-pink-600 text-white"
           }`}
-          // style={{
-          //   backgroundColor: mode === "dark" ? "rgb(62 64 66)" : "",
-          // color: mode === "dark" ? "#e75480" : "",
-          // }}
         >
           Get free delivery on orders over ₹300
         </p>
@@ -225,10 +295,6 @@ export default function Navbar() {
           className={` px-4  ${
             mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-stone-100"
           }`}
-          //   style={{
-          //     backgroundColor: mode === "dark" ? "#282c34" : "",
-          //     color: mode === "dark" ? "white" : "",
-          //   }}
         >
           <div className="w-full">
             <div className="flex h-16 items-center w-full">
@@ -286,6 +352,72 @@ export default function Navbar() {
                   >
                     Home
                   </NavLink>
+                  {/* Category */}
+                  <div className="m-auto ">
+                    <select
+                      className={`${
+                        mode === "dark"
+                          ? "text-sm font-medium cursor-pointer bg-gray-700 decoration-clone"
+                          : "text-sm font-medium text-gray-700 cursor-pointer  bg-stone-100 "
+                      }`}
+                      defaultValue=""
+                      onChange={HandleChange}
+                    >
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-sm font-medium bg-gray-700 cursor-pointer text-white"
+                            : "text-sm font-medium text-gray-700 cursor-pointer bg-stone-100"
+                        }`}
+                        value=""
+                        disabled
+                      >
+                        Categeory
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-sm font-medium  cursor-pointer bg-gray-700"
+                            : "text-sm font-medium text-gray-700 cursor-pointer bg-stone-100"
+                        }`}
+                        onClick={() => console.log("hi")}
+                        value="cloths"
+                      >
+                        Clothing
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-sm font-medium   cursor-pointer bg-gray-700"
+                            : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
+                        }`}
+                        value="mobiles"
+                      >
+                        Mobiles
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-sm font-medium  cursor-pointer  bg-gray-700"
+                            : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
+                        }`}
+                        value="furniture"
+                      >
+                        Furniture
+                      </option>
+                      <option
+                        className={`${
+                          mode === "dark"
+                            ? "text-sm font-medium  cursor-pointer  bg-gray-700"
+                            : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
+                        }`}
+                        value="kitchen"
+                      >
+                        Kitchen
+                      </option>
+                    </select>
+                  </div>
+
                   {/* India */}
                   <div className="hidden lg:ml-6 lg:flex">
                     <NavLink
