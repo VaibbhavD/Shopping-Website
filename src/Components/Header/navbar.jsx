@@ -216,19 +216,21 @@ export default function Navbar() {
                     </div>
                   )}
                   {/* About */}
-                  <div className="flow-root">
-                    <NavLink
-                      to={"/about"}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "font-medium text-pink-500 "
-                          : "font-medium text-gray-900 "
-                      }
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      About
-                    </NavLink>
-                  </div>
+                  {!isLoggedin && (
+                    <div className="flow-root">
+                      <NavLink
+                        to={"/about"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "font-medium text-pink-500 "
+                            : "font-medium text-gray-900 "
+                        }
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        About
+                      </NavLink>
+                    </div>
+                  )}
                   {/* Login */}
                   {!isLoggedin && (
                     <div className="flow-root">
@@ -470,17 +472,19 @@ export default function Navbar() {
                     </NavLink>
                   )}
                   {/* About Us */}
-                  <NavLink
-                    to={"/aboutus"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
-                        : "text-sm font-medium text-gray-700"
-                    }
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    About US
-                  </NavLink>
+                  {!isLoggedin && (
+                    <NavLink
+                      to={"/aboutus"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-sm font-medium text-gray-700 border-b-2 border-pink-500"
+                          : "text-sm font-medium text-gray-700"
+                      }
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      About US
+                    </NavLink>
+                  )}
                 </div>
 
                 {/* Cart */}
