@@ -10,7 +10,8 @@ import { fireDB } from "../../firebase/FirebaseConfig";
 
 function Cart() {
   const context = useContext(Context);
-  const { User, mode, Cart, loader, GetCart, Pageloader } = context;
+  const { User, mode, Cart, loader, GetCart, Pageloader, DeleteToCart } =
+    context;
   const [isopen, Setisopen] = useState(false);
 
   const OpenCheckoutpage = () => {
@@ -78,6 +79,11 @@ function Cart() {
                   mode === "dark" ? "bg-gray-400" : ""
                 }`}
               >
+                {Cart.length == 0 && (
+                  <div className="text-lg flex text-black justify-center items-center h-full font-medium">
+                    No Products
+                  </div>
+                )}
                 {Cart.map((product, index) => (
                   <div
                     key={index}
@@ -110,6 +116,7 @@ function Cart() {
                           <button
                             type="button"
                             class="font text-red-600 -semibold text-sm flex items-center gap-2 shrink-0"
+                            onClick={() => DeleteToCart(product)}
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
