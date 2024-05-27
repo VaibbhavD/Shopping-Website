@@ -6,9 +6,9 @@ function CheckOut(props) {
   const { mode } = context;
 
   return (
-    <div class="leading-loose md:pt-8 ">
+    <div class="leading-loose md:pt-8 pt-20 px-4 ">
       <form
-        class={`max-w-xl md:m-4 m-2 md:px-8 p-5 border-1 border-white rounded shadow-xl ${
+        class={`max-w-xl md:px-8 p-5 border-1 border-white rounded shadow-xl ${
           mode === "dark" ? "bg-gray-600 text-stone-100" : "bg-white"
         }`}
       >
@@ -70,7 +70,7 @@ function CheckOut(props) {
           />
         </div>
         <div class="mt-2">
-          <label class="hidden font-medium block " for="cus_email">
+          <label class="hidden font-medium md:block " for="cus_email">
             City
           </label>
           <input
