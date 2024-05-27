@@ -6,6 +6,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -65,7 +66,8 @@ const ContextProider = (props) => {
       return toast.error("Please fill all fields");
     }
     const productref = collection(fireDB, "Products");
-    Setloader(true);
+    console.log(productref);
+
     try {
       await addDoc(productref, product);
       toast.success("Product Add Successfully");
@@ -93,6 +95,7 @@ const ContextProider = (props) => {
         QuerySnapshot.forEach((doc) => {
           productsdata.push({ ...doc.data(), id: doc.id });
         });
+        console.log(productsdata);
         Setproducts(productsdata);
         SetPageloader(false);
       });
@@ -103,11 +106,6 @@ const ContextProider = (props) => {
       SetPageloader(False);
     }
   };
-
-  // get Products UseEffect()
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   // Edit Produst
 
@@ -150,7 +148,7 @@ const ContextProider = (props) => {
   };
 
   // Cart States
-  const { Cart, SetCart } = useState([]);
+  const [Cart, SetCart] = useState([]);
 
   // Add To Cart
   const AddtoCart = async (product) => {
@@ -159,6 +157,7 @@ const ContextProider = (props) => {
       setTimeout(() => {
         window.location.href = "/login";
       }, 500);
+      return;
     }
     const userEmail = User.user.email;
     console.log(User);
@@ -166,7 +165,8 @@ const ContextProider = (props) => {
     const userDocRef = doc(fireDB, "users", userEmail);
 
     const cartCollectionRef = collection(userDocRef, "Cart");
-
+    const same = Cart.find((pro) => pro.id === product.id);
+    console.log(same);
     try {
       // Add the product to the 'Cart' sub-collection
       await addDoc(cartCollectionRef, product);
@@ -175,6 +175,40 @@ const ContextProider = (props) => {
       toast.error(error.message);
     }
   };
+
+  // Get Cart
+
+  const GetCart = async () => {
+    SetPageloader(true);
+    const userEmail = User.user.email;
+
+    const userref = doc(fireDB, "users", userEmail);
+    const cartcollection = collection(userref, "Cart");
+
+    try {
+      const querysnap = await getDocs(cartcollection);
+      const cartitems = [];
+      querysnap.docs.map((doc) =>
+        cartitems.push({
+          id: doc.id,
+          Qty: 1,
+          ...doc.data(),
+        })
+      );
+      console.log("Cart", cartitems);
+      SetCart(cartitems);
+      SetPageloader(false);
+    } catch (error) {
+      toast.error(error.message);
+      SetPageloader(false);
+    }
+  };
+
+  // get Products UseEffect()
+  useEffect(() => {
+    getProducts();
+    GetCart();
+  }, []);
 
   return (
     <Context.Provider
@@ -192,6 +226,7 @@ const ContextProider = (props) => {
         Updateproduct,
         Deleteproduct,
         AddtoCart,
+        Cart,
       }}
     >
       {props.children}
