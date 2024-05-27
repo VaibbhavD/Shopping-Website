@@ -4,10 +4,13 @@ import Modal from "../../Components/modal/Modal";
 import Navbar from "../../Components/Header/navbar";
 import CheckOut from "./CheckOut";
 import PageLoader from "../../Components/Loader/PageLoader";
+import { toast } from "react-toastify";
+import { collection, doc, setDoc } from "firebase/firestore";
+import { fireDB } from "../../firebase/FirebaseConfig";
 
 function Cart() {
   const context = useContext(Context);
-  const { mode, Cart, loader, Pageloader } = context;
+  const { User, mode, Cart, loader, GetCart, Pageloader } = context;
   const [isopen, Setisopen] = useState(false);
 
   const OpenCheckoutpage = () => {
@@ -15,6 +18,36 @@ function Cart() {
   };
   const CloseCheckoutpage = () => {
     Setisopen(false);
+  };
+
+  const UpdateProduct = async (product, value) => {
+    if (product.Qty === 1 && value === -1) {
+      toast.info("Minimum Qty Should be 1");
+      return;
+    }
+    const userEmail = User.user.email;
+    console.log(User.user.email);
+
+    const userDocRef = doc(fireDB, "users", userEmail);
+
+    const cartCollectionRef = collection(userDocRef, "Cart");
+    const pro = doc(cartCollectionRef, product.id);
+    console.log(pro);
+
+    try {
+      await setDoc(
+        pro,
+        {
+          ...product,
+          Qty: product.Qty + value,
+        },
+        { merge: true }
+      );
+      GetCart();
+      toast.success(`Update ${product.title} Qty`);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -118,7 +151,8 @@ function Cart() {
                         <div class="flex">
                           <button
                             type="button"
-                            class="bg-transparent py-2 font-semibold "
+                            class="bg-transparent p-2 font-semibold bg-gray- "
+                            onClick={() => UpdateProduct(product, -1)}
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -133,13 +167,14 @@ function Cart() {
                           </button>
                           <button
                             type="button"
-                            class="bg-transparent mx-4 px-4 py-2 font-semibold  text-base border"
+                            class="bg-transparent mx-2 px-4 py-2 font-semibold  text-base border"
                           >
-                            1
+                            {product.Qty}
                           </button>
                           <button
                             type="button"
-                            class="bg-transparent py-2 font-semibold "
+                            class="bg-transparent p-2 font-semibold "
+                            onClick={() => UpdateProduct(product, 1)}
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
