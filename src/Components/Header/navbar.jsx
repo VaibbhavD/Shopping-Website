@@ -15,7 +15,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const context = useContext(Context);
-  const { toggle, mode } = context;
+  const { toggle, mode, Cart } = context;
 
   const isLoggedin = useSelector((state) => state.authUser.isLoggedin);
   const isAdmin = useSelector((state) => state.authUser.isAdmin);
@@ -384,7 +384,7 @@ export default function Navbar() {
                         className="ml-1 text-md font-medium text-gray-700 group-"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        0
+                        {Cart.length}
                       </span>
                       <span className="sr-only">items in cart, view bag</span>
                     </NavLink>
