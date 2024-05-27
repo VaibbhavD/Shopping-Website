@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Context from "../../context/data/Context";
 import Modal from "../../Components/modal/Modal";
 import Navbar from "../../Components/Header/navbar";
@@ -13,6 +13,9 @@ function Cart() {
   const { User, mode, Cart, loader, GetCart, Pageloader, DeleteToCart } =
     context;
   const [isopen, Setisopen] = useState(false);
+  const [totalAmount, SettotalAmount] = useState();
+  const [Tax, SetTax] = useState();
+  const [Ship, SetShip] = useState();
 
   const OpenCheckoutpage = () => {
     Setisopen(true);
@@ -51,6 +54,13 @@ function Cart() {
     }
   };
 
+  useEffect(() => {
+    let temp = Cart.reduce((sum, item) => (sum += item.price * item.Qty), 0);
+    SetTax(Math.round(temp * 0.18) / 100);
+    SetShip(Math.round((temp * 0.1) / 100));
+    SettotalAmount(temp);
+  }, [Cart]);
+
   return (
     <>
       <div
@@ -75,12 +85,12 @@ function Cart() {
               </h3>
               {/* order cards */}
               <div
-                class={`divide-y h-full lg:-mb-96 lg:overflow-auto no-scrollbar  ${
+                class={`divide-y h-full lg:-mb-60 lg:overflow-auto no-scrollbar  ${
                   mode === "dark" ? "bg-gray-400" : ""
                 }`}
               >
-                {Cart.length == 0 && (
-                  <div className="text-lg flex text-black justify-center items-center h-full font-medium">
+                {Cart.length === 0 && (
+                  <div className="text-lg flex text-black mt-10 ml-32 lg:ml-60 lg:pl-60 lg:max-h-screen fixed  font-medium">
                     No Products
                   </div>
                 )}
@@ -108,7 +118,8 @@ function Cart() {
                             Qty: <strong class="">{product.Qty}</strong>
                           </h6>
                           <h6 class="text-base  ">
-                            Price: <strong class="ml-2">{product.price}</strong>
+                            Price:{" "}
+                            <strong class="ml-2">Rs.{product.price}</strong>
                           </h6>
                         </div>
 
@@ -203,7 +214,7 @@ function Cart() {
                             </span>
                           </h4>
                           <h4 class="text-lg font-bold">
-                            ${product.price * product.Qty}
+                            Rs.{product.price * product.Qty}
                           </h4>
                         </div>
                       </div>
@@ -215,51 +226,56 @@ function Cart() {
 
             {/* Order Summury */}
 
-            <div
-              class={`p-6 lg:sticky text-black lg:h-fit ${
-                mode === "dark" ? "bg-gray-400" : "bg-gray-100 "
-              }`}
-            >
-              <h3 class="text-xl text-pink-600 font-bold border-b ">
-                Order Summary
-              </h3>
-
-              <ul class=" divide-y mt-6">
-                <li class="flex flex-wrap gap-4 text-base py-4">
-                  Subtotal <span class="ml-auto font-bold">$37.00</span>
-                </li>
-                <li class="flex flex-wrap gap-4 text-base py-4">
-                  Shipping <span class="ml-auto font-bold">$4.00</span>
-                </li>
-                <li class="flex flex-wrap gap-4 text-base py-4">
-                  Tax <span class="ml-auto font-bold">$4.00</span>
-                </li>
-                <li class="flex flex-wrap gap-4 text-base py-4 font-bold">
-                  Total{" "}
-                  <span
-                    class={`ml-auto  ${
-                      mode === "dark" ? "text-black" : "text-green-500"
-                    }`}
-                  >
-                    $45.00
-                  </span>
-                </li>
-              </ul>
-              <button
-                type="button"
-                class={`mt-6 text-base px-6 py-2.5 w-full  hover:bg-gray-900 text-white rounded ${
-                  mode === "dark"
-                    ? "bg-gray-700"
-                    : " bg-pink-600 hover:bg-pink-700"
+            {Cart.length === 0 ? (
+              ""
+            ) : (
+              <div
+                class={`p-6 lg:sticky text-black lg:h-fit ${
+                  mode === "dark" ? "bg-gray-400" : "bg-gray-100 "
                 }`}
-                onClick={OpenCheckoutpage}
               >
-                Check out
-              </button>
-            </div>
+                <h3 class="text-xl text-pink-600 font-bold border-b ">
+                  Order Summary
+                </h3>
+
+                <ul class=" divide-y mt-6">
+                  <li class="flex flex-wrap gap-4 text-base py-4">
+                    Subtotal{" "}
+                    <span class="ml-auto font-bold">Rs.{totalAmount}</span>
+                  </li>
+                  <li class="flex flex-wrap gap-4 text-base py-4">
+                    Shipping <span class="ml-auto font-bold">Rs.{Ship}</span>
+                  </li>
+                  <li class="flex flex-wrap gap-4 text-base py-4">
+                    Tax <span class="ml-auto font-bold">Rs.{Tax}</span>
+                  </li>
+                  <li class="flex flex-wrap gap-4 text-base py-4 font-bold">
+                    Total{" "}
+                    <span
+                      class={`ml-auto  ${
+                        mode === "dark" ? "text-black" : "text-green-500"
+                      }`}
+                    >
+                      Rs.{Math.round(totalAmount + Tax + Ship)}
+                    </span>
+                  </li>
+                </ul>
+                <button
+                  type="button"
+                  class={`mt-6 text-base px-6 py-2.5 w-full  hover:bg-gray-900 text-white rounded ${
+                    mode === "dark"
+                      ? "bg-gray-700"
+                      : " bg-pink-600 hover:bg-pink-700"
+                  }`}
+                  onClick={OpenCheckoutpage}
+                >
+                  Check out
+                </button>
+              </div>
+            )}
           </div>
         </div>
-        <hr className="mt-6 font-bold" />
+        <hr className=" hidden md:block mt-6 font-bold" />
       </div>
       {isopen && (
         <Modal isopen={isopen}>
