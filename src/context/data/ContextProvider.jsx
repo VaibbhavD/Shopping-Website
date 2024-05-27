@@ -178,8 +178,8 @@ const ContextProider = (props) => {
         const existproductdata = existproduct.data();
         const newQty = existproductdata.Qty + (product.Qty || 1);
 
-        await updateDoc(existproduct.ref, { Qty: newQty });
         GetCart();
+        await updateDoc(existproduct.ref, { Qty: newQty });
         toast.success("Product Added Into Cart");
       } else {
         // Add the product to the 'Cart' sub-collection
@@ -195,6 +195,22 @@ const ContextProider = (props) => {
       toast.error(error.message);
     }
   };
+
+  // Remove Cart
+  const DeleteToCart = async (product) => {
+    const UserEmail = User.user.email;
+
+    const userdb = doc(fireDB, "users", UserEmail);
+    const cartproductref = collection(userdb, "Cart");
+    try {
+      await deleteDoc(doc(cartproductref, product.id));
+      toast.success("Product Removed");
+      GetCart();
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   // Get Cart
 
   const GetCart = async () => {
@@ -250,6 +266,7 @@ const ContextProider = (props) => {
         AddtoCart,
         Cart,
         GetCart,
+        DeleteToCart,
       }}
     >
       {props.children}
