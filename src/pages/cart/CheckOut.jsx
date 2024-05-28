@@ -1,11 +1,84 @@
 import React, { useContext, useState } from "react";
 import Context from "../../context/data/Context";
+import { fireDB } from "../../firebase/FirebaseConfig";
+import {
+  addDoc,
+  collection,
+  getDoc,
+  getDocs,
+  writeBatch,
+} from "firebase/firestore";
+import { toast } from "react-toastify";
 
 function CheckOut(props) {
   const context = useContext(Context);
-  const { mode, SetUserProfile, UserProfile, User } = context;
+  const { mode, SetUserProfile, UserProfile, User, Cart, AddUserProfile } =
+    context;
 
-  console.log(UserProfile);
+  const BuyNow = async () => {
+    const adressInfo = {
+      ...UserProfile,
+      date: new Date().toLocaleString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      }),
+    };
+
+    AddUserProfile();
+
+    // RozarPay Method
+    var options = {
+      key: "rzp_test_XRtjw8gXhATuTr",
+      key_secret: "0kqIyXHmRLpb4aPbNVrMhqnk",
+      amount: parseInt(props.total * 100),
+      currency: "INR",
+      order_receipt:
+        "order_rcptid_" + UserProfile.FirstName + UserProfile.LastName,
+      name: "E-Shoppe",
+      description: "for testing purpose",
+      handler: async function (response) {
+        // console.log(response)
+        toast.success("Order Placed");
+        const PaymentId = response.razorpay_payment_id;
+
+        const OrderInfo = {
+          Cart,
+          adressInfo,
+          date: new Date().toLocaleString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+          }),
+          email: User.uesr.email,
+          userid: User.user.id,
+          PaymentId,
+        };
+        try {
+          const collref = doc(fireDB, "users", User.user.email);
+          const orderref = collection(collref, "Orders");
+
+          await addDoc(orderref, OrderInfo);
+
+          const cartref = collection(collref, "Cart");
+          const cartsnapshot = await getDocs(cartref);
+          const batch = writeBatch(fireDB);
+
+          cartsnapshot.forEach((doc) => {
+            batch.delete(doc.ref);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    var pay = new window.Razorpay(options);
+    pay.open();
+    console.log(pay);
+  };
 
   return (
     <div class="leading-loose md:pt-20 pt-16 px-4 ">
@@ -35,6 +108,7 @@ function CheckOut(props) {
                       FirstName: e.target.value,
                     })
                   }
+                  required
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -60,6 +134,7 @@ function CheckOut(props) {
                   onChange={(e) =>
                     SetUserProfile({ ...UserProfile, LastName: e.target.value })
                   }
+                  required
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,6 +200,7 @@ function CheckOut(props) {
                   onChange={(e) =>
                     SetUserProfile({ ...UserProfile, PhoneNo: e.target.value })
                   }
+                  required
                 />
                 <svg
                   fill="#bbb"
@@ -156,6 +232,7 @@ function CheckOut(props) {
                     AddressLine: e.target.value,
                   })
                 }
+                required
               />
               <input
                 type="text"
@@ -168,6 +245,7 @@ function CheckOut(props) {
                     City: e.target.value,
                   })
                 }
+                required
               />
               <input
                 type="text"
@@ -180,6 +258,7 @@ function CheckOut(props) {
                     State: e.target.value,
                   })
                 }
+                required
               />
               <input
                 type="text"
@@ -192,6 +271,7 @@ function CheckOut(props) {
                     ZipCode: e.target.value,
                   })
                 }
+                required
               />
             </div>
 
@@ -206,6 +286,7 @@ function CheckOut(props) {
               <button
                 type="button"
                 class="rounded-md px-4 py-3 w-full text-sm font-semibold bg-green-800 text-white hover:bg-gray-900"
+                onClick={BuyNow}
               >
                 Complete Purchase
               </button>
