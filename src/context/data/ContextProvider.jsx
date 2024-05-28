@@ -33,6 +33,51 @@ const ContextProider = (props) => {
     ZipCode: null,
   });
 
+  // Add User profile
+  const AddUserProfile = async () => {
+    SetPageloader(true);
+    const userEmail = User.user.email;
+
+    const userDocRef = doc(fireDB, "users", userEmail);
+
+    const Profileref = collection(userDocRef, "Profile");
+    try {
+      await setDoc(doc(Profileref, UserProfile.id), UserProfile);
+      GetUserProfile();
+    } catch (error) {
+      console.log(error);
+      SetPageloader(false);
+    }
+  };
+
+  // Get User Profile
+  const GetUserProfile = async () => {
+    SetPageloader(true);
+    const userEmail = User.user.email;
+
+    const userDocRef = doc(fireDB, "users", userEmail);
+
+    const Profileref = collection(userDocRef, "Profile");
+    try {
+      const querysnap = await getDocs(Profileref);
+      console.log(querysnap);
+      let cartitems = {};
+      querysnap.docs.map(
+        (doc) =>
+          (cartitems = {
+            id: doc.id,
+            ...doc.data(),
+          })
+      );
+      console.log(cartitems);
+      SetUserProfile(cartitems);
+      SetPageloader(false);
+    } catch (error) {
+      console.log(error);
+      SetPageloader(false);
+    }
+  };
+
   // Loader
   const [loader, Setloader] = useState(false);
   const [Pageloader, SetPageloader] = useState(false);
@@ -241,9 +286,6 @@ const ContextProider = (props) => {
           ...doc.data(),
         })
       );
-      for (const k of cartitems) {
-        console.log(k.id);
-      }
       SetCart(cartitems);
       SetPageloader(false);
     } catch (error) {
@@ -256,6 +298,7 @@ const ContextProider = (props) => {
   useEffect(() => {
     getProducts();
     GetCart();
+    GetUserProfile();
   }, []);
 
   return (
@@ -263,6 +306,8 @@ const ContextProider = (props) => {
       value={{
         UserProfile,
         SetUserProfile,
+        AddUserProfile,
+        GetUserProfile,
         User,
         mode,
         toggle,
