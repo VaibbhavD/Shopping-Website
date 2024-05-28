@@ -2,16 +2,23 @@ import React, { useContext } from "react";
 import Navbar from "../../Components/Header/navbar";
 import Context from "../../context/data/Context";
 import PageLoader from "../../Components/Loader/PageLoader";
+import { Link } from "react-router-dom";
 
 function Order() {
   const context = useContext(Context);
-  const { Orders, Pageloader, GetOrders } = context;
+  const { Orders, Pageloader, GetOrders, mode } = context;
   console.log(Orders);
   // GetOrders();
   return (
-    <div>
+    <div
+      className="min-h-screen"
+      style={{
+        backgroundColor: mode === "dark" ? "rgb(40, 44, 52)" : "",
+        color: mode === "dark" ? "white" : "",
+      }}
+    >
       <Navbar />
-      <div className="bg-gray-50">
+      <div>
         {Pageloader && <PageLoader />}
         <h2 className="text-2xl text-pink-500 font-bold p-5 ">
           Orders
@@ -21,12 +28,29 @@ function Order() {
           {/* Products */}
           <div className="">
             <div className="space-y-8">
-              {Orders.map(({ Cart, addressInfo, email, date }) => (
+              {Orders.length === 0 ? (
+                <div className="grid justify-center items-center mt-40 font-bold text-xl">
+                  <p>No Orders</p>
+                  <Link
+                    to={"/"}
+                    className="text-sm bg-pink-400 text-center py-2 mt-2 rounded-lg font-medium "
+                  >
+                    Go Back
+                  </Link>
+                </div>
+              ) : (
+                ""
+              )}
+              {Orders.map(({ Cart, addressInfo, email, date, id, bill }) => (
                 <div
                   key={Cart[0].id}
-                  className="bg-white border-t border-b border-gray-200 shadow-sm sm:border sm:rounded-lg"
+                  className={` border-t border-b border-gray-200 shadow-sm sm:border sm:rounded-lg ${
+                    mode === "dark"
+                      ? "bg-gray-500 text-ston-50"
+                      : "bg-white text-gray-700"
+                  }`}
                 >
-                  <p className="text-sm text-gray-600 text- p-2">
+                  <p className="text-sm  text- p-2">
                     Order placed-{" "}
                     <time
                       dateTime="2021-03-22"
@@ -50,11 +74,10 @@ function Order() {
                           <a>{Cart[0].title}</a>
                         </h3>
                         <p className="mt-2 text-sm font-medium text-gray-900">
-                          ${Cart[0].price}
+                          ${bill || Cart[0].price}
                         </p>
-                        <p className="mt-3 text-sm text-gray-500">
-                          {Cart[0].brand}
-                        </p>
+                        <p className="mt-3 text-sm ">{Cart[0].brand}</p>
+                        <p className="mt-3 text-sm ">Order id- {id}</p>
                       </div>
                     </div>
 
@@ -64,7 +87,7 @@ function Order() {
                           <dt className="font-medium text-gray-900">
                             Delivery address
                           </dt>
-                          <dd className="mt-3 text-gray-500">
+                          <dd className="mt-3 ">
                             <span className="block">
                               {addressInfo.AddressLine + addressInfo.City},
                             </span>
@@ -78,7 +101,7 @@ function Order() {
                           <dt className="font-medium text-gray-900">
                             Shipping updates
                           </dt>
-                          <dd className="mt-3 text-gray-500 space-y-3">
+                          <dd className="mt-3  space-y-3">
                             <p>Email- {email}</p>
                             <p>MobileNo- {addressInfo.PhoneNo}</p>
                           </dd>
@@ -144,7 +167,7 @@ function Order() {
               <dl className="grid grid-cols-2 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:col-span-7">
                 <div>
                   <dt className="font-medium text-gray-900">Billing address</dt>
-                  <dd className="mt-3 text-gray-500">
+                  <dd className="mt-3 ">
                     <span className="block">Floyd Miles</span>
                     <span className="block">7363 Cynthia Pass</span>
                     <span className="block">Toronto, ON N3Y 4H8</span>
@@ -204,7 +227,6 @@ function Order() {
           </div> */}
         </div>
       </div>
-      )
     </div>
   );
 }
