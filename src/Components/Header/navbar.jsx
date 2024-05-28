@@ -15,16 +15,17 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const context = useContext(Context);
-  const { toggle, mode, Cart } = context;
+  const { toggle, mode, Cart, GetCart } = context;
 
   const isLoggedin = useSelector((state) => state.authUser.isLoggedin);
   const isAdmin = useSelector((state) => state.authUser.isAdmin);
 
   const LogoutHandler = () => {
     localStorage.removeItem("User");
+    localStorage.removeItem("Mode");
     dispatch(AuthActions.Logout());
     toast.success("Logout Successfull");
-    navigate("/login");
+    window.location.href = "/login";
   };
 
   const HandleChange = (e) => {
@@ -268,6 +269,7 @@ export default function Navbar() {
                       <NavLink
                         className="-m-2 block p-2 rounded-l-sm rounded-r-lg bg-red-500 text-white font-bold cursor-pointer"
                         style={{ color: mode === "dark" ? "white" : "" }}
+                        onClick={LogoutHandler}
                       >
                         Logout
                       </NavLink>
