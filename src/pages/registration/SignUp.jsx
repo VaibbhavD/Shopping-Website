@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 
 function SignUp() {
   const context = useContext(Context);
-  const { mode, loader, Setloader } = context;
+  const { mode, loader, Setloader, NewUserProfile } = context;
 
   const dispatch = useDispatch();
 
@@ -34,13 +34,15 @@ function SignUp() {
       localStorage.setItem("User", JSON.stringify(User));
       dispatch(AuthActions.Login(email));
       const UserDetails = {
-        name: firstname + " " + lastname,
+        FirstName: firstname,
+        LastName: lastname,
         email: email,
         uid: User.user.uid,
         time: Timestamp.now(),
       };
       const Userref = collection(fireDB, "Users");
       await addDoc(Userref, UserDetails);
+      NewUserProfile(UserDetails);
       toast.success("SignUp Scccesfully");
       Setloader(false);
       Setemail("");

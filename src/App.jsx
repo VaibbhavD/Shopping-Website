@@ -32,8 +32,9 @@ function App() {
           {isLoggedIn && <Route path="/cart" element={<Cart />} />}
           {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
           <Route path="/nopage" element={<NoPage />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
+          {!isLoggedIn && <Route path="/signup" element={<SignUp />} />}
+          {!isLoggedIn && <Route path="/login" element={<Login />} />}
+          {isLoggedIn && <Route path="/*" element={<Home />} />}
           <Route path="/*" element={<Login />} />
           <Route path="/category/:product" element={<MainProductPage />} />
           {isAdmin && <Route path="/addproduct" element={<AddProduct />} />}
