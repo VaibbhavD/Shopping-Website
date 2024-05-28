@@ -279,7 +279,10 @@ function Cart() {
       </div>
       {isopen && (
         <Modal isopen={isopen}>
-          <CheckOut close={CloseCheckoutpage} />
+          <CheckOut
+            close={CloseCheckoutpage}
+            total={totalAmount + Tax + Ship}
+          />
         </Modal>
       )}
     </>
