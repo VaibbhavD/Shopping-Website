@@ -39,8 +39,25 @@ const ContextProider = (props) => {
     SetUser(user);
   };
 
-  // Add User profile
-  const AddUserProfile = async () => {
+  // Create New User Profile
+  const NewUserProfile = async (user) => {
+    SetPageloader(true);
+    console.log(user.email);
+    const dbref = doc(fireDB, "users", user.email);
+    const profileref = collection(dbref, "Profile");
+    try {
+      await addDoc(profileref, { ...user });
+      SetUser({ user: { ...user } });
+      GetUserProfile();
+      SetPageloader(false);
+    } catch (error) {
+      console.log(error);
+      SetPageloader(false);
+    }
+  };
+
+  // Update User profile
+  const UpdateUserProfile = async () => {
     SetPageloader(true);
     const userEmail = User.user.email;
 
@@ -48,12 +65,7 @@ const ContextProider = (props) => {
 
     const Profileref = collection(userDocRef, "Profile");
     try {
-      // await setDoc(doc(Profileref, UserProfile.id), UserProfile);
-      if (UserProfile.id) {
-        console.log("User Already Exist");
-      } else {
-        console.log("User Already Not Exist");
-      }
+      await setDoc(doc(Profileref, UserProfile.id), UserProfile);
 
       GetUserProfile();
     } catch (error) {
@@ -352,7 +364,8 @@ const ContextProider = (props) => {
         UserLogin,
         UserProfile,
         SetUserProfile,
-        AddUserProfile,
+        NewUserProfile,
+        UpdateUserProfile,
         GetUserProfile,
         User,
         mode,
