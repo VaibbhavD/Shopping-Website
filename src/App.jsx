@@ -35,7 +35,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={<Login />} />
-          <Route path="/category/product" element={<MainProductPage />} />
+          <Route path="/category/:product" element={<MainProductPage />} />
           {isAdmin && <Route path="/addproduct" element={<AddProduct />} />}
         </Routes>
 

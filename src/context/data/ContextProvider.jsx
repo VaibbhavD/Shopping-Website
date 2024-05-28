@@ -16,11 +16,12 @@ import {
 } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { json } from "react-router-dom";
 
 const ContextProider = (props) => {
-  const User = JSON.parse(localStorage.getItem("User"));
+  const loginuser = JSON.parse(localStorage.getItem("User"));
+  const Mode = localStorage.getItem("Mode");
+
+  const [User, SetUser] = useState(loginuser);
 
   // User Profile
   const [UserProfile, SetUserProfile] = useState({
@@ -33,6 +34,11 @@ const ContextProider = (props) => {
     ZipCode: null,
   });
 
+  const UserLogin = (user) => {
+    console.log(user.user.email);
+    SetUser(user);
+  };
+
   // Add User profile
   const AddUserProfile = async () => {
     SetPageloader(true);
@@ -42,7 +48,13 @@ const ContextProider = (props) => {
 
     const Profileref = collection(userDocRef, "Profile");
     try {
-      await setDoc(doc(Profileref, UserProfile.id), UserProfile);
+      // await setDoc(doc(Profileref, UserProfile.id), UserProfile);
+      if (UserProfile.id) {
+        console.log("User Already Exist");
+      } else {
+        console.log("User Already Not Exist");
+      }
+
       GetUserProfile();
     } catch (error) {
       console.log(error);
@@ -83,15 +95,17 @@ const ContextProider = (props) => {
   const [Pageloader, SetPageloader] = useState(false);
 
   // Dark Mode Method
-  const [mode, Setmode] = useState("light");
+  const [mode, Setmode] = useState(Mode);
 
   const toggle = () => {
-    if (mode === "light") {
-      Setmode("dark");
-      document.body.style.backgroundColor = "rcb (17,24,39)";
-    } else {
+    if (mode === "dark") {
       Setmode("light");
+      localStorage.setItem("Mode", "light");
       document.body.style.backgroundColor = "white";
+    } else {
+      Setmode("dark");
+      localStorage.setItem("Mode", "dark");
+      document.body.style.backgroundColor = "rcb (17,24,39)";
     }
   };
 
@@ -287,6 +301,7 @@ const ContextProider = (props) => {
         })
       );
       SetCart(cartitems);
+      console.log(cartitems);
       SetPageloader(false);
     } catch (error) {
       toast.error(error.message);
@@ -314,6 +329,7 @@ const ContextProider = (props) => {
       );
 
       SetOrders(Ordersarr);
+      console.log(Ordersarr);
       SetPageloader(false);
     } catch (error) {
       console.log(error);
@@ -324,15 +340,16 @@ const ContextProider = (props) => {
 
   // get Products UseEffect()
   useEffect(() => {
-    getProducts();
     GetCart();
+    getProducts();
     GetUserProfile();
     GetOrders();
-  }, []);
+  }, [User]);
 
   return (
     <Context.Provider
       value={{
+        UserLogin,
         UserProfile,
         SetUserProfile,
         AddUserProfile,
