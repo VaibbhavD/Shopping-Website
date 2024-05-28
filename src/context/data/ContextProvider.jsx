@@ -22,6 +22,17 @@ import { json } from "react-router-dom";
 const ContextProider = (props) => {
   const User = JSON.parse(localStorage.getItem("User"));
 
+  // User Profile
+  const [UserProfile, SetUserProfile] = useState({
+    FirstName: null,
+    LastName: null,
+    PhoneNo: null,
+    AddressLine: null,
+    State: null,
+    City: null,
+    ZipCode: null,
+  });
+
   // Loader
   const [loader, Setloader] = useState(false);
   const [Pageloader, SetPageloader] = useState(false);
@@ -250,6 +261,8 @@ const ContextProider = (props) => {
   return (
     <Context.Provider
       value={{
+        UserProfile,
+        SetUserProfile,
         User,
         mode,
         toggle,
