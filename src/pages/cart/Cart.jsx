@@ -7,6 +7,7 @@ import PageLoader from "../../Components/Loader/PageLoader";
 import { toast } from "react-toastify";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const context = useContext(Context);
@@ -64,6 +65,7 @@ function Cart() {
   return (
     <>
       <div
+        className="min-h-screen"
         style={{
           backgroundColor: mode === "dark" ? "#282c34" : "",
           color: mode === "dark" ? "white" : "",
@@ -90,8 +92,15 @@ function Cart() {
                 }`}
               >
                 {Cart.length === 0 && (
-                  <div className="text-lg flex text-black mt-10 ml-32 lg:ml-60 lg:pl-60 lg:max-h-screen fixed  font-medium">
+                  <div className="text-lg mt-10 ml-32 lg:ml-60 lg:pl-60 lg:max-h-screen fixed  font-medium">
                     No Products
+                    <br />
+                    <Link
+                      to={"/"}
+                      className="text-sm bg-pink-400 text-center p-2 px-6 mt-4 rounded-lg font-medium "
+                    >
+                      Go Back
+                    </Link>{" "}
                   </div>
                 )}
                 {Cart.map((product, index) => (
@@ -275,7 +284,7 @@ function Cart() {
             )}
           </div>
         </div>
-        <hr className=" hidden md:block mt-6 font-bold" />
+        {/* <hr className=" hidden md:block mt-6 font-bold" /> */}
       </div>
       {isopen && (
         <Modal isopen={isopen}>

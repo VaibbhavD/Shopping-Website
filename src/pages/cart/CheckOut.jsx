@@ -22,9 +22,22 @@ function CheckOut(props) {
     Cart,
     AddUserProfile,
     GetCart,
+    GetOrders,
   } = context;
 
   const BuyNow = async () => {
+    if (
+      UserProfile.FirstName == null ||
+      UserProfile.LastName == null ||
+      UserProfile.PhoneNo == null ||
+      UserProfile.State == null ||
+      UserProfile.ZipCode == null ||
+      UserProfile.City == null ||
+      UserProfile.FirstName == null
+    ) {
+      toast.error("Fill all the Input Fields!");
+      return;
+    }
     const addressInfo = {
       ...UserProfile,
       date: new Date().toLocaleString("en-US", {
@@ -62,6 +75,7 @@ function CheckOut(props) {
           }),
           email: User.user.email,
           userid: User.user.uid,
+          bill: props.total,
           PaymentId,
         };
         console.log(OrderInfo);
@@ -77,6 +91,7 @@ function CheckOut(props) {
           cartsnapshot.forEach(async (doc) => {
             await deleteDoc(doc.ref);
             GetCart();
+            GetOrders();
             props.close();
           });
         } catch (error) {
