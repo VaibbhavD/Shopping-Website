@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 
 function Login() {
   const context = useContext(Context);
-  const { mode, loader, Setloader } = context;
+  const { mode, loader, Setloader, UserLogin } = context;
   const naviget = useNavigate();
   const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ function Login() {
       const user = await signInWithEmailAndPassword(Auth, email, password);
       localStorage.setItem("User", JSON.stringify(user));
       dispatch(AuthActions.Login(email));
+      UserLogin(user);
 
       toast.success("Signin Successfully");
       Setloader(false);
