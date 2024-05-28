@@ -294,11 +294,40 @@ const ContextProider = (props) => {
     }
   };
 
+  // Order States
+  const [Orders, SetOrders] = useState([]);
+
+  // Get Orders
+  const GetOrders = async () => {
+    SetPageloader(true);
+    const DBref = doc(fireDB, "users", User.user.email);
+    const ordersref = collection(DBref, "Orders");
+
+    try {
+      const snapshot = await getDocs(ordersref);
+      const Ordersarr = [];
+      snapshot.docs.map((doc) =>
+        Ordersarr.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+
+      SetOrders(Ordersarr);
+      SetPageloader(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+      SetPageloader(false);
+    }
+  };
+
   // get Products UseEffect()
   useEffect(() => {
     getProducts();
     GetCart();
     GetUserProfile();
+    GetOrders();
   }, []);
 
   return (
@@ -325,6 +354,8 @@ const ContextProider = (props) => {
         Cart,
         GetCart,
         DeleteToCart,
+        Orders,
+        GetOrders,
       }}
     >
       {props.children}
