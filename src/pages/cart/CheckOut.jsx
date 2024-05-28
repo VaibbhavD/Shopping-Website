@@ -1,29 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Context from "../../context/data/Context";
 
 function CheckOut(props) {
   const context = useContext(Context);
-  const { mode } = context;
+  const { mode, SetUserProfile, UserProfile, User } = context;
+
+  console.log(UserProfile);
 
   return (
-    <div class="leading-loose md:pt-8  pt-20 px-4 ">
+    <div class="leading-loose md:pt-20 pt-16 px-4 ">
       <div
-        class={`max-w-4xl mx-auto w-full h-max rounded-md p-4 sticky top-0 ${
+        class={`md:max-w-4xl mx-auto w-full h-max rounded-md p-4  top-0 ${
           mode === "dark" ? "bg-gray-500 " : "bg-white"
         }`}
       >
-        <h2 class="text-xl font-bold text-gray-800">Complete your order</h2>
-        <form class="mt-8">
+        <h2 class="text-xl font-bold text-center text-gray-800">
+          Complete your order
+        </h2>
+        <form class="mt-8 md:px-2">
           <div>
             <h3 class="text-base font-semibold text-gray-800 mb-4">
               Personal Details
             </h3>
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-2">
               <div class="relative flex items-center">
                 <input
                   type="text"
                   placeholder="First Name"
-                  class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  class=" py-3 md:px-2 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  value={UserProfile.FirstName}
+                  onChange={(e) =>
+                    SetUserProfile({
+                      ...UserProfile,
+                      FirstName: e.target.value,
+                    })
+                  }
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +55,11 @@ function CheckOut(props) {
                 <input
                   type="text"
                   placeholder="Last Name"
-                  class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  class="py-3 md:px-2 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  value={UserProfile.LastName}
+                  onChange={(e) =>
+                    SetUserProfile({ ...UserProfile, LastName: e.target.value })
+                  }
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +80,9 @@ function CheckOut(props) {
                 <input
                   type="email"
                   placeholder="Email"
-                  class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  class="py-3 md:px-2 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  value={User.user.email}
+                  disabled
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +120,11 @@ function CheckOut(props) {
                   type="number"
                   placeholder="Phone No."
                   maxLength={10}
-                  class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  class="py-3 md:px-2 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                  value={UserProfile.PhoneNo}
+                  onChange={(e) =>
+                    SetUserProfile({ ...UserProfile, PhoneNo: e.target.value })
+                  }
                 />
                 <svg
                   fill="#bbb"
@@ -123,26 +144,54 @@ function CheckOut(props) {
             <h3 class="text-base font-semibold text-gray-800 mb-4">
               Shipping Address
             </h3>
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-4">
               <input
                 type="text"
                 placeholder="Address Line"
-                class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                class="py-3 md:px-2 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                value={UserProfile.AddressLine}
+                onChange={(e) =>
+                  SetUserProfile({
+                    ...UserProfile,
+                    AddressLine: e.target.value,
+                  })
+                }
               />
               <input
                 type="text"
                 placeholder="City"
-                class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                class="py-3 md:px-2 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                value={UserProfile.City}
+                onChange={(e) =>
+                  SetUserProfile({
+                    ...UserProfile,
+                    City: e.target.value,
+                  })
+                }
               />
               <input
                 type="text"
                 placeholder="State"
-                class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                class="py-3 md:px-2 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                value={UserProfile.State}
+                onChange={(e) =>
+                  SetUserProfile({
+                    ...UserProfile,
+                    State: e.target.value,
+                  })
+                }
               />
               <input
                 type="text"
                 placeholder="Zip Code"
-                class="px-4 py-3.5 bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                class="py-3 md:px-2  bg-white text-gray-800 w-full text-sm border-b focus:border-gray-800 outline-none"
+                value={UserProfile.ZipCode}
+                onChange={(e) =>
+                  SetUserProfile({
+                    ...UserProfile,
+                    ZipCode: e.target.value,
+                  })
+                }
               />
             </div>
 
@@ -156,7 +205,7 @@ function CheckOut(props) {
               </button>
               <button
                 type="button"
-                class="rounded-md px-4 py-3 w-full text-sm font-semibold bg-gray-800 text-white hover:bg-gray-900"
+                class="rounded-md px-4 py-3 w-full text-sm font-semibold bg-green-800 text-white hover:bg-gray-900"
               >
                 Complete Purchase
               </button>
