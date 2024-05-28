@@ -4,6 +4,8 @@ import { fireDB } from "../../firebase/FirebaseConfig";
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   getDoc,
   getDocs,
   writeBatch,
@@ -12,11 +14,18 @@ import { toast } from "react-toastify";
 
 function CheckOut(props) {
   const context = useContext(Context);
-  const { mode, SetUserProfile, UserProfile, User, Cart, AddUserProfile } =
-    context;
+  const {
+    mode,
+    SetUserProfile,
+    UserProfile,
+    User,
+    Cart,
+    AddUserProfile,
+    GetCart,
+  } = context;
 
   const BuyNow = async () => {
-    const adressInfo = {
+    const addressInfo = {
       ...UserProfile,
       date: new Date().toLocaleString("en-US", {
         month: "short",
@@ -24,6 +33,7 @@ function CheckOut(props) {
         year: "numeric",
       }),
     };
+    console.log(addressInfo);
 
     AddUserProfile();
 
@@ -44,40 +54,42 @@ function CheckOut(props) {
 
         const OrderInfo = {
           Cart,
-          adressInfo,
+          addressInfo,
           date: new Date().toLocaleString("en-US", {
             month: "short",
             day: "2-digit",
             year: "numeric",
           }),
-          email: User.uesr.email,
-          userid: User.user.id,
+          email: User.user.email,
+          userid: User.user.uid,
           PaymentId,
         };
-        try {
-          const collref = doc(fireDB, "users", User.user.email);
-          const orderref = collection(collref, "Orders");
+        console.log(OrderInfo);
+        const collref = doc(fireDB, "users", User.user.email);
+        const orderref = collection(collref, "Orders");
 
+        try {
           await addDoc(orderref, OrderInfo);
 
           const cartref = collection(collref, "Cart");
           const cartsnapshot = await getDocs(cartref);
-          const batch = writeBatch(fireDB);
-
-          cartsnapshot.forEach((doc) => {
-            batch.delete(doc.ref);
+          console.log(cartsnapshot);
+          cartsnapshot.forEach(async (doc) => {
+            await deleteDoc(doc.ref);
+            GetCart();
+            props.close();
           });
         } catch (error) {
           console.log(error);
         }
       },
+
       theme: {
         color: "#3399cc",
       },
     };
     var pay = new window.Razorpay(options);
     pay.open();
-    console.log(pay);
   };
 
   return (
