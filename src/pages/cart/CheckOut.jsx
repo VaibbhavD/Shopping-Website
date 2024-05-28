@@ -20,7 +20,7 @@ function CheckOut(props) {
     UserProfile,
     User,
     Cart,
-    AddUserProfile,
+    UpdateUserProfile,
     GetCart,
     GetOrders,
   } = context;
@@ -48,7 +48,7 @@ function CheckOut(props) {
     };
     console.log(addressInfo);
 
-    AddUserProfile();
+    UpdateUserProfile();
 
     // RozarPay Method
     var options = {
