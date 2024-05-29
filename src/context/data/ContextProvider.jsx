@@ -141,27 +141,43 @@ const ContextProider = (props) => {
   // Add Product
   const AddProduct = async () => {
     if (
-      product.title == null ||
-      product.price == null ||
-      product.imageUrl == null ||
-      product.category == null ||
-      product.description == null
+      !product.title ||
+      !product.price ||
+      !product.imageUrl ||
+      !product.category ||
+      !product.description
     ) {
       return toast.error("Please fill all fields");
     }
-    const productref = collection(fireDB, "Products");
-    console.log(productref);
+
+    // Reference to the "All" collection within "Products"
+    const allProductsRef = collection(fireDB, "Products", "All", "Items");
+
+    // Reference to the specific category collection within "Products"
+    const productCategoryRef = collection(
+      fireDB,
+      "Products",
+      product.category,
+      "Items"
+    );
 
     try {
-      await addDoc(productref, product);
-      toast.success("Product Add Successfully");
+      // Add the product to the "All" collection
+      await addDoc(allProductsRef, product);
+
+      // Add the product to the specific category collection
+      await addDoc(productCategoryRef, product);
+
+      toast.success("Product added successfully");
       Setloader(false);
-      window.location.href = "/dashboard";
+      getProducts(); // Refresh the product list
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
     }
-    Setproduct("");
+
+    // Reset the product state
+    // Setproduct("");
   };
 
   // Products State
@@ -172,17 +188,22 @@ const ContextProider = (props) => {
 
   const getProducts = async () => {
     SetPageloader(true);
+    const collref = doc(fireDB, "Products", "All");
+    const q = collection(collref, "Items");
+
     try {
-      const q = query(collection(fireDB, "Products"), orderBy("time"));
-      const data = onSnapshot(q, (QuerySnapshot) => {
-        let productsdata = [];
-        QuerySnapshot.forEach((doc) => {
-          productsdata.push({ ...doc.data(), id: doc.id });
-        });
-        console.log(productsdata);
-        Setproducts(productsdata);
-        SetPageloader(false);
-      });
+      const querysnap = await getDocs(q);
+      const cartitems = [];
+      querysnap.docs.map((doc) =>
+        cartitems.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+      console.log(cartitems);
+      Setproducts(cartitems);
+      SetPageloader(false);
+
       return () => data;
     } catch (error) {
       console.log(error);
@@ -204,16 +225,13 @@ const ContextProider = (props) => {
     try {
       await setDoc(doc(fireDB, "Products", product.id), product);
       toast.success("Product Update Successfully");
-      setTimeout(() => {
-        window.location.href = "/dashboard";
-      }, 1000);
       getProducts();
       Setloader(false);
-      Setproduct("");
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
     }
+    Setproduct("");
   };
 
   // Delete Product
