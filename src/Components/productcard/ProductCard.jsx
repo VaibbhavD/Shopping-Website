@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import Context from "../../context/data/Context";
+import Loader from "../Loader/Loader";
+import { Link } from "react-router-dom";
 
 function ProductCard() {
   const context = useContext(Context);
-  const { mode, AddtoCart, products } = context;
-
-  const AddCartHandler = (product) => {
-    AddtoCart(product);
-  };
+  const { mode, AddtoCart, products, loader } = context;
 
   return (
     <section>
@@ -24,15 +22,16 @@ function ProductCard() {
         </h1>
         <ul class="grid grid-cols-2 gap-4 md:gap-10 lg:grid-cols-4 m-2 md:px-20 md:pt-4">
           {products.map((product, index) => (
-            <li key={index}>
+            <li key={index} className="">
               <div
+                key={index}
                 className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
                   color: mode === "dark" ? "white" : "",
                 }}
               >
-                <div className="flex justify-center cursor-pointer ">
+                <div className="flex justify-center cursor-pointer p-4 ">
                   <img
                     src={product.imageUrl}
                     class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
@@ -60,13 +59,12 @@ function ProductCard() {
                     ₹ {product.price}
                   </p>
                   <div className=" flex justify-center">
-                    <button
-                      type="button"
-                      onClick={() => AddCartHandler(product)}
-                      className="focus:outline-none text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
+                    <Link
+                      to={`/product/${product.id}`}
+                      className="flex justify-center focus:outline-none text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
                     >
-                      Add To Cart
-                    </button>
+                      View
+                    </Link>
                   </div>
                 </div>
               </div>
