@@ -112,10 +112,10 @@ function Cart() {
                         : "text-gray-800"
                     }`}
                   >
-                    <div class="h-32 shrink-0">
+                    <div class="h-32 max-w-36 flex justify-center items-center shrink-0">
                       <img
                         src={product.imageUrl}
-                        class="w-full h-full object-contain rounded-md"
+                        class="w-full h-full object-cover rounded-md"
                       />
                     </div>
 
