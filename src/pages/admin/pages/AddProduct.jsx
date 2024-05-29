@@ -3,6 +3,7 @@ import Context from "../../../context/data/Context";
 import { toast } from "react-toastify";
 import Loader from "../../../Components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import { Timestamp } from "firebase/firestore";
 
 function AddProduct(props) {
   const context = useContext(Context);
@@ -10,6 +11,15 @@ function AddProduct(props) {
   const navigate = useNavigate();
 
   const SubmitHandler = async () => {
+    Setproduct((prev) => ({
+      ...prev,
+      time: Timestamp.now(),
+      date: new Date().toLocaleString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      }),
+    }));
     await AddProduct();
     props.close();
   };
