@@ -80,10 +80,12 @@ function CheckOut(props) {
         };
         console.log(OrderInfo);
         const collref = doc(fireDB, "users", User.user.email);
+        const productref = collection(fireDB, "Orders");
         const orderref = collection(collref, "Orders");
 
         try {
           await addDoc(orderref, OrderInfo);
+          await addDoc(productref, OrderInfo);
 
           const cartref = collection(collref, "Cart");
           const cartsnapshot = await getDocs(cartref);
