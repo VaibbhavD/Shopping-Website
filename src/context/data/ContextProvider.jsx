@@ -256,11 +256,14 @@ const ContextProider = (props) => {
 
   // Add To Cart
   const AddtoCart = async (product) => {
+    Setloader(true);
     if (!User) {
       toast.warning("Please Login First");
+      Setloader(false);
       setTimeout(() => {
         window.location.href = "/login";
       }, 500);
+
       return;
     }
     const userEmail = User.user.email;
@@ -293,8 +296,10 @@ const ContextProider = (props) => {
         GetCart();
         toast.success("Product Added Into Cart");
       }
+      Setloader(false);
     } catch (error) {
       toast.error(error.message);
+      Setloader(false);
     }
   };
 
@@ -392,6 +397,7 @@ const ContextProider = (props) => {
         toggle,
         loader,
         Pageloader,
+        SetPageloader,
         Setloader,
         AddProduct,
         Setproduct,
