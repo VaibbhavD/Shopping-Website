@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Context from "../../context/data/Context";
 
-const ProductReview1 = () => {
+const ProductReview1 = (props) => {
   const context = useContext(Context);
   const { mode } = context;
   return (
@@ -93,14 +93,6 @@ const ProductReview1 = () => {
               <p class="text-2xl font-semibold leading-none  dark:text-white">
                 4.65 out of 5
               </p>
-              <button
-                type="button"
-                data-modal-target="review-modal"
-                data-modal-toggle="review-modal"
-                class="mb-2 me-2 rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-              >
-                Write a review
-              </button>
             </div>
 
             <div class="mt-6 min-w-0 flex-1 space-y-3 sm:mt-0">
@@ -488,6 +480,7 @@ const ProductReview1 = () => {
                   </p>
                 </div>
               </div>
+              {/* Image Url */}
 
               <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
                 <p class="text-base font-normal  dark:text-gray-400">
@@ -496,55 +489,20 @@ const ProductReview1 = () => {
                   in this computer. Highly recommend!
                 </p>
 
-                <div class="flex gap-2">
-                  <img
-                    class="h-32 w-20 rounded-lg object-cover"
-                    src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-photo-1.jpg"
-                    alt=""
-                  />
-                  <img
-                    class="h-32 w-20 rounded-lg object-cover"
-                    src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-photo-2.jpg"
-                    alt=""
-                  />
-                </div>
-
-                <div class="flex items-center gap-4">
-                  <p class="text-sm font-medium  dark:text-gray-400">
-                    Was it helpful to you?
-                  </p>
-                  <div class="flex items-center">
-                    <input
-                      id="reviews-radio-3"
-                      type="radio"
-                      value=""
-                      name="reviews-radio-2"
-                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                {props.product && (
+                  <div class="flex gap-2 ">
+                    <img
+                      class="h-32 w-20 rounded-lg object-contain"
+                      src={props.product.imageUrl}
+                      alt=""
                     />
-                    <label
-                      for="reviews-radio-3"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
-                    >
-                      {" "}
-                      Yes: 1{" "}
-                    </label>
-                  </div>
-                  <div class="flex items-center">
-                    <input
-                      id="reviews-radio-4"
-                      type="radio"
-                      value=""
-                      name="reviews-radio-2"
-                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                    <img
+                      class="h-32 w-20 rounded-lg object-contain"
+                      src={props.product.imageUrl}
+                      alt=""
                     />
-                    <label
-                      for="reviews-radio-4"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
-                    >
-                      No: 0{" "}
-                    </label>
                   </div>
-                </div>
+                )}
               </div>
             </div>
 
@@ -800,43 +758,6 @@ const ProductReview1 = () => {
                   instruction manual that comes with it is the size of a piece
                   of toilet paper but the proper user guide is on-line.
                 </p>
-
-                <div class="flex items-center gap-4">
-                  <p class="text-sm font-medium  dark:text-gray-400">
-                    Was it helpful to you?
-                  </p>
-                  <div class="flex items-center">
-                    <input
-                      id="reviews-radio-7"
-                      type="radio"
-                      value=""
-                      name="reviews-radio-4"
-                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
-                    />
-                    <label
-                      for="reviews-radio-7"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
-                    >
-                      {" "}
-                      Yes: 1{" "}
-                    </label>
-                  </div>
-                  <div class="flex items-center">
-                    <input
-                      id="reviews-radio-8"
-                      type="radio"
-                      value=""
-                      name="reviews-radio-4"
-                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
-                    />
-                    <label
-                      for="reviews-radio-8"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
-                    >
-                      No: 0{" "}
-                    </label>
-                  </div>
-                </div>
               </div>
             </div>
 
