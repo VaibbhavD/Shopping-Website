@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../../context/data/Context";
+import Loader from "../Loader/Loader";
 
 function Categeroy() {
   const context = useContext(Context);

@@ -97,6 +97,7 @@ const ContextProider = (props) => {
       SetUserProfile(cartitems);
       SetPageloader(false);
     } catch (error) {
+      toast.error(error.message);
       console.log(error);
       SetPageloader(false);
     }
@@ -130,12 +131,6 @@ const ContextProider = (props) => {
     imageUrl: null,
     category: null,
     description: null,
-    time: Timestamp.now(),
-    date: new Date().toLocaleString("en-US", {
-      month: "short",
-      day: "2-digit",
-      year: "numeric",
-    }),
   });
 
   // Add Product
@@ -173,6 +168,7 @@ const ContextProider = (props) => {
       toast.success("Product added successfully");
       Setloader(false);
       getProducts(); // Refresh the product list
+      Setproduct("");
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
@@ -186,15 +182,15 @@ const ContextProider = (props) => {
 
   const [products, Setproducts] = useState([]);
 
-  // get Products
+  // get All Products
 
   const getProducts = async () => {
     SetPageloader(true);
     const collref = doc(fireDB, "Products", "All");
-    const q = collection(collref, "Items");
+    const all = collection(collref, "Items");
 
     try {
-      const querysnap = await getDocs(q);
+      const querysnap = await getDocs(all);
       const cartitems = [];
       querysnap.docs.map((doc) =>
         cartitems.push({
@@ -202,7 +198,6 @@ const ContextProider = (props) => {
           ...doc.data(),
         })
       );
-      console.log(cartitems);
       Setproducts(cartitems);
       SetPageloader(false);
 
@@ -214,6 +209,98 @@ const ContextProider = (props) => {
     }
   };
 
+  // all Category states
+  const [AllProducts, SetAllProducts] = useState({});
+
+  // Get Furniture Products
+  const GetFurnitureProduct = async () => {
+    const firedb = doc(fireDB, "Products", "furniture");
+    const furref = collection(firedb, "Items");
+
+    try {
+      const all = await getDocs(furref);
+      const cartitems = [];
+      all.docs.map((doc) =>
+        cartitems.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+      console.log("1", AllProducts);
+      SetAllProducts((prev) => ({ ...prev, furniture: cartitems }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // Get Mobiles Products
+  const GetMobileProducts = async () => {
+    const firedb = doc(fireDB, "Products", "mobiles");
+    const furref = collection(firedb, "Items");
+
+    try {
+      const all = await getDocs(furref);
+      const cartitems = [];
+      all.docs.map((doc) =>
+        cartitems.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+      console.log("2", AllProducts);
+      SetAllProducts((prev) => ({ ...prev, mobiles: cartitems }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // Get Cloths Products
+  const GetCloths = async () => {
+    const firedb = doc(fireDB, "Products", "cloths");
+    const furref = collection(firedb, "Items");
+
+    try {
+      const all = await getDocs(furref);
+      const cartitems = [];
+      all.docs.map((doc) =>
+        cartitems.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+      console.log("3", AllProducts);
+      SetAllProducts((prev) => ({ ...prev, cloths: cartitems }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // Get Kitchen Products
+  const GetKitchenProducts = async () => {
+    const firedb = doc(fireDB, "Products", "kitchen");
+    const furref = collection(firedb, "Items");
+
+    try {
+      const all = await getDocs(furref);
+      const cartitems = [];
+      all.docs.map(
+        (doc) =>
+          cartitems.push({
+            id: doc.id,
+            ...doc.data(),
+          }),
+        console.log(doc)
+      );
+      console.log("4", AllProducts);
+      SetAllProducts((prev) => ({ ...prev, kitchen: cartitems }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const GetAllCategory = () => {
+    GetFurnitureProduct();
+    GetMobileProducts();
+    GetKitchenProducts();
+    GetCloths();
+  };
   // Edit Produst
 
   const Editproduct = (item) => {
@@ -223,9 +310,17 @@ const ContextProider = (props) => {
   // Update Product
   const Updateproduct = async () => {
     Setloader(true);
+    const productCategoryDocRef = doc(
+      fireDB,
+      "Products",
+      product.category,
+      "Items",
+      product.id
+    );
 
     try {
       await setDoc(doc(fireDB, "Products", product.id), product);
+      // await updateDoc(productCategoryDocRef, product);
       toast.success("Product Update Successfully");
       getProducts();
       Setloader(false);
@@ -377,6 +472,7 @@ const ContextProider = (props) => {
 
   // get Products UseEffect()
   useEffect(() => {
+    GetAllCategory();
     GetCart();
     getProducts();
     GetUserProfile();
@@ -412,6 +508,7 @@ const ContextProider = (props) => {
         DeleteToCart,
         Orders,
         GetOrders,
+        AllProducts,
       }}
     >
       {props.children}

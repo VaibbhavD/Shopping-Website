@@ -6,29 +6,30 @@ import Layout from "../../Components/layout/Layout";
 import { useNavigate, useParams } from "react-router-dom";
 import PageLoader from "../../Components/Loader/PageLoader";
 import Loader from "../../Components/Loader/Loader";
+import RelatedProducts from "./RelatedProducts";
 
 function ProductInfo() {
   const context = useContext(Context);
-  const { mode, AddtoCart, products, loader, Pageloader, SetPageloader } =
-    context;
-  const [product, Setproduct] = useState({ imageUrl: "" });
-  const navigate = useNavigate();
+  const { mode, AddtoCart, products, loader } = context;
+  const [product, Setproduct] = useState();
+  const { id } = useParams();
 
-  const param = useParams();
-  console.log(param.id);
+  const navigate = useNavigate();
+  console.log(products);
 
   useEffect(() => {
-    SetPageloader(true);
-    const pro = products.find((item) => item.id == param.id);
-    Setproduct(pro);
-    console.log(pro);
-    SetPageloader(false);
+    console.log("Fetching product with ID:", id);
+    const pro = products.find((item) => item.id == id);
+    setTimeout(() => {
+      Setproduct(pro);
+      console.log("Fetched product:", pro);
+    }, 1000);
   }, [products]);
 
   return (
     <Layout>
       <section
-        className="text-gray-600 body-font overflow-hidden "
+        className="text-gray-600 body-font overflow-hidden md:p-0 px-1 "
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         {!product ? (
@@ -166,6 +167,7 @@ function ProductInfo() {
       </section>
       <ProductReview1 product={product} />
       <Highlight1 />
+      {product && <RelatedProducts product={product} />}
     </Layout>
   );
 }
