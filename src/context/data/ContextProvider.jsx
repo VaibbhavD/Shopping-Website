@@ -140,6 +140,7 @@ const ContextProider = (props) => {
 
   // Add Product
   const AddProduct = async () => {
+    Setloader(true);
     if (
       !product.title ||
       !product.price ||
@@ -147,6 +148,7 @@ const ContextProider = (props) => {
       !product.category ||
       !product.description
     ) {
+      Setloader(false);
       return toast.error("Please fill all fields");
     }
 
@@ -314,7 +316,7 @@ const ContextProider = (props) => {
   // Get Cart
 
   const GetCart = async () => {
-    SetPageloader(true);
+    // SetPageloader(true);
     const userEmail = User.user.email;
 
     const userref = doc(fireDB, "users", userEmail);
@@ -332,10 +334,10 @@ const ContextProider = (props) => {
       );
       SetCart(cartitems);
       console.log(cartitems);
-      SetPageloader(false);
+      // SetPageloader(false);
     } catch (error) {
       toast.error(error.message);
-      SetPageloader(false);
+      // SetPageloader(false);
     }
   };
 

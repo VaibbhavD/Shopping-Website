@@ -172,9 +172,9 @@ function AddProduct(props) {
             ></textarea>
           </div>
           {/* Add Button */}
-          <div className=" flex justify-center mb-1">
+          <div className="  mb-1">
             <button
-              className=" bg-green-500 w-full hover:bg-green-400 hover:text-black font-bold  px-2 py-2 rounded-lg"
+              className=" bg-green-500 w-full flex justify-center hover:bg-green-400 hover:text-black font-bold  px-2 py-2 rounded-lg"
               onClick={SubmitHandler}
             >
               {loader ? <Loader /> : "Add Product"}
