@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import MainProductPage from "./pages/MainProductPage.jsx/MainProductPage";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.authUser.isLoggedin);
@@ -24,10 +25,11 @@ function App() {
   return (
     <ContextProider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/product/" element={<ProductInfo />} />
+          <Route path="/product/:id" element={<ProductInfo />} />
           {isLoggedIn && <Route path="/order" element={<Order />} />}
           {isLoggedIn && <Route path="/cart" element={<Cart />} />}
           {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
