@@ -2,13 +2,16 @@ import React, { useContext } from "react";
 import Context from "../../../context/data/Context";
 import { toast } from "react-toastify";
 import Loader from "../../../Components/Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 function AddProduct(props) {
   const context = useContext(Context);
   const { mode, Setproduct, AddProduct, product, loader } = context;
+  const navigate = useNavigate();
 
   const SubmitHandler = async () => {
     await AddProduct();
+    navigate("/dashboard");
   };
 
   return (
@@ -88,19 +91,69 @@ function AddProduct(props) {
             />
           </div>
           {/* Product category */}
-          <div>
-            <input
-              type="text"
-              name="category"
+          <div className="m-auto ">
+            <select
               className={` mb-4 px-2 py-2 w-full lg:w-[20em] rounded-lg  placeholder:text-gray-400 outline-none ${
-                mode === "dark" ? "bg-stone-100" : "bg-gray-300 text-black"
+                mode === "dark" ? "bg-stone-100" : "bg-gray-300 "
               }`}
-              placeholder="Product category"
-              value={product.category}
+              defaultValue=""
               onChange={(e) =>
                 Setproduct({ ...product, category: e.target.value })
               }
-            />
+            >
+              <option
+                className={`${
+                  mode === "dark"
+                    ? "text-sm font-medium bg-gray-700 cursor-pointer text-white"
+                    : "text-sm font-medium text-black cursor-pointer bg-stone-100"
+                }`}
+                value=""
+                disabled
+              >
+                Categeory
+              </option>
+              <option
+                className={`${
+                  mode === "dark"
+                    ? "text-sm font-medium  cursor-pointer bg-gray-700"
+                    : "text-sm font-medium text-gray-700 cursor-pointer bg-stone-100"
+                }`}
+                onClick={() => console.log("hi")}
+                value="cloths"
+              >
+                Clothing
+              </option>
+              <option
+                className={`${
+                  mode === "dark"
+                    ? "text-sm font-medium   cursor-pointer bg-gray-700"
+                    : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
+                }`}
+                value="mobiles"
+              >
+                Mobiles
+              </option>
+              <option
+                className={`${
+                  mode === "dark"
+                    ? "text-sm font-medium  cursor-pointer  bg-gray-700"
+                    : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
+                }`}
+                value="furniture"
+              >
+                Furniture
+              </option>
+              <option
+                className={`${
+                  mode === "dark"
+                    ? "text-sm font-medium  cursor-pointer  bg-gray-700"
+                    : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
+                }`}
+                value="kitchen"
+              >
+                Kitchen
+              </option>
+            </select>
           </div>
           {/* Text */}
           <div>
