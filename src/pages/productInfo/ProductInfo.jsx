@@ -7,24 +7,29 @@ import { useNavigate, useParams } from "react-router-dom";
 import PageLoader from "../../Components/Loader/PageLoader";
 import Loader from "../../Components/Loader/Loader";
 import RelatedProducts from "./RelatedProducts";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 function ProductInfo() {
   const context = useContext(Context);
-  const { mode, AddtoCart, products, loader } = context;
+  const { mode, AllProducts, AddtoCart, loader } = context;
   const [product, Setproduct] = useState();
   const { id } = useParams();
+  ScrollToTop();
 
   const navigate = useNavigate();
-  console.log(products);
+  // console.log(products);
 
   useEffect(() => {
-    console.log("Fetching product with ID:", id);
-    const pro = products.find((item) => item.id == id);
-    setTimeout(() => {
-      Setproduct(pro);
-      console.log("Fetched product:", pro);
-    }, 1000);
-  }, [products]);
+    for (let category in AllProducts) {
+      const products = AllProducts[category];
+      for (let product of products) {
+        if (product.id === id) {
+          Setproduct(product);
+          break;
+        }
+      }
+    }
+  }, [AllProducts, id]);
 
   return (
     <Layout>
