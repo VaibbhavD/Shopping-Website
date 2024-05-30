@@ -31,12 +31,6 @@ function FurnitureSection() {
             quality. Premium furniture for unparalleled comfort and
             sophistication."
           </p>
-          <button
-            className="md:p-2 md:mt-5 mt-2 md:px-5 p-1 font-bold rounded-md text-white hover:text-black bg-pink-500
- hover:bg-stone-100 border-2 "
-          >
-            Sell Furnitures
-          </button>
         </div>
         <div class="md:h-[450px] h-52  p-2">
           <img
