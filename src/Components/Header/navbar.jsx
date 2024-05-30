@@ -96,8 +96,8 @@ export default function Navbar() {
                       Home
                     </NavLink>
                   </div>
+                  {/* Category */}
                   <div className="flow-root -ml-1.5">
-                    {/* Category */}
                     <select
                       className={`${
                         mode === "dark"
@@ -127,7 +127,7 @@ export default function Navbar() {
                         onClick={() => console.log("hi")}
                         value="cloths"
                       >
-                        Clothing
+                        Mens Wear
                       </option>
                       <option
                         className={`${
@@ -147,7 +147,7 @@ export default function Navbar() {
                         }`}
                         value="furniture"
                       >
-                        Furniture
+                        Home & Furniture
                       </option>
                       <option
                         className={`${
@@ -155,9 +155,9 @@ export default function Navbar() {
                             ? "text-xs font-medium  cursor-pointer  bg-gray-700"
                             : "text-xs font-medium cursor-pointer text-gray-700 bg-stone-100"
                         }`}
-                        value="kitchen"
+                        value="electronics"
                       >
-                        Kitchen
+                        Electronics
                       </option>
                     </select>
                   </div>
