@@ -14,7 +14,6 @@ function ProductInfo() {
   const { mode, AllProducts, AddtoCart, loader } = context;
   const [product, Setproduct] = useState();
   const { id } = useParams();
-  ScrollToTop();
 
   const navigate = useNavigate();
   // console.log(products);
@@ -30,6 +29,8 @@ function ProductInfo() {
       }
     }
   }, [AllProducts, id]);
+
+  ScrollToTop();
 
   return (
     <Layout>
@@ -48,7 +49,9 @@ function ProductInfo() {
                   ? "bg-white text-gray-700"
                   : "bg-gray-600 text-white"
               }`}
-              onClick={() => navigate(-1)}
+              onClick={() => {
+                navigate(-1);
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
