@@ -45,11 +45,13 @@ function RelatedProducts({ product }) {
                   }}
                 >
                   <div className="flex justify-center  cursor-pointer p-4 ">
-                    <img
-                      src={product.imageUrl}
-                      class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
-                      alt="photo gallery image 07"
-                    />
+                    <Link to={`/product/${product.id}`}>
+                      <img
+                        src={product.imageUrl}
+                        class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
+                        alt="photo gallery image 07"
+                      />
+                    </Link>
                   </div>
                   <div className="p-5 grid  border-t-2">
                     <h2
