@@ -578,7 +578,7 @@ export default function Navbar() {
                 {isLoggedin && (
                   <div className="hidden lg:ml-6 lg:flex">
                     <NavLink
-                      to={"/signup"}
+                      to={"/profile"}
                       className={({ isActive }) =>
                         isActive
                           ? "flex items-center text-gray-700 border-b-4 border-pink-500"
