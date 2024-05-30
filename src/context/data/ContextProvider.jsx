@@ -58,7 +58,7 @@ const ContextProider = (props) => {
 
   // Update User profile
   const UpdateUserProfile = async () => {
-    SetPageloader(true);
+    Setloader(true);
     const userEmail = User.user.email;
 
     const userDocRef = doc(fireDB, "users", userEmail);
@@ -68,9 +68,10 @@ const ContextProider = (props) => {
       await setDoc(doc(Profileref, UserProfile.id), UserProfile);
 
       GetUserProfile();
+      Setloader(false);
     } catch (error) {
       console.log(error);
-      SetPageloader(false);
+      Setloader(false);
     }
   };
 
