@@ -48,7 +48,13 @@ function MainProductPage() {
     <Layout>
       {Pageloader && <PageLoader />}
       {isopen && <Filter />}
-      <div className="flex  justify-between px-5 pt-5">
+      <div
+        className="flex  justify-between px-5 pt-5"
+        style={{
+          backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
+          color: mode === "dark" ? "white" : "",
+        }}
+      >
         <button
           className={`lg:p-3 p-1 -ml-2 md:ml-0  duration-200 rounded-full ${
             mode == "dark"
