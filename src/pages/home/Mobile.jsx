@@ -22,7 +22,8 @@ function Mobile() {
             World's Best Bestselling Mobile & Accessories
           </p>
           <h2 class="md:text-5xl text-xl font-extrabold md:mb-4 md:!leading-[55px]">
-            Upgrade To 5G Phones Starting From 7,699\-
+            Upgrade To <span className="text-pink-500">5G Phones</span> Starting
+            From 7,699\-
           </h2>
           <p class="hidden md:block mt-4 text-base text-gray-500 leading-relaxed">
             Luxurious, handcrafted furniture for ultimate comfort and elegance.

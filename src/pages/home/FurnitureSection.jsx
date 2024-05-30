@@ -6,14 +6,14 @@ function FurnitureSection() {
   const { mode } = context;
   return (
     <div
-      class="font-sans text-[#333]  max-md:max-w-md mx-auto pt-10 pb-7 lg:px-6 "
+      class="font-sans text-[#333]  max-md:max-w-md mx-auto pt-10 lg:px-6 "
       style={{
         backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
         color: mode === "dark" ? "white" : "",
       }}
     >
       <h2 class="text-2xl font-bold lg:text-3xl ml-2  dark:text-white  ">
-        Furnitures & Home
+        Home & Furnitures
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
       </h2>
       <div class="grid md:grid-cols-2 items-center md:gap-8 gap-6 ">
@@ -22,7 +22,8 @@ function FurnitureSection() {
             World's Best Bestselling Furniture
           </p>
           <h2 class="md:text-5xl text-xl font-extrabold mb-4 md:!leading-[55px]">
-            Up to 60% off | Best deals on furniture, home & more
+            <span className="text-pink-500">Up to 60% off</span> | Best deals on
+            furniture, home & more
           </h2>
           <p class="hidden md:block  mt-4 text-base text-gray-500 leading-relaxed">
             Luxurious, handcrafted furniture for ultimate comfort and elegance.
