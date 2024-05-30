@@ -25,6 +25,7 @@ import MainProductPage from "./pages/MainProductPage.jsx/MainProductPage";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import { ScrollRestoration } from "react-router-dom";
 import { useEffect } from "react";
+import ProfilePage from "./pages/Profile/Profile";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.authUser.isLoggedin);
@@ -39,6 +40,7 @@ function App() {
           <Route path="/product/:id" element={<ProductInfo />} />
           {isLoggedIn && <Route path="/order" element={<Order />} />}
           {isLoggedIn && <Route path="/cart" element={<Cart />} />}
+          {isLoggedIn && <Route path="/profile" element={<ProfilePage />} />}
           {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
           <Route path="/nopage" element={<NoPage />} />
           {!isLoggedIn && <Route path="/signup" element={<SignUp />} />}
