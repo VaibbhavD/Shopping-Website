@@ -10,19 +10,25 @@ import FurnitureSection from "./FurnitureSection";
 import Mobile from "./Mobile";
 import PageLoader from "../../Components/Loader/PageLoader";
 import Context from "../../context/data/Context";
+import Clothing from "./Cloths";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 function Home() {
   const context = useContext(Context);
-  const { Pageloader } = context;
+  const { Pageloader, AllProducts } = context;
   return (
     <Layout>
       {Pageloader && <PageLoader />}
+      <ScrollToTop />
       <HeroSection />
       <DiscountSection />
       <Categeroy />
+      <Clothing />
+      <ProductCard products={AllProducts.cloths} />
       <Mobile />
-      <ProductCard />
+      <ProductCard products={AllProducts.mobiles} />
       <FurnitureSection />
+      <ProductCard products={AllProducts.furniture} />
       <Track />
       <Testimonal />
     </Layout>
