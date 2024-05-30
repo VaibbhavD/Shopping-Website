@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HeroSection from "../../Components/herosection/HeroSection";
 import ProductCard from "../../Components/productcard/ProductCard";
 import Categeroy from "../../Components/Categeory/Categeroy";
@@ -16,6 +16,20 @@ import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 function Home() {
   const context = useContext(Context);
   const { Pageloader, AllProducts } = context;
+
+  const clothsproduct =
+    AllProducts.cloths && Array.isArray(AllProducts.cloths)
+      ? AllProducts.cloths.slice(0, 8)
+      : [];
+  const mobileproducts =
+    AllProducts.mobiles && Array.isArray(AllProducts.mobiles)
+      ? AllProducts.mobiles.slice(0, 8)
+      : [];
+  const furnitureproducts =
+    AllProducts.furniture && Array.isArray(AllProducts.furniture)
+      ? AllProducts.furniture.slice(0, 8)
+      : [];
+
   return (
     <Layout>
       {Pageloader && <PageLoader />}
@@ -24,11 +38,11 @@ function Home() {
       <DiscountSection />
       <Categeroy />
       <Clothing />
-      <ProductCard products={AllProducts.cloths} />
+      <ProductCard products={clothsproduct} />
       <Mobile />
-      <ProductCard products={AllProducts.mobiles} />
+      <ProductCard products={mobileproducts} />
       <FurnitureSection />
-      <ProductCard products={AllProducts.furniture} />
+      <ProductCard products={furnitureproducts} />
       <Track />
       <Testimonal />
     </Layout>
