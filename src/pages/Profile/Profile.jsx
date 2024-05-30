@@ -27,7 +27,7 @@ const ProfilePage = () => {
       <Navbar />
       {Pageloader && <PageLoader />}
       <div
-        className="container mx-auto my-5 lg:px-72"
+        className="container mx-auto pb-12 lg:px-72"
         style={{
           backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
           color: mode === "dark" ? "white" : "",
@@ -81,11 +81,9 @@ const ProfilePage = () => {
               <div className="grid grid-cols-2">
                 <div className="px-4 py-2 font-semibold">Email</div>
                 <div className="px-4 py-2">
-                  <a className="text-blue-800" href="mailto:jane@example.com">
-                    {User.user.email}
-                  </a>
+                  <p>{User.user.email}</p>
                   <div className="mt-4">
-                    <button className="p-2 text-white text-sm font-semibold rounded-lg bg-blue-800 hover:bg-blue-700 focus:outline-none focus:shadow-outline focus:bg-blue-700 hover:shadow-xs">
+                    <button className="p-2 text-white text-sm font-semibold rounded-lg bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline focus:bg-green-700 hover:shadow-xs">
                       Verify Email
                     </button>
                   </div>
@@ -141,9 +139,9 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="mt-4 flex justify-end">
+        <div className="mt-4 flex justify-center">
           <button
-            className="block  text-white text-sm font-semibold rounded-lg bg-blue-800 hover:bg-blue-700 focus:outline-none focus:shadow-outline focus:bg-blue-700 hover:shadow-xs p-3"
+            className="block  text-white text-sm font-semibold rounded-lg bg-pink-500 hover:bg-pink-400 focus:outline-none focus:shadow-outline focus:bg-pink-700 hover:shadow-xs p-3"
             onClick={OpenCheckoutpage}
           >
             Update User Details
