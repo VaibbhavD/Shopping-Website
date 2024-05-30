@@ -149,7 +149,7 @@ function UpdateProduct(props) {
                     ? "text-sm font-medium  cursor-pointer  bg-gray-700"
                     : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
                 }`}
-                value="kitchen"
+                value="electronics"
               >
                 Kitchen
               </option>
