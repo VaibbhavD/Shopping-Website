@@ -320,7 +320,7 @@ const ContextProider = (props) => {
 
     try {
       await setDoc(doc(fireDB, "Products", product.id), product);
-      // await updateDoc(productCategoryDocRef, product);
+      await updateDoc(productCategoryDocRef, product);
       toast.success("Product Update Successfully");
       getProducts();
       Setloader(false);
@@ -334,9 +334,12 @@ const ContextProider = (props) => {
   // Delete Product
 
   const Deleteproduct = async (item) => {
+    console.log(item.id);
     Setloader(true);
+    const dbref = doc(fireDB, "Products", "All");
+    const allref = collection(dbref, "Items");
     try {
-      await deleteDoc(doc(fireDB, "Products", item.id));
+      await deleteDoc(doc(allref, item.id));
       toast.success("Product Delete Successfully");
       Setloader(false);
       getProducts();
