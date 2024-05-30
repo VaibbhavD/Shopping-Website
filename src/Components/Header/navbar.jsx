@@ -256,7 +256,7 @@ export default function Navbar() {
                         className={({ isActive }) =>
                           isActive
                             ? "font-medium text-pink-500 "
-                            : "font-medium text-gray-900 "
+                            : "font-medium  "
                         }
                       >
                         <span className="text-center">Profile</span>
