@@ -1,5 +1,11 @@
 import "./App.css";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+  UNSAFE_useScrollRestoration,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Order from "./pages/Order/Order";
 import Cart from "./pages/cart/Cart";
@@ -17,6 +23,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import MainProductPage from "./pages/MainProductPage.jsx/MainProductPage";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import { ScrollRestoration } from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.authUser.isLoggedin);
@@ -24,8 +32,7 @@ function App() {
 
   return (
     <ContextProider>
-      <BrowserRouter>
-        <ScrollToTop />
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/aboutus" element={<AboutUs />} />
@@ -38,12 +45,12 @@ function App() {
           {!isLoggedIn && <Route path="/login" element={<Login />} />}
           {isLoggedIn && <Route path="/*" element={<Home />} />}
           <Route path="/*" element={<Login />} />
-          <Route path="/category/:product" element={<MainProductPage />} />
+          <Route path="/category/:category" element={<MainProductPage />} />
           {isAdmin && <Route path="/addproduct" element={<AddProduct />} />}
         </Routes>
 
         <ToastContainer />
-      </BrowserRouter>
+      </Router>
     </ContextProider>
   );
 }
