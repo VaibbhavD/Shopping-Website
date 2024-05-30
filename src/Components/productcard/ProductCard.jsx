@@ -3,10 +3,10 @@ import Context from "../../context/data/Context";
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
 
-function ProductCard() {
+function ProductCard({ products }) {
   const context = useContext(Context);
   const { mode, AllProducts, loader } = context;
-  const products = AllProducts.mobiles;
+  // const products = AllProducts.mobiles;
 
   return (
     <section>
@@ -34,11 +34,13 @@ function ProductCard() {
                   }}
                 >
                   <div className="flex justify-center cursor-pointer p-4 ">
-                    <img
-                      src={product.imageUrl}
-                      class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
-                      alt="photo gallery image 07"
-                    />
+                    <Link to={`/product/${product.id}`}>
+                      <img
+                        src={product.imageUrl}
+                        class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[2/3] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
+                        alt="photo gallery image 07"
+                      />
+                    </Link>
                   </div>
                   <div className="p-5 border-t-2">
                     <h2
@@ -65,7 +67,7 @@ function ProductCard() {
                         to={`/product/${product.id}`}
                         className="flex justify-center focus:outline-none text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
                       >
-                        View
+                        Add to Cart
                       </Link>
                     </div>
                   </div>
