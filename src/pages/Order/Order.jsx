@@ -74,7 +74,7 @@ function Order() {
                           <a>{Cart[0].title}</a>
                         </h3>
                         <p className="mt-2 text-sm font-medium text-gray-900">
-                          ${bill || Cart[0].price}
+                          Rs.{bill || Cart[0].price}
                         </p>
                         <p className="mt-3 text-sm ">{Cart[0].brand}</p>
                         <p className="mt-3 text-sm ">Order id- {id}</p>
