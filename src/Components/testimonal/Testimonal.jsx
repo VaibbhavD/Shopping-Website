@@ -180,6 +180,29 @@ function Testimonal() {
             </div>
           </div>
         </section>
+        <div className="flex justify-center gap-3 items-center pb-10">
+          <h1 className="text-3xl font-bold text-pink-500">
+            Vaibhav Dhamanage
+          </h1>
+          <a
+            href="https://github.com/VaibbhavD"
+            className="hover:text-blue-500"
+          >
+            <b>@</b>github
+          </a>
+          <a
+            href="https://www.linkedin.com/in/vaibhav-dhamanage-94a2b923b/"
+            className="hover:text-blue-500"
+          >
+            <b>@</b>linkedin
+          </a>
+          <a
+            href="https://my-portfolio-puxr.vercel.app/"
+            className="hover:text-blue-500"
+          >
+            <b>@</b>portfolio
+          </a>
+        </div>
       </div>
     </>
   );
