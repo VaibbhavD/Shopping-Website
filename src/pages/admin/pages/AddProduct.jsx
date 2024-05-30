@@ -11,19 +11,18 @@ function AddProduct(props) {
   const navigate = useNavigate();
 
   const SubmitHandler = async () => {
-    Setproduct((prev) => ({
-      ...prev,
+    Setproduct({
+      ...product,
       time: Timestamp.now(),
       date: new Date().toLocaleString("en-US", {
         month: "short",
         day: "2-digit",
         year: "numeric",
       }),
-    }));
+    });
     await AddProduct();
     props.close();
   };
-
   return (
     <div className="">
       <div
@@ -159,7 +158,7 @@ function AddProduct(props) {
                     ? "text-sm font-medium  cursor-pointer  bg-gray-700"
                     : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
                 }`}
-                value="kitchen"
+                value="electronics"
               >
                 Kitchen
               </option>
