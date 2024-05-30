@@ -163,7 +163,7 @@ export default function Navbar() {
                   </div>
 
                   {/* India */}
-                  <div className="flow-root">
+                  {/* <div className="flow-root">
                     <p className="-m-2 flex gap-2 items-center p-2">
                       <NavLink
                         to={"/handicraft"}
@@ -183,7 +183,7 @@ export default function Navbar() {
                       />
                       <span className="sr-only">, change currency</span>
                     </p>
-                  </div>
+                  </div> */}
                   {/* Order */}
                   {isLoggedin && (
                     <div className="flow-root">
@@ -245,6 +245,23 @@ export default function Navbar() {
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         Login
+                      </NavLink>
+                    </div>
+                  )}
+                  {/* Wishlist */}
+                  {isLoggedin && (
+                    <div className="flow-root">
+                      <NavLink
+                        to={"/aboutus"}
+                        className={({ isActive }) =>
+                          isActive
+                            ? " font-medium text-gray-700 border-b-2 border-pink-500"
+                            : " font-medium text-gray-900 "
+                        }
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        {" "}
+                        Wishlist
                       </NavLink>
                     </div>
                   )}
@@ -423,7 +440,7 @@ export default function Navbar() {
                   </div>
 
                   {/* India */}
-                  <div className="hidden lg:ml-6 lg:flex">
+                  {/* <div className="hidden lg:ml-6 lg:flex">
                     <NavLink
                       to={"/handmade"}
                       className={({ isActive }) =>
@@ -444,7 +461,7 @@ export default function Navbar() {
                         HandiCrafts
                       </span>
                     </NavLink>
-                  </div>
+                  </div> */}
                   {/* Order */}
                   {isLoggedin && (
                     <NavLink
@@ -499,16 +516,7 @@ export default function Navbar() {
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       {" "}
-                      <svg
-                        fill="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        className="w-6 h-6 text-red-600"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                      </svg>
+                      Wishlist
                     </NavLink>
                   )}
                 </div>
