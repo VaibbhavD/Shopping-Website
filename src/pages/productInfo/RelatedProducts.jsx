@@ -23,7 +23,7 @@ function RelatedProducts({ product }) {
     <section>
       {product && (
         <div
-          class="w-full h-full select-none p-2 lg:px-6 "
+          class="w-full h-full select-none p-2 pb-10 lg:px-6 "
           style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
         >
           <h1
