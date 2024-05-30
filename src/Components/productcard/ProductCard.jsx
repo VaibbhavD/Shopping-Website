@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Context from "../../context/data/Context";
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
 
 function ProductCard({ products }) {
   const context = useContext(Context);
-  const { mode, AllProducts, loader } = context;
-  // const products = AllProducts.mobiles;
+  const { mode } = context;
 
   return (
     <section>
