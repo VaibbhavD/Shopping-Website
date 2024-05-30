@@ -8,7 +8,7 @@ function Track() {
   return (
     <div>
       <section
-        className="text-gray-600 body-font cursor-default"
+        className="text-gray-600 body-font pt-10 cursor-default"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div className="container md:py-5 ">
@@ -38,7 +38,7 @@ function Track() {
                   className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 duration-500 w-full"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
-                  Quality Shirts
+                  Quality Products
                 </h2>
                 <p className="text-xs leading-relaxed lg:text-base">
                   Our T-Shirts 100% made of cotton.

@@ -8,7 +8,7 @@ const Highlight1 = () => {
   return (
     <div className="2xl:container 2xl:mx-auto  ">
       <div
-        className=" grid lg:grid-cols-4 pb-28 md:grid-cols-2 grid-cols-2 lg:gap-8 md:gap-12 gap-14 lg:px-20 lg:py-12 py-10 md:px-12 px-4"
+        className=" grid lg:grid-cols-4  md:grid-cols-2 grid-cols-2 lg:gap-8 md:gap-12 gap-14 lg:px-20 lg:py-12 py-10 md:px-12 px-4"
         style={{
           backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
           color: mode === "dark" ? "white" : "grey",
