@@ -36,7 +36,7 @@ function ProductCard({ products }) {
                     <Link to={`/product/${product.id}`}>
                       <img
                         src={product.imageUrl}
-                        class="object-contain select-none w-full h-auto  rounded aspect-[5/6] lg:aspect-[3/4] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
+                        class="object-contain select-none w-full h-full  rounded aspect-[5/6] lg:aspect-[3/4] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
                         alt="photo gallery image 07"
                       />
                     </Link>

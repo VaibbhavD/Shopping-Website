@@ -8,7 +8,7 @@ export default function Footer() {
   const { toggleMode, mode } = context;
   return (
     <footer
-      className={`text-gray-600 body-font  ${
+      className={`text-stone-100 body-font  ${
         mode === "dark" ? "bg-gray-700" : "bg-gray-400"
       }`}
       // style={{
@@ -17,7 +17,7 @@ export default function Footer() {
       // }}
     >
       <div className="container px-5 py-10 mx-auto">
-        <div className="flex  md:text-left text-center justify-center md:text-lg text-xs order-first">
+        <div className="flex   text-center justify-center md:text-lg text-xs order-first">
           <div className="lg:w-1/4 md:w-1/2 w-full px-4 ">
             <h2
               className="title-font font-medium text-gray-900 tracking-widest mb-3"
@@ -27,36 +27,39 @@ export default function Footer() {
             </h2>
             <nav className="list-none mb-10 ">
               <li>
-                <a
-                  className="text-gray-600 hover:text-gray-800"
+                <Link
+                  to={"/"}
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  className="text-gray-600 hover:text-gray-800"
+                <Link
+                  to={"/order"}
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Order
-                </a>
+                </Link>
               </li>
               <li>
                 <a
-                  className="text-gray-600 hover:text-gray-800"
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Local For Vocal
                 </a>
               </li>
               <li>
-                <a
-                  className="text-gray-600 hover:text-gray-800"
+                <Link
+                  to={"/cart"}
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Cart
-                </a>
+                </Link>
               </li>
             </nav>
           </div>
@@ -71,7 +74,7 @@ export default function Footer() {
               <li>
                 <Link
                   to={"/returnpolicy"}
-                  className="text-gray-600 hover:text-gray-800"
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Return Policy
@@ -79,21 +82,21 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to={"/about"}
-                  className="text-gray-600 hover:text-gray-800"
+                  to={"/aboutus"}
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   About
                 </Link>
               </li>
               <li>
-                <Link
-                  to={"/contact"}
-                  className="text-gray-600 hover:text-gray-800"
+                <a
+                  href="https://my-portfolio-puxr.vercel.app/"
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Contact Us
-                </Link>
+                </a>
               </li>
             </nav>
           </div>
@@ -103,13 +106,13 @@ export default function Footer() {
               className="title-font font-medium text-gray-900 tracking-widest mb-3"
               style={{ color: mode === "dark" ? "white" : "" }}
             >
-              Services
+              SERVICES
             </h2>
             <nav className="list-none mb-10">
               <li>
                 <Link
                   to={"/privacypolicy"}
-                  className="text-gray-600 hover:text-gray-800"
+                  className="text-stone-100 hover:text-gray-800"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
                   Privacy
