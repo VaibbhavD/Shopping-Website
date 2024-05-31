@@ -23,7 +23,7 @@ function Mobile() {
           </p>
           <h2 class="md:text-5xl text-xl font-extrabold md:mb-4 md:!leading-[55px]">
             Upgrade To <span className="text-pink-500">5G Phones</span> Starting
-            From 11,699\-
+            From 9,999\-
           </h2>
           <p class="hidden md:block mt-4 text-base text-gray-500 leading-relaxed">
             Luxurious, handcrafted furniture for ultimate comfort and elegance.
@@ -34,7 +34,7 @@ function Mobile() {
         </div>
         <div class="md:h-[450px] h-52  p-2">
           <img
-            src="https://i1.wp.com/techbeasts.com/wp-content/uploads/2018/06/kraken-a8.png?fit=826%2C620&ssl=1"
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Wireless/nbshagun/Clp/tiles/10May/D119951047_WLD_5Grevamp_March2024_Header_Mob_gif_1242x450.gif"
             class="w-full h-full  shadow-[0_2px_22px_-10px_rgba(93,96,127,0.2)]"
             alt="Dining Experience"
           />
