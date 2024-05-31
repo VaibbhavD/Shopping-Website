@@ -14,8 +14,10 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { fireDB } from "../../firebase/FirebaseConfig";
+import { Auth, fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
+import { getIdToken, signInWithEmailAndPassword } from "firebase/auth";
+import { sendEmailVerification } from "firebase/auth";
 
 const ContextProider = (props) => {
   const loginuser = JSON.parse(localStorage.getItem("User"));
@@ -35,7 +37,6 @@ const ContextProider = (props) => {
   });
 
   const UserLogin = (user) => {
-    console.log(user.user.email);
     SetUser(user);
   };
 
@@ -91,6 +92,7 @@ const ContextProider = (props) => {
         (doc) =>
           (cartitems = {
             id: doc.id,
+            email: User.user.email,
             ...doc.data(),
           })
       );
@@ -101,6 +103,27 @@ const ContextProider = (props) => {
       toast.error(error.message);
       console.log(error);
       SetPageloader(false);
+    }
+  };
+
+  // Set Verification email
+  const VerifyEmail = async () => {
+    const password = JSON.parse(localStorage.getItem("Password"));
+    console.log(password);
+    try {
+      // Sign in the user to get the user object
+      const userCredential = await signInWithEmailAndPassword(
+        Auth,
+        UserProfile.email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Send verification email
+      await sendEmailVerification(user);
+      console.log("Verification email sent to " + user.email);
+    } catch (error) {
+      console.log("Error sending email verification:", error);
     }
   };
 
@@ -513,6 +536,7 @@ const ContextProider = (props) => {
         Orders,
         GetOrders,
         AllProducts,
+        VerifyEmail,
       }}
     >
       {props.children}
