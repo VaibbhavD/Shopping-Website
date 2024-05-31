@@ -11,7 +11,6 @@ import Order from "./pages/Order/Order";
 import Cart from "./pages/cart/Cart";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import NoPage from "./pages/nopage/NoPage";
-import Layout from "./Components/layout/Layout";
 import ContextProider from "./context/data/ContextProvider";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
@@ -22,9 +21,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import MainProductPage from "./pages/MainProductPage.jsx/MainProductPage";
-import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-import { ScrollRestoration } from "react-router-dom";
-import { useEffect } from "react";
 import ProfilePage from "./pages/Profile/Profile";
 
 function App() {
