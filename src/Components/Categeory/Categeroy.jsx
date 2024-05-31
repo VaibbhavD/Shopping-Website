@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import Context from "../../context/data/Context";
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
+import ecommerce_cloths from "../../assets/Images/ecommerce_mens_cloths.jpg";
+import ecommerce_furniture from "../../assets/Images/ecommerce_furniture.jpg";
+import ecommerce_mobiles from "../../assets/Images/ecommercesmart_phones.gif";
+import ecommerce_tvs from "../../assets/Images/ecommerce_Tvs.jpg";
 
 function Categeroy() {
   const context = useContext(Context);
@@ -9,7 +13,7 @@ function Categeroy() {
 
   return (
     <div
-      class="bg-white dark:bg-gray-800  h-full pt-3 lg:p-3"
+      class="bg-white dark:bg-gray-800  h-full pt-1 lg:p-3"
       style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
     >
       <div class="mx-auto max-w-screen-2xl px-2  md:px-6">
@@ -31,7 +35,7 @@ function Categeroy() {
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
           >
             <img
-              src="https://images-na.ssl-images-amazon.com/images/G/31/img21/Apparel-Events/Topbrands/Ingress-men._SS800_QL85_.jpg"
+              src={ecommerce_cloths}
               loading="lazy"
               alt="Photo by Minh Pham"
               class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -46,7 +50,7 @@ function Categeroy() {
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80"
           >
             <img
-              src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Wireless/nbshagun/Clp/tiles/10May/D119951047_WLD_5Grevamp_March2024_Header_Mob_gif_1242x450.gif"
+              src={ecommerce_mobiles}
               loading="lazy"
               alt="Photo by Magicle"
               class="absolute inset-0 h-full w-full object-cover object-top transition duration-200 group-hover:scale-110"
@@ -62,7 +66,7 @@ function Categeroy() {
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80"
           >
             <img
-              src="https://m.media-amazon.com/images/G/31/IMG20/Furniture/2023/Header/3000X700_bestseller._SX3000_QL85_.jpg"
+              src={ecommerce_furniture}
               loading="lazy"
               alt="Photo by Martin Sanchez"
               class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -78,7 +82,7 @@ function Categeroy() {
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
           >
             <img
-              src="https://img.global.news.samsung.com/in/wp-content/uploads/2020/06/Flipkart_page_desktopV2.jpg"
+              src={ecommerce_tvs}
               loading="lazy"
               alt="Photo by Lorenzo Herrera"
               class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
