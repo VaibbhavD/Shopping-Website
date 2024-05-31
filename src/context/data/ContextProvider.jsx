@@ -517,6 +517,55 @@ const ContextProider = (props) => {
     }
   };
 
+  // All Users State
+  const [AllUsers, SetAllUsers] = useState([]);
+  const [AllOrders, SetAllOrders] = useState([]);
+
+  // Get All Users
+
+  const GetAllUsers = async () => {
+    SetPageloader(true);
+    const firedb = collection(fireDB, "Users");
+    try {
+      const q = await getDocs(firedb);
+      const cartitems = [];
+      q.forEach((doc) =>
+        cartitems.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+      console.log(cartitems);
+      SetAllUsers(cartitems);
+      SetPageloader(false);
+    } catch (error) {
+      console.log(error);
+      SetPageloader(false);
+    }
+  };
+
+  // Get All Orders
+  const GetAllOrders = async () => {
+    SetPageloader(true);
+    const firedb = collection(fireDB, "Orders");
+    try {
+      const q = await getDocs(firedb);
+      const cartitems = [];
+      q.forEach((doc) =>
+        cartitems.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+      console.log(cartitems);
+      SetAllOrders(cartitems);
+      SetPageloader(false);
+    } catch (error) {
+      console.log(error);
+      SetPageloader(false);
+    }
+  };
+
   // get Products UseEffect()
   useEffect(() => {
     GetAllCategory();
@@ -524,6 +573,8 @@ const ContextProider = (props) => {
     getProducts();
     GetUserProfile();
     GetOrders();
+    GetAllUsers();
+    GetAllOrders();
   }, [User]);
 
   return (
@@ -557,6 +608,8 @@ const ContextProider = (props) => {
         GetOrders,
         AllProducts,
         VerifyEmail,
+        AllUsers,
+        AllOrders,
       }}
     >
       {props.children}
