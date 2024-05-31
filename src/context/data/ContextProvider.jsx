@@ -238,6 +238,7 @@ const ContextProider = (props) => {
 
   // Get Furniture Products
   const GetFurnitureProduct = async () => {
+    SetPageloader(true);
     const firedb = doc(fireDB, "Products", "furniture");
     const furref = collection(firedb, "Items");
 
@@ -252,12 +253,15 @@ const ContextProider = (props) => {
       );
       console.log("1", AllProducts);
       SetAllProducts((prev) => ({ ...prev, furniture: cartitems }));
+      SetPageloader(false);
     } catch (error) {
       console.log(error);
+      SetPageloader(false);
     }
   };
   // Get Mobiles Products
   const GetMobileProducts = async () => {
+    SetPageloader(true);
     const firedb = doc(fireDB, "Products", "mobiles");
     const furref = collection(firedb, "Items");
 
@@ -272,12 +276,15 @@ const ContextProider = (props) => {
       );
       console.log("2", AllProducts);
       SetAllProducts((prev) => ({ ...prev, mobiles: cartitems }));
+      SetPageloader(false);
     } catch (error) {
       console.log(error);
+      SetPageloader(false);
     }
   };
   // Get Cloths Products
   const GetCloths = async () => {
+    SetPageloader(true);
     const firedb = doc(fireDB, "Products", "cloths");
     const furref = collection(firedb, "Items");
 
@@ -292,13 +299,16 @@ const ContextProider = (props) => {
       );
       console.log("3", AllProducts);
       SetAllProducts((prev) => ({ ...prev, cloths: cartitems }));
+      SetPageloader(false);
     } catch (error) {
       console.log(error);
+      SetPageloader(false);
     }
   };
   // Get Kitchen Products
-  const GetKitchenProducts = async () => {
-    const firedb = doc(fireDB, "Products", "kitchen");
+  const GetElectronicsProducts = async () => {
+    SetPageloader(true);
+    const firedb = doc(fireDB, "Products", "electronics");
     const furref = collection(firedb, "Items");
 
     try {
@@ -313,16 +323,18 @@ const ContextProider = (props) => {
         console.log(doc)
       );
       console.log("4", AllProducts);
-      SetAllProducts((prev) => ({ ...prev, kitchen: cartitems }));
+      SetAllProducts((prev) => ({ ...prev, electronics: cartitems }));
+      SetPageloader(false);
     } catch (error) {
       console.log(error);
+      SetPageloader(false);
     }
   };
 
   const GetAllCategory = () => {
     GetFurnitureProduct();
     GetMobileProducts();
-    GetKitchenProducts();
+    GetElectronicsProducts();
     GetCloths();
   };
   // Edit Produst
@@ -341,12 +353,19 @@ const ContextProider = (props) => {
       "Items",
       product.id
     );
+    // const productAll = doc(
+    //   fireDB,
+    //   "Products",
+    //   "All",
+    //   "Items",
+    //   product.id
+    // );
 
     try {
-      await setDoc(doc(fireDB, "Products", product.id), product);
+      // await setDoc(doc(fireDB, "Products", product.id), product);
       await updateDoc(productCategoryDocRef, product);
       toast.success("Product Update Successfully");
-      getProducts();
+      GetAllCategory();
       Setloader(false);
     } catch (error) {
       toast.error(error.message);
