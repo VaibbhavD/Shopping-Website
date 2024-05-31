@@ -48,7 +48,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className=" p-3 shadow-sm rounded-sm mt-2">
+        <div className=" p-3 shadow-sm rounded-sm mt-2 lg:pl-32">
           <div className="flex items-center space-x-2 font-semibold  leading-8">
             <span className="text-green-500">
               <svg
@@ -100,7 +100,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className=" p-3 shadow-sm rounded-sm mt-2">
+        <div className=" p-3 shadow-sm rounded-sm mt-2  lg:pl-32">
           <div className="flex items-center space-x-2 font-semibold  leading-8">
             <span className="text-green-500">
               <svg

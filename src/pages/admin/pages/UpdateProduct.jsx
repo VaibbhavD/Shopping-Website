@@ -11,7 +11,7 @@ function UpdateProduct(props) {
 
   const SubmitHandler = async (props) => {
     await Updateproduct();
-    navigate("/dashboard");
+    props.close();
   };
 
   return (

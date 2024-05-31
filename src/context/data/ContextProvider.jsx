@@ -121,9 +121,10 @@ const ContextProider = (props) => {
 
       // Send verification email
       await sendEmailVerification(user);
-      console.log("Verification email sent to " + user.email);
+      toast.success("Verification email sent to " + user.email);
     } catch (error) {
       console.log("Error sending email verification:", error);
+      toast.error(error.message);
     }
   };
 
