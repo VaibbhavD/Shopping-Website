@@ -12,17 +12,29 @@ import UpdateProduct from "../pages/UpdateProduct";
 
 function DashboardTab() {
   const context = useContext(myContext);
-  const { mode, AllProducts, loader, Editproduct, Deleteproduct, Pageloader } =
-    context;
+  const {
+    mode,
+    AllProducts,
+    AllOrders,
+    AllUsers,
+    Editproduct,
+    Deleteproduct,
+    Pageloader,
+  } = context;
   let [AddproductModal, SetAddproductModal] = useState(false);
   let [UpdateModal, SetUpdateModal] = useState(false);
 
-  const products =
-    AllProducts.cloths && Array.isArray(AllProducts.electronics)
-      ? AllProducts.electronics
-      : [];
+  let products = [];
+  if (AllProducts.cloths) {
+    for (const k in AllProducts) {
+      products = [...products, ...AllProducts[k]];
+    }
+  }
 
-  // console.log(products);
+  const allUsers = AllUsers ? AllUsers : [];
+  const allOrders = AllOrders ? AllOrders : [];
+
+  console.log(allUsers);
 
   function closeModal() {
     SetAddproductModal(false);
@@ -245,7 +257,7 @@ function DashboardTab() {
             {/* Order Details */}
             <TabPanel>
               {/* <Order order={order} setOrder={setOrder} setLoading={setLoading} /> */}
-              <div className="relative overflow-x-auto pb-16 md:px-10">
+              <div className="relative overflow-x-auto pb-10 md:px-10">
                 <h1
                   className=" text-center mb-5 text-3xl font-semibold pb-7 "
                   style={{ color: mode === "dark" ? "white" : "" }}
@@ -302,87 +314,95 @@ function DashboardTab() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr
-                      className="bg-gray-50 border-b  dark:border-gray-700"
-                      style={{
-                        backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                        color: mode === "dark" ? "white" : "",
-                      }}
-                    >
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        3393939
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-black whitespace-nowrap"
-                      >
-                        <img
-                          className="w-16"
-                          src="https://dummyimage.com/720x400"
-                          alt="img"
-                        />
-                      </th>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        Title
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        ₹100
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        pots
-                      </td>
+                  {allOrders.map(
+                    (
+                      { PaymentId, Cart, addressInfo, date, bill, email },
+                      index
+                    ) => (
+                      <tbody>
+                        <tr
+                          className="bg-gray-50 border-b  dark:border-gray-700"
+                          style={{
+                            backgroundColor:
+                              mode === "dark" ? "rgb(46 49 55)" : "",
+                            color: mode === "dark" ? "white" : "",
+                          }}
+                        >
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {PaymentId}
+                          </td>
+                          <th
+                            scope="row"
+                            className="px-6 py-4 font-medium text-black whitespace-nowrap"
+                          >
+                            <img
+                              className="w-16"
+                              src={Cart[0].imageUrl}
+                              alt="img"
+                            />
+                          </th>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {Cart[0].title}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            ₹{bill}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {Cart[0].category}
+                          </td>
 
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        name
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        india
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        82828
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        929929929929
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        kkakka@gmail.com
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        12 Aug 2019
-                      </td>
-                    </tr>
-                  </tbody>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {addressInfo.FirstName}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {addressInfo.City + " " + addressInfo.State}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {addressInfo.ZipCode}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {addressInfo.PhoneNo}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {email}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {date}
+                          </td>
+                        </tr>
+                      </tbody>
+                    )
+                  )}
                 </table>
               </div>
             </TabPanel>
@@ -412,77 +432,72 @@ function DashboardTab() {
                       </th>
 
                       <th scope="col" className="px-6 py-3">
-                        Name
+                        FirstName
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Address
+                        LastName
                       </th>
                       <th scope="col" className="px-6 py-3">
-                        Pincode
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Phone Number
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Email
+                        Email{" "}
                       </th>
                       <th scope="col" className="px-6 py-3">
                         Date
                       </th>
+                      <th scope="col" className="px-6 py-3">
+                        ID
+                      </th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr
-                      className="bg-gray-50 border-b  dark:border-gray-700"
-                      style={{
-                        backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-                        color: mode === "dark" ? "white" : "",
-                      }}
-                    >
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        1.
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        Name
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        Address
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        181919
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        1991818818
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        kkk@gmail.com
-                      </td>
-                      <td
-                        className="px-6 py-4 text-black "
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        12 Aug 2019
-                      </td>
-                    </tr>
-                  </tbody>
+                  {allUsers &&
+                    allUsers.map((user, index) => (
+                      <tbody>
+                        <tr
+                          className="bg-gray-50 border-b  dark:border-gray-700"
+                          style={{
+                            backgroundColor:
+                              mode === "dark" ? "rgb(46 49 55)" : "",
+                            color: mode === "dark" ? "white" : "",
+                          }}
+                        >
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {index + 1}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {user.FirstName}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {user.LastName}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {user.email}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {user.date}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {user.uid}
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))}
                 </table>
               </div>
             </TabPanel>
