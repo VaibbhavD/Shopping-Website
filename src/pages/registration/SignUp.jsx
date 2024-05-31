@@ -40,6 +40,11 @@ function SignUp() {
         email: email,
         uid: User.user.uid,
         time: Timestamp.now(),
+        date: new Date().toLocaleString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
       };
       const Userref = collection(fireDB, "Users");
       await addDoc(Userref, UserDetails);
