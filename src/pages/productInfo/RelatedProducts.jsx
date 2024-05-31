@@ -13,7 +13,7 @@ function RelatedProducts({ product }) {
     for (const key in AllProducts) {
       console.log(key);
       if (key == category) {
-        Setproducts(AllProducts[key]);
+        Setproducts(AllProducts[key].slice(0, 8));
         break;
       }
     }
@@ -86,6 +86,15 @@ function RelatedProducts({ product }) {
               </li>
             ))}
           </ul>
+
+          <div class="md:pt-8  pt-4 text-center">
+            <Link
+              to={`/category/ ${product.category}`}
+              class="mb-2 me-2 text-gray-800 rounded-lg border border-gray-200 bg-stone-100 px-5 py-2.5 text-sm font-medium  hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+            >
+              View more reviews
+            </Link>
+          </div>
         </div>
       )}
     </section>
