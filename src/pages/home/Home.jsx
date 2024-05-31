@@ -16,6 +16,9 @@ import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 function Home() {
   const context = useContext(Context);
   const { Pageloader, AllProducts } = context;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [AllProducts]);
 
   const clothsproduct =
     AllProducts.cloths && Array.isArray(AllProducts.cloths)

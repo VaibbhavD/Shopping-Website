@@ -16,6 +16,9 @@ function ProductInfo() {
   const { id } = useParams();
 
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product]);
 
   useEffect(() => {
     for (let category in AllProducts) {
