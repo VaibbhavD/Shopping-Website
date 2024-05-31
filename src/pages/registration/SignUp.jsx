@@ -32,6 +32,7 @@ function SignUp() {
     try {
       const User = await createUserWithEmailAndPassword(Auth, email, password);
       localStorage.setItem("User", JSON.stringify(User));
+      localStorage.setItem("Password", JSON.stringify(password));
       dispatch(AuthActions.Login(email));
       const UserDetails = {
         FirstName: firstname,

@@ -24,6 +24,7 @@ function Login() {
     try {
       const user = await signInWithEmailAndPassword(Auth, email, password);
       localStorage.setItem("User", JSON.stringify(user));
+      localStorage.setItem("Password", JSON.stringify(password));
       dispatch(AuthActions.Login(email));
       UserLogin(user);
 
