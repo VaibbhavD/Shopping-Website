@@ -12,10 +12,15 @@ import UpdateProduct from "../pages/UpdateProduct";
 
 function DashboardTab() {
   const context = useContext(myContext);
-  const { mode, products, loader, Editproduct, Deleteproduct, Pageloader } =
+  const { mode, AllProducts, loader, Editproduct, Deleteproduct, Pageloader } =
     context;
   let [AddproductModal, SetAddproductModal] = useState(false);
   let [UpdateModal, SetUpdateModal] = useState(false);
+
+  const products =
+    AllProducts.cloths && Array.isArray(AllProducts.electronics)
+      ? AllProducts.electronics
+      : [];
 
   // console.log(products);
 
