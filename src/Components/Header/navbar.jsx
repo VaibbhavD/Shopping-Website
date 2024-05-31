@@ -8,6 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthActions } from "../../redux/AuthSlice";
 import { toast } from "react-toastify";
+import Logo from "../../assets/Images/Logo";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -322,7 +323,7 @@ export default function Navbar() {
             <div className="flex h-16 items-center w-full">
               <button
                 type="button"
-                className="rounded-md bg-gray-500 p-2 text-stone-100 lg:hidden"
+                className="rounded-md bg-gray-300 p-2 text-gray-600 lg:hidden"
                 onClick={() => setOpen(true)}
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(80 82 87)" : "",
@@ -354,7 +355,7 @@ export default function Navbar() {
                       className=" text-2xl font-bold text-black  px-2 py-1 rounded"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      E-Commerce
+                      <Logo />
                     </h1>
                   </div>
                 </NavLink>
