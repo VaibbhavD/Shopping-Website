@@ -36,12 +36,12 @@ function ProductCard({ products }) {
                     <Link to={`/product/${product.id}`}>
                       <img
                         src={product.imageUrl}
-                        class="object-cover  select-none w-full h-auto bg-gray-200 rounded aspect-[5/6] lg:aspect-[3/4] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
+                        class="object-contain  select-none w-full h-auto  rounded aspect-[5/6] lg:aspect-[3/4] xl:aspect-[3/4] hover:ease-in-out hover:scale-105 duration-500"
                         alt="photo gallery image 07"
                       />
                     </Link>
                   </div>
-                  <div className="p-5 border-t-2">
+                  <div className="p-4 border-t-2">
                     <h2
                       className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
                       style={{ color: mode === "dark" ? "white" : "" }}
@@ -49,7 +49,7 @@ function ProductCard({ products }) {
                       {product.brand}
                     </h2>
                     <h1
-                      className="title-font text-lg font-medium text-gray-900 mb-1"
+                      className="title-font min-h-12 text-lg font-medium text-gray-900 mb-1"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       {product.title}
