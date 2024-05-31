@@ -7,7 +7,7 @@ import PageLoader from "../../Components/Loader/PageLoader";
 
 const ProfilePage = () => {
   const context = useContext(Context);
-  const { mode, UserProfile, User, Pageloader } = context;
+  const { mode, UserProfile, VerifyEmail, Pageloader } = context;
 
   const [isopen, Setisopen] = useState(false);
   const OpenCheckoutpage = () => {
@@ -81,9 +81,12 @@ const ProfilePage = () => {
               <div className="grid grid-cols-2">
                 <div className="px-4 py-2 font-semibold">Email</div>
                 <div className="px-4 py-2">
-                  <p>{User.user.email}</p>
+                  <p>{UserProfile.email}</p>
                   <div className="mt-4">
-                    <button className="p-2 text-white text-sm font-semibold rounded-lg bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline focus:bg-green-700 hover:shadow-xs">
+                    <button
+                      className="p-2 text-white text-sm font-semibold rounded-lg bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline focus:bg-green-700 hover:shadow-xs"
+                      onClick={() => VerifyEmail()}
+                    >
                       Verify Email
                     </button>
                   </div>
