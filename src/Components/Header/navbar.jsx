@@ -23,6 +23,7 @@ export default function Navbar() {
   const LogoutHandler = () => {
     localStorage.removeItem("User");
     localStorage.removeItem("Mode");
+    localStorage.removeItem("Password");
     dispatch(AuthActions.Logout());
     toast.success("Logout Successfull");
     window.location.href = "/login";
