@@ -53,7 +53,7 @@ function Categeroy() {
               src={ecommerce_mobiles}
               loading="lazy"
               alt="Photo by Magicle"
-              class="absolute inset-0 h-full w-full object-cover object-top transition duration-200 group-hover:scale-110"
+              class="absolute inset-0 h-full w-full object-cover object-left md:object-top  transition duration-200 group-hover:scale-110"
             />
 
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
@@ -69,7 +69,7 @@ function Categeroy() {
               src={ecommerce_furniture}
               loading="lazy"
               alt="Photo by Martin Sanchez"
-              class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+              class="absolute inset-0 h-full w-full object-cover object-right md:object-center transition duration-200 group-hover:scale-110"
             />
 
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
