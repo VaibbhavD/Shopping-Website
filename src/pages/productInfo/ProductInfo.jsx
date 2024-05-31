@@ -16,7 +16,6 @@ function ProductInfo() {
   const { id } = useParams();
 
   const navigate = useNavigate();
-  // console.log(products);
 
   useEffect(() => {
     for (let category in AllProducts) {
@@ -41,7 +40,7 @@ function ProductInfo() {
         {!product ? (
           <PageLoader />
         ) : (
-          <div className="container pt-5 md:py-10 md:pl-20">
+          <div className="container pt-5 md:pl-20">
             {/* Back button */}
             <button
               className={`p-3  duration-200 rounded-full ${
@@ -69,7 +68,7 @@ function ProductInfo() {
               </svg>
             </button>
             <div
-              className={`lg:w-4/5 mx-auto flex flex-wrap gap-2 p-1 ${
+              className={`lg:w-4/5 mx-auto flex flex-wrap gap-2 p-1 lg:ml-60 ${
                 mode === "dark" ? "bg-gray-500 text-stone-100" : ""
               }`}
               style={{
