@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../../context/data/Context";
+import ecommerce_mens_cloths from "../../assets/Images/ecommerce_mens_cloths.jpg";
 
 function Clothing() {
   const context = useContext(Context);

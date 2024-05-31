@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../../context/data/Context";
+import ecommercesmart_phones from "../../assets/Images/ecommercesmart_phones.gif";
 
 function Mobile() {
   const context = useContext(Context);
@@ -34,7 +35,7 @@ function Mobile() {
         </div>
         <div class="md:h-[450px] h-52  p-2">
           <img
-            src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Wireless/nbshagun/Clp/tiles/10May/D119951047_WLD_5Grevamp_March2024_Header_Mob_gif_1242x450.gif"
+            src={ecommercesmart_phones}
             class="w-full h-full  shadow-[0_2px_22px_-10px_rgba(93,96,127,0.2)]"
             alt="Dining Experience"
           />
