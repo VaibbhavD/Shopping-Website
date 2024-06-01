@@ -562,7 +562,7 @@ const ContextProider = (props) => {
 
   //  Auto LogOut
   const startAutoLogoutTimer = () => {
-    const TIMEOUT_DURATION = 1 * 60 * 1000; // 30 minutes in milliseconds
+    const TIMEOUT_DURATION = 30 * 60 * 1000; // 30 minutes in milliseconds
 
     // Clear existing timeout, if any
     clearTimeout(window.logoutTimer);
