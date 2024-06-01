@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function ProductCard({ products }) {
   const context = useContext(Context);
-  const { mode } = context;
+  const { mode, AddtoCart } = context;
 
   return (
     <section>
@@ -55,12 +55,12 @@ function ProductCard({ products }) {
                       ₹ {product.price}
                     </p>
                     <div className=" flex justify-center">
-                      <Link
-                        to={`/product/${product.id}`}
+                      <button
+                        onClick={() => AddtoCart(product)}
                         className="flex justify-center focus:outline-none text-white bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full  py-2"
                       >
                         Add to Cart
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
