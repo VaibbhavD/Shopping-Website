@@ -602,7 +602,7 @@ const ProductReview1 = (props) => {
               </div>
 
               <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
-                <p class="text-base font-normal  dark:text-gray-400">
+                <p class="text-base font-normal  ">
                   My old IMAC was from 2013. This replacement was well needed.
                   Very fast, and the colour matches my office set up perfectly.
                   The display is out of this world and I’m very happy with this
@@ -610,9 +610,7 @@ const ProductReview1 = (props) => {
                 </p>
 
                 <div class="flex items-center gap-4">
-                  <p class="text-sm font-medium  dark:text-gray-400">
-                    Was it helpful to you?
-                  </p>
+                  <p class="text-sm font-medium ">Was it helpful to you?</p>
                   <div class="flex items-center">
                     <input
                       id="reviews-radio-5"
@@ -623,7 +621,7 @@ const ProductReview1 = (props) => {
                     />
                     <label
                       for="reviews-radio-5"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
+                      class="ms-2 text-sm font-medium  "
                     >
                       {" "}
                       Yes: 0{" "}
@@ -639,7 +637,7 @@ const ProductReview1 = (props) => {
                     />
                     <label
                       for="reviews-radio-6"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
+                      class="ms-2 text-sm font-medium  "
                     >
                       No: 0{" "}
                     </label>
@@ -713,12 +711,8 @@ const ProductReview1 = (props) => {
                 </div>
 
                 <div class="space-y-0.5">
-                  <p class="text-base font-semibold  dark:text-white">
-                    Roberta Casas
-                  </p>
-                  <p class="text-sm font-normal  dark:text-gray-400">
-                    November 18 2023 at 15:35
-                  </p>
+                  <p class="text-base font-semibold ">Roberta Casas</p>
+                  <p class="text-sm font-normal  ">November 18 2023 at 15:35</p>
                 </div>
 
                 <div class="inline-flex items-center gap-1">
