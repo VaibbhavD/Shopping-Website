@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import MainProductPage from "./pages/MainProductPage.jsx/MainProductPage";
 import ProfilePage from "./pages/Profile/Profile";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.authUser.isLoggedin);
