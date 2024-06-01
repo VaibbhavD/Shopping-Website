@@ -8,12 +8,12 @@ function Track() {
   return (
     <div>
       <section
-        className="text-gray-600 body-font pt-10 cursor-default"
+        className="text-gray-600 body-font pt-3 md:pt-8 cursor-default"
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
       >
         <div className="container md:py-5 ">
           <div className="grid grid-cols-3 w-full md:px-4 gap-0">
-            <div className="pl-2 p-1 w-full text-center">
+            <div className=" pl-1 p-1 w-full text-center">
               <div
                 className={`shadow-xl hover:shadow-md hover:shadow-gray-200  py-7 rounded-lg ${
                   mode === "dark" ? "bg-gray-600 text-white " : "bg-pink-100"
@@ -38,10 +38,10 @@ function Track() {
                   className="title-font font-medium md:text-lg text-base text-gray-900 hover:scale-110 duration-500 w-full"
                   style={{ color: mode === "dark" ? "white" : "" }}
                 >
-                  Quality Products
+                  Quality Product
                 </h2>
                 <p className="text-xs leading-relaxed lg:text-base">
-                  Our T-Shirts 100% made of cotton.
+                  100% Quality Products
                 </p>
               </div>
             </div>

@@ -8,7 +8,7 @@ function Testimonal() {
   return (
     <>
       <div
-        class={`mt-0 relative bg-white pt-10 px-10${
+        class={`mt-0 relative bg-white pt-1 md:pt-8 px-10${
           mode === "dark" ? "bg-[rgb(46 49 55)]" : "white"
         }`}
         style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
@@ -186,7 +186,7 @@ function Testimonal() {
             </div>
           </div>
         </section>
-        <div className="grid grid-col-1 grid-rows-2 justify-center gap-3 items-center pb-10">
+        <div className="grid grid-col-1 grid-rows-2 justify-center gap-3 items-center pb-5">
           <h1 className="text-3xl font-bold text-pink-500">
             Vaibhav Dhamanage
           </h1>

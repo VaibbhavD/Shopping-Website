@@ -6,17 +6,17 @@ function FurnitureSection() {
   const { mode } = context;
   return (
     <div
-      class="font-sans text-[#333]  max-md:max-w-md mx-auto pt-10 lg:px-6 "
+      class="font-sans text-[#333]  max-md:max-w-md mx-auto  lg:px-6 "
       style={{
         backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-        color: mode === "dark" ? "white" : "",
+        color: mode === "dark" ? "white" : "black",
       }}
     >
-      <h2 class="text-2xl font-bold lg:text-3xl ml-2  dark:text-white  ">
+      <h2 class="text-2xl font-bold lg:text-3xl ml-2 md:pt-8 dark:text-white  ">
         Home & Furnitures
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
       </h2>
-      <div class="grid md:grid-cols-2 items-center md:gap-8 gap-6 ">
+      <div class="grid md:grid-cols-2 items-center md:gap-5 ">
         <div class="max-md:order-1 max-md:text-center px-10">
           <p class="hidden md:block text-sm font-bold text-pink-600">
             World's Best Bestselling Furniture
