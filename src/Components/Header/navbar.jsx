@@ -25,9 +25,9 @@ export default function Navbar() {
     localStorage.removeItem("User");
     localStorage.removeItem("Mode");
     localStorage.removeItem("Password");
-    dispatch(AuthActions.Logout());
     toast.success("Logout Successfull");
-    window.location.href = "/login";
+    dispatch(AuthActions.Logout());
+    navigate("/");
   };
 
   const HandleChange = (e) => {
@@ -432,9 +432,9 @@ export default function Navbar() {
                             ? "text-sm font-medium  cursor-pointer  bg-gray-700"
                             : "text-sm font-medium cursor-pointer text-gray-700 bg-stone-100"
                         }`}
-                        value="kitchen"
+                        value="electronics"
                       >
-                        Kitchen
+                        Electronics
                       </option>
                     </select>
                   </div>
