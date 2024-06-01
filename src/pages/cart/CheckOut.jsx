@@ -62,7 +62,6 @@ function CheckOut(props) {
       description: "for testing purpose",
       handler: async function (response) {
         // console.log(response)
-        toast.success("Order Placed");
         const PaymentId = response.razorpay_payment_id;
 
         const OrderInfo = {
@@ -92,12 +91,14 @@ function CheckOut(props) {
           console.log(cartsnapshot);
           cartsnapshot.forEach(async (doc) => {
             await deleteDoc(doc.ref);
-            GetCart();
-            GetOrders();
+            await Promise.all([GetCart(), GetOrders()]);
+
+            toast.success("Order Placed");
             props.close();
           });
         } catch (error) {
           console.log(error);
+          toast.error(error.message);
         }
       },
 
@@ -106,6 +107,7 @@ function CheckOut(props) {
       },
     };
     var pay = new window.Razorpay(options);
+
     pay.open();
   };
 

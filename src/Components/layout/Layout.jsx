@@ -11,15 +11,15 @@ import { toast } from "react-toastify";
 function Layout({ children }) {
   const [isOpen, SetisOpen] = useState();
 
-  useEffect(() => {
-    setTimeout(() => {
-      toast.info("Login To Unlock More Features");
-    }, 10000);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     toast.info("Login To Unlock More Features");
+  //   }, 10000);
 
-    return () => {
-      clearTimeout();
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout();
+  //   };
+  // }, []);
 
   ScrollToTop();
 
