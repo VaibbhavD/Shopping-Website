@@ -593,7 +593,6 @@ export default function Navbar() {
                             : "https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
                         }
                         alt="Profile"
-                        alt="Dan_Abromov"
                       />
                     </NavLink>
                   </div>
