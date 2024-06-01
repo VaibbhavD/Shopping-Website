@@ -6,6 +6,10 @@ import ecommerce_cloths from "../../assets/Images/ecommerce_mens_cloths.jpg";
 import ecommerce_furniture from "../../assets/Images/ecommerce_furniture.jpg";
 import ecommerce_mobiles from "../../assets/Images/ecommercesmart_phones.gif";
 import ecommerce_tvs from "../../assets/Images/ecommerce_Tvs.jpg";
+import furniture2 from "../../assets/Images/furniture2.png";
+import cloths2 from "../../assets/Images/cloths2.png";
+import mobile2 from "../../assets/Images/mobile2.png";
+import tv2 from "../../assets/Images/tv2.png";
 
 function Categeroy() {
   const context = useContext(Context);
@@ -13,8 +17,8 @@ function Categeroy() {
 
   return (
     <div
-      class="bg-white dark:bg-gray-800  h-full pt-1 lg:p-3"
-      style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
+      class="bg-white dark:bg-gray-800  h-full lg:p-3"
+      style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "white" }}
     >
       <div class="mx-auto max-w-screen-2xl px-2  md:px-6">
         <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-6">
@@ -35,30 +39,47 @@ function Categeroy() {
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
           >
             <img
+              src={cloths2}
+              loading="lazy"
+              alt="Photo by Minh Pham"
+              class="lg:hidden absolute inset-0 h-full w-full object-cover object-top transition duration-200 group-hover:scale-110"
+            />
+            <img
               src={ecommerce_cloths}
               loading="lazy"
               alt="Photo by Minh Pham"
-              class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+              class="hidden lg:block absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
             />
 
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
 
-            <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg"></span>
+            <span class="relative ml-1 mb-1  p-1 px-2 inline-block text-xs text-white md:text-lg">
+              Mens Wear
+            </span>
           </Link>
+
           <Link
             to={"/category/ mobiles"}
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80"
           >
             <img
+              src={mobile2}
+              loading="lazy"
+              alt="Photo by Magicle"
+              class="lg:hidden absolute inset-0 h-full  w-full object-cover object-left md:object-top  transition duration-200 group-hover:scale-110"
+            />
+            <img
               src={ecommerce_mobiles}
               loading="lazy"
               alt="Photo by Magicle"
-              class="absolute inset-0 h-full w-full object-cover object-left md:object-top  transition duration-200 group-hover:scale-110"
+              class="hidden lg:block absolute inset-0 h-full  w-full object-cover object-left md:object-top  transition duration-200 group-hover:scale-110"
             />
 
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
 
-            <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg"></span>
+            <span class="relative ml-1 mb-1 p-1 px-2  inline-block text-xs text-white md:text-lg">
+              Smart Phones
+            </span>
           </Link>
 
           <Link
@@ -66,15 +87,23 @@ function Categeroy() {
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80"
           >
             <img
+              src={furniture2}
+              loading="lazy"
+              alt="Photo by Martin Sanchez"
+              class="md:hidden absolute inset-0 h-full w-full object-cover object-right md:object-center transition duration-200 group-hover:scale-110"
+            />
+            <img
               src={ecommerce_furniture}
               loading="lazy"
               alt="Photo by Martin Sanchez"
-              class="absolute inset-0 h-full w-full object-cover object-right md:object-center transition duration-200 group-hover:scale-110"
+              class="hidden md:block absolute inset-0 h-full w-full object-cover object-right md:object-center transition duration-200 group-hover:scale-110"
             />
 
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
 
-            <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg"></span>
+            <span class="relative ml-1 mb-1 bg- p-1 px-2 rounded-md inline-block text-xs text-white md:text-lg">
+              Home & Furnitures
+            </span>
           </Link>
 
           <Link
@@ -82,7 +111,7 @@ function Categeroy() {
             class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
           >
             <img
-              src={ecommerce_tvs}
+              src={tv2}
               loading="lazy"
               alt="Photo by Lorenzo Herrera"
               class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -90,7 +119,9 @@ function Categeroy() {
 
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50"></div>
 
-            <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg"></span>
+            <span class="relative ml-1 mb-1  p-1 px-2 inline-block text-xs text-white md:text-lg">
+              Smart TV's
+            </span>
           </Link>
         </div>
       </div>
