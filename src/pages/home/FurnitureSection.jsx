@@ -12,7 +12,7 @@ function FurnitureSection() {
         color: mode === "dark" ? "white" : "black",
       }}
     >
-      <h2 class="text-2xl font-bold lg:text-3xl ml-2 md:pt-8 dark:text-white  ">
+      <h2 class="text-2xl font-bold lg:text-3xl ml-2 md:pt-8  ">
         Home & Furnitures
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
       </h2>

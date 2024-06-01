@@ -13,7 +13,7 @@ function Mobile() {
         color: mode === "dark" ? "white" : "black",
       }}
     >
-      <h2 class="text-2xl font-bold lg:text-3xl ml-2  dark:text-white lg:pl-1">
+      <h2 class="text-2xl font-bold lg:text-3xl ml-2 lg:pl-1">
         Mobile & Accessories
         <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
       </h2>
