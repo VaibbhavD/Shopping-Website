@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../../firebase/FirebaseConfig";
 import { AuthActions } from "../../redux/AuthSlice";
 import { useDispatch } from "react-redux";
+import shoppe from "../../assets/Images/shoppe.png";
 
 function Login() {
   const context = useContext(Context);
@@ -42,7 +43,7 @@ function Login() {
       <Navbar />
       <div
         class="py-16 p-4 md:m-0 lg:mb-0 pb-44 lg:pb-16 "
-        style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
+        style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "white" }}
       >
         <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl z-50 ">
           <div
@@ -61,13 +62,15 @@ function Login() {
                 : "bg-white text-gray-600"
             }`}
           >
-            <h2 class="text-2xl font-semibold  text-center">Brand</h2>
+            <div className=" pb-2 flex justify-center">
+              <img src={shoppe} width={150} />
+            </div>
             <p class="text-xl text-center">
               Welcome <span className="text-pink-500">back!</span>
             </p>
             <a
               href="#"
-              class={`flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100 ${
+              class={`flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100 hover:text-gray-700 ${
                 mode === "dark" ? "bg-gray-600" : ""
               }`}
             >

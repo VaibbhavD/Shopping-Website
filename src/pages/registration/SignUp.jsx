@@ -9,6 +9,7 @@ import { Timestamp, addDoc, collection } from "firebase/firestore";
 import Loader from "../../Components/Loader/Loader";
 import { AuthActions } from "../../redux/AuthSlice";
 import { useDispatch } from "react-redux";
+import shoppe from "../../assets/Images/shoppe.png";
 
 function SignUp() {
   const context = useContext(Context);
@@ -82,13 +83,16 @@ function SignUp() {
           </div>
           {/*Right Section form*/}
           <div
-            class={`w-full p-8 pt-4 lg:w-1/2  ${
+            class={`w-full px-7 pb-5 pt-4 lg:w-1/2  ${
               mode === "dark"
                 ? "bg-gray-500 text-stone-100"
                 : "bg-white text-gray-600"
             }`}
           >
-            <h2 class="text-2xl font-semibold  text-center">Welcome</h2>
+            <div className=" flex justify-center">
+              <img src={shoppe} width={150} />
+            </div>
+
             <p class="text-xl text-center">
               Create <span className="text-pink-600">New Account</span>
             </p>
@@ -96,7 +100,7 @@ function SignUp() {
             {/* Google Signup */}
             <a
               href="#"
-              class={`flex items-center justify-center mt-1  rounded-lg shadow-md hover:bg-gray-100 ${
+              class={`flex items-center justify-center mt-1  rounded-lg shadow-md hover:bg-gray-100 hover:text-gray-700  ${
                 mode === "dark" ? "bg-gray-600" : ""
               }`}
             >
