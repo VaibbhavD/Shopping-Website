@@ -52,8 +52,8 @@ function CheckOut(props) {
 
     // RozarPay Method
     var options = {
-      key: "rzp_test_XRtjw8gXhATuTr",
-      key_secret: "0kqIyXHmRLpb4aPbNVrMhqnk",
+      key: import.meta.env.VITE_FIREBASE_KEY,
+      key_secret: import.meta.env.VITE_FIREBASE_SECRET_KEY,
       amount: parseInt(props.total * 100),
       currency: "INR",
       order_receipt:
