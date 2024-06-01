@@ -42,7 +42,6 @@ const ContextProider = (props) => {
 
   // Create New User Profile
   const NewUserProfile = async (user) => {
-    SetPageloader(true);
     console.log(user.email);
     const dbref = doc(fireDB, "users", user.email);
     const profileref = collection(dbref, "Profile");
@@ -50,10 +49,8 @@ const ContextProider = (props) => {
       await addDoc(profileref, { ...user });
       SetUser({ user: { ...user } });
       GetUserProfile();
-      SetPageloader(false);
     } catch (error) {
       console.log(error);
-      SetPageloader(false);
     }
   };
 
