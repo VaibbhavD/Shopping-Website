@@ -315,7 +315,7 @@ export default function Navbar() {
 
         <nav
           aria-label="Top"
-          className={` px-4  ${
+          className={` px-3  ${
             mode === "dark" ? "bg-gray-700 text-stone-100" : "bg-stone-100"
           }`}
         >
@@ -348,11 +348,11 @@ export default function Navbar() {
               </button>
 
               {/* Logo E-commerce*/}
-              <div className="ml-4 flex lg:ml-6">
+              <div className="ml-3 flex lg:ml-6">
                 <NavLink to={"/"} className="flex">
                   <div className="flex ">
                     <h1
-                      className=" text-2xl font-bold text-black  px-2 py-1 rounded"
+                      className=" text-2xl font-bold text-black py-1 rounded"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       <Logo />
