@@ -147,10 +147,10 @@ function ProductInfo() {
                 </div>
                 <div className="pb-5 flex ">
                   <button
-                    className="  text-white bg-green-600 border-0 p-2 w-40 flex justify-center px-6 focus:outline-none hover:bg-green-500 rounded"
+                    className="  text-white bg-green-600 border-0 p-2 w-28 flex justify-center px-6 focus:outline-none hover:bg-green-500 rounded"
                     onClick={() => AddtoCart(product)}
                   >
-                    {loader ? <Loader /> : "Add To Cart"}
+                    {loader ? <Loader /> : "Buy Now"}
                   </button>
                   <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                     <svg
