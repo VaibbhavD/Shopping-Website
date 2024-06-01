@@ -3,8 +3,8 @@ import Navbar from "../../Components/Header/navbar";
 import Context from "../../context/data/Context";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Auth, fireDB } from "../../firebase/FirebaseConfig";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { Auth, fireDB, googleProvider } from "../../firebase/FirebaseConfig";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import Loader from "../../Components/Loader/Loader";
 import { AuthActions } from "../../redux/AuthSlice";
@@ -63,6 +63,42 @@ function SignUp() {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    console.log("Hi");
+    Setloader(true);
+    try {
+      const result = await signInWithPopup(Auth, googleProvider);
+      const user = result.user;
+
+      localStorage.setItem("User", JSON.stringify(user));
+      dispatch(AuthActions.Login(user.email));
+
+      const UserDetails = {
+        FirstName: user.displayName.split(" ")[0],
+        LastName: user.displayName.split(" ").slice(1).join(" "),
+        email: user.email,
+        uid: user.uid,
+        time: Timestamp.now(),
+        date: new Date().toLocaleString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
+      };
+
+      const userRef = collection(fireDB, "Users");
+      await addDoc(userRef, UserDetails);
+
+      // Assuming NewUserProfile is a function that updates the user profile in your app
+      NewUserProfile(UserDetails);
+
+      toast.success("SignUp successfully with Google");
+      Setloader(false);
+    } catch (error) {
+      toast.error(error.message);
+      Setloader(false);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -124,7 +160,10 @@ function SignUp() {
                   />
                 </svg>
               </div>
-              <h1 class={`px-4 py-3 w-5/6 text-center font-bold `}>
+              <h1
+                class={`px-4 py-3 w-5/6 text-center font-bold `}
+                onClick={handleGoogleSignIn}
+              >
                 Sign up with Google
               </h1>
             </a>
