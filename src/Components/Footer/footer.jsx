@@ -2,6 +2,7 @@ import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import myContext from "../../context/data/Context";
+import shoppe from "../../assets/Images/shoppe.png";
 
 export default function Footer() {
   const context = useContext(myContext);
@@ -134,19 +135,12 @@ export default function Footer() {
         }}
       >
         <div
-          className={`container px-5 py-3 mx-auto flex items-center sm:flex-row flex-col ${
+          className={`container px-5  mx-auto flex items-center sm:flex-row flex-col ${
             mode === "dark" ? "bg-gray-700" : "bg-gray-400"
           }`}
         >
-          <Link to={"/"} className="flex">
-            <div className="flex ">
-              <h1
-                className=" text-2xl font-bold text-black  px-2 py-1 rounded"
-                style={{ color: mode === "dark" ? "white" : "" }}
-              >
-                <span className="text-pink-500">Vaib</span>hav D
-              </h1>
-            </div>
+          <Link to={"/"} className="pb-5">
+            <img src={shoppe} width={150} />
           </Link>
           <p
             className="text-sm text-white sm:ml-6 sm:mt-0 mt-4"
