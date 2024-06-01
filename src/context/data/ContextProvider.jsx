@@ -18,8 +18,12 @@ import { Auth, fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
 import { getIdToken, signInWithEmailAndPassword } from "firebase/auth";
 import { sendEmailVerification } from "firebase/auth";
+import { AuthActions } from "../../redux/AuthSlice";
+import { useDispatch } from "react-redux";
 
 const ContextProider = (props) => {
+  const dispatch = useDispatch();
+
   const loginuser = JSON.parse(localStorage.getItem("User"));
   const Mode = localStorage.getItem("Mode");
 
@@ -38,6 +42,7 @@ const ContextProider = (props) => {
 
   const UserLogin = (user) => {
     SetUser(user);
+    startAutoLogoutTimer();
   };
 
   // Create New User Profile
@@ -121,7 +126,7 @@ const ContextProider = (props) => {
       toast.success("Verification email sent to " + user.email);
     } catch (error) {
       console.log("Error sending email verification:", error);
-      toast.error(error.message);
+      toast.error("Try Again After Some Time");
     }
   };
 
@@ -351,16 +356,8 @@ const ContextProider = (props) => {
       "Items",
       product.id
     );
-    // const productAll = doc(
-    //   fireDB,
-    //   "Products",
-    //   "All",
-    //   "Items",
-    //   product.id
-    // );
 
     try {
-      // await setDoc(doc(fireDB, "Products", product.id), product);
       await updateDoc(productCategoryDocRef, product);
       toast.success("Product Update Successfully");
       GetAllCategory();
@@ -563,6 +560,49 @@ const ContextProider = (props) => {
     }
   };
 
+  //  Auto LogOut
+  const startAutoLogoutTimer = () => {
+    const TIMEOUT_DURATION = 1 * 60 * 1000; // 30 minutes in milliseconds
+
+    // Clear existing timeout, if any
+    clearTimeout(window.logoutTimer);
+
+    // Set a new timeout
+    window.logoutTimer = setTimeout(() => {
+      // Perform logout actions here
+      logout();
+    }, TIMEOUT_DURATION);
+  };
+
+  // Function to reset the auto logout timer on user activity
+  const resetAutoLogoutTimer = () => {
+    startAutoLogoutTimer();
+  };
+
+  // Function to handle logout
+  const logout = () => {
+    // Clear timeout
+    clearTimeout(window.logoutTimer);
+
+    // Clear user data from local storage
+    localStorage.removeItem("User");
+    localStorage.removeItem("Password");
+
+    // Perform any additional logout actions
+    dispatch(AuthActions.Logout());
+  };
+
+  // Add event listeners for user activity
+  useEffect(() => {
+    document.addEventListener("mousemove", resetAutoLogoutTimer);
+    document.addEventListener("keydown", resetAutoLogoutTimer);
+
+    // Cleanup event listeners on unmount
+    return () => {
+      document.removeEventListener("mousemove", resetAutoLogoutTimer);
+      document.removeEventListener("keydown", resetAutoLogoutTimer);
+    };
+  }, []);
   // get Products UseEffect()
   useEffect(() => {
     GetAllCategory();
