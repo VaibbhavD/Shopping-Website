@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Header/navbar";
 import Loader from "../../Components/Loader/Loader";
 import { toast } from "react-toastify";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Auth } from "../../firebase/FirebaseConfig";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { Auth, googleProvider } from "../../firebase/FirebaseConfig";
 import { AuthActions } from "../../redux/AuthSlice";
 import { useDispatch } from "react-redux";
 import shoppe from "../../assets/Images/shoppe.png";
@@ -13,7 +13,7 @@ import shoppe from "../../assets/Images/shoppe.png";
 function Login() {
   const context = useContext(Context);
   const { mode, loader, Setloader, UserLogin } = context;
-  const naviget = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, Setemail] = useState("");
@@ -31,7 +31,26 @@ function Login() {
 
       toast.success("Signin Successfully");
       Setloader(false);
-      naviget("/");
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message);
+      Setloader(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    Setloader(true);
+    try {
+      const result = await signInWithPopup(Auth, googleProvider);
+      const user = result.user;
+
+      localStorage.setItem("User", JSON.stringify(user));
+      dispatch(AuthActions.Login(user.email));
+      UserLogin(user);
+
+      toast.success("Signed in successfully with Google");
+      Setloader(false);
+      navigate("/");
     } catch (error) {
       toast.error(error.message);
       Setloader(false);
@@ -94,7 +113,10 @@ function Login() {
                   />
                 </svg>
               </div>
-              <h1 class={`px-4 py-3 w-5/6 text-center font-bold `}>
+              <h1
+                class={`px-4 py-3 w-5/6 text-center font-bold `}
+                onClick={handleGoogleSignIn}
+              >
                 Sign in with Google
               </h1>
             </a>
