@@ -219,21 +219,21 @@ export default function Navbar() {
                     </div>
                   )}
                   {/* About */}
-                  {!isLoggedin && (
-                    <div className="flow-root">
-                      <NavLink
-                        to={"/about"}
-                        className={({ isActive }) =>
-                          isActive
-                            ? "font-medium text-pink-500 "
-                            : "font-medium text-gray-900 "
-                        }
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        About
-                      </NavLink>
-                    </div>
-                  )}
+
+                  <div className="flow-root">
+                    <NavLink
+                      to={"/aboutus"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "font-medium text-pink-500 "
+                          : "font-medium text-gray-900 "
+                      }
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      About
+                    </NavLink>
+                  </div>
+
                   {/* Login */}
                   {!isLoggedin && (
                     <div className="flow-root">
