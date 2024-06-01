@@ -15,7 +15,7 @@ const ProductReview1 = (props) => {
       >
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <div class="flex items-center gap-2">
-            <h2 class="text-2xl font-semibold  dark:text-white">Reviews</h2>
+            <h2 class="text-2xl font-semibold  ">Reviews</h2>
 
             <div class="mt-2 flex items-center gap-2 sm:mt-0">
               <div class="flex items-center gap-0.5">
@@ -75,12 +75,10 @@ const ProductReview1 = (props) => {
                   <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
                 </svg>
               </div>
-              <p class="text-sm font-medium leading-none  dark:text-gray-400">
-                (4.6)
-              </p>
+              <p class="text-sm font-medium leading-none ">(4.6)</p>
               <a
                 href="#"
-                class="text-sm font-medium leading-none  underline hover:no-underline dark:text-white"
+                class="text-sm font-medium leading-none  underline hover:no-underline "
               >
                 {" "}
                 645 Reviews{" "}
@@ -243,7 +241,7 @@ const ProductReview1 = (props) => {
             </div>
           </div>
 
-          <div class="mt-6 divide-y divide-gray-200 dark:divide-gray-700">
+          <div class="mt-6 divide-y divide-gray-200 ">
             <div class="gap-3 pb-6 sm:flex sm:items-start">
               <div class="shrink-0 space-y-2 sm:w-48 md:w-72">
                 <div class="flex items-center gap-0.5">
@@ -309,17 +307,13 @@ const ProductReview1 = (props) => {
                 </div>
 
                 <div class="space-y-0.5">
-                  <p class="text-base font-semibold  dark:text-white">
-                    Micheal Gough
-                  </p>
-                  <p class="text-sm font-normal  dark:text-gray-400">
-                    November 18 2023 at 15:35
-                  </p>
+                  <p class="text-base font-semibold  ">Micheal Gough</p>
+                  <p class="text-sm font-normal  ">November 18 2023 at 15:35</p>
                 </div>
 
                 <div class="inline-flex items-center gap-1">
                   <svg
-                    class="h-5 w-5 text-primary-700 dark:text-primary-500"
+                    class="h-5 w-5 text-primary-700 "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -333,14 +327,12 @@ const ProductReview1 = (props) => {
                       clip-rule="evenodd"
                     />
                   </svg>
-                  <p class="text-sm font-medium  dark:text-white">
-                    Verified purchase
-                  </p>
+                  <p class="text-sm font-medium  ">Verified purchase</p>
                 </div>
               </div>
 
               <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
-                <p class="text-base font-normal  dark:text-gray-400">
+                <p class="text-base font-normal  ">
                   My old IMAC was from 2013. This replacement was well needed.
                   Very fast, and the colour matches my office set up perfectly.
                   The display is out of this world and I’m very happy with this
@@ -348,9 +340,7 @@ const ProductReview1 = (props) => {
                 </p>
 
                 <div class="flex items-center gap-4">
-                  <p class="text-sm font-medium  dark:text-gray-400">
-                    Was it helpful to you?
-                  </p>
+                  <p class="text-sm font-medium  ">Was it helpful to you?</p>
                   <div class="flex items-center">
                     <input
                       id="reviews-radio-1"
@@ -361,7 +351,7 @@ const ProductReview1 = (props) => {
                     />
                     <label
                       for="reviews-radio-1"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
+                      class="ms-2 text-sm font-medium  "
                     >
                       {" "}
                       Yes: 3{" "}
@@ -373,11 +363,11 @@ const ProductReview1 = (props) => {
                       type="radio"
                       value=""
                       name="reviews-radio"
-                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 -primary-600"
                     />
                     <label
                       for="reviews-radio-2"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
+                      class="ms-2 text-sm font-medium "
                     >
                       No: 0{" "}
                     </label>
@@ -483,7 +473,7 @@ const ProductReview1 = (props) => {
               {/* Image Url */}
 
               <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
-                <p class="text-base font-normal  dark:text-gray-400">
+                <p class="text-base font-normal  ">
                   It’s fancy, amazing keyboard, matching accessories. Super
                   fast, batteries last more than usual, everything runs perfect
                   in this computer. Highly recommend!
@@ -571,17 +561,13 @@ const ProductReview1 = (props) => {
                 </div>
 
                 <div class="space-y-0.5">
-                  <p class="text-base font-semibold  dark:text-white">
-                    Bonnie Green
-                  </p>
-                  <p class="text-sm font-normal  dark:text-gray-400">
-                    November 18 2023 at 15:35
-                  </p>
+                  <p class="text-base font-semibold  ">Bonnie Green</p>
+                  <p class="text-sm font-normal  ">November 18 2023 at 15:35</p>
                 </div>
 
                 <div class="inline-flex items-center gap-1">
                   <svg
-                    class="h-5 w-5 text-primary-700 dark:text-primary-500"
+                    class="h-5 w-5 text-primary-700 "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -595,9 +581,7 @@ const ProductReview1 = (props) => {
                       clip-rule="evenodd"
                     />
                   </svg>
-                  <p class="text-sm font-medium  dark:text-white">
-                    Verified purchase
-                  </p>
+                  <p class="text-sm font-medium ">Verified purchase</p>
                 </div>
               </div>
 
@@ -617,7 +601,7 @@ const ProductReview1 = (props) => {
                       type="radio"
                       value=""
                       name="reviews-radio-3"
-                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 "
                     />
                     <label
                       for="reviews-radio-5"
@@ -633,7 +617,7 @@ const ProductReview1 = (props) => {
                       type="radio"
                       value=""
                       name="reviews-radio-3"
-                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                      class="h-4 w-4 border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500"
                     />
                     <label
                       for="reviews-radio-6"
@@ -717,7 +701,7 @@ const ProductReview1 = (props) => {
 
                 <div class="inline-flex items-center gap-1">
                   <svg
-                    class="h-5 w-5 text-primary-700 dark:text-primary-500"
+                    class="h-5 w-5 text-primary-700 "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -731,20 +715,18 @@ const ProductReview1 = (props) => {
                       clip-rule="evenodd"
                     />
                   </svg>
-                  <p class="text-sm font-medium  dark:text-white">
-                    Verified purchase
-                  </p>
+                  <p class="text-sm font-medium  ">Verified purchase</p>
                 </div>
               </div>
 
               <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
-                <p class="text-base font-normal  dark:text-gray-400">
+                <p class="text-base font-normal  ">
                   I have used earlier Mac computers in my university work for a
                   number of years and found them easy to use.The iMac 2021 is no
                   exception. It works straight out of the box giving superb
                   definition from the HD screen.
                 </p>
-                <p class="text-base font-normal  dark:text-gray-400">
+                <p class="text-base font-normal ">
                   Basic tools such as a browser (Safari) and a mail client are
                   included in the system. Microsoft Office apps can be
                   downloaded from the App Store though they may only work in
@@ -820,12 +802,8 @@ const ProductReview1 = (props) => {
                 </div>
 
                 <div class="space-y-0.5">
-                  <p class="text-base font-semibold  dark:text-white">
-                    Neil Sims
-                  </p>
-                  <p class="text-sm font-normal  dark:text-gray-400">
-                    November 18 2023 at 15:35
-                  </p>
+                  <p class="text-base font-semibold  ">Neil Sims</p>
+                  <p class="text-sm font-normal  ">November 18 2023 at 15:35</p>
                 </div>
 
                 <div class="inline-flex items-center gap-1">
@@ -844,14 +822,12 @@ const ProductReview1 = (props) => {
                       clip-rule="evenodd"
                     />
                   </svg>
-                  <p class="text-sm font-medium  dark:text-white">
-                    Verified purchase
-                  </p>
+                  <p class="text-sm font-medium  ">Verified purchase</p>
                 </div>
               </div>
 
               <div class="mt-4 min-w-0 flex-1 space-y-4 sm:mt-0">
-                <p class="text-base font-normal  dark:text-gray-400">
+                <p class="text-base font-normal  ">
                   I replaced my 11 year old iMac with the new M1 Apple. I wanted
                   to remain with Apple as my old one is still working perfectly
                   and all Apple products are so reliable. Setting up was simple
@@ -860,9 +836,7 @@ const ProductReview1 = (props) => {
                 </p>
 
                 <div class="flex items-center gap-4">
-                  <p class="text-sm font-medium  dark:text-gray-400">
-                    Was it helpful to you?
-                  </p>
+                  <p class="text-sm font-medium  ">Was it helpful to you?</p>
                   <div class="flex items-center">
                     <input
                       id="reviews-radio-9"
@@ -873,7 +847,7 @@ const ProductReview1 = (props) => {
                     />
                     <label
                       for="reviews-radio-9"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
+                      class="ms-2 text-sm font-medium  "
                     >
                       {" "}
                       Yes: 1{" "}
@@ -889,7 +863,7 @@ const ProductReview1 = (props) => {
                     />
                     <label
                       for="reviews-radio-10"
-                      class="ms-2 text-sm font-medium  dark:text-gray-300"
+                      class="ms-2 text-sm font-medium  "
                     >
                       No: 0{" "}
                     </label>
