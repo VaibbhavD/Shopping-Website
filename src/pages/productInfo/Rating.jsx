@@ -9,7 +9,7 @@ const ProductReview1 = (props) => {
       <section
         class=" antialiased dark:bg-gray-900 md:pb-8"
         style={{
-          backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
+          backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "white",
           color: mode === "dark" ? "white" : "black",
         }}
       >
