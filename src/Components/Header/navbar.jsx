@@ -16,7 +16,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const context = useContext(Context);
-  const { toggle, mode, Cart, GetCart } = context;
+  const { toggle, mode, Cart, GetCart, User } = context;
 
   const isLoggedin = useSelector((state) => state.authUser.isLoggedin);
   const isAdmin = useSelector((state) => state.authUser.isAdmin);
@@ -587,7 +587,12 @@ export default function Navbar() {
                     >
                       <img
                         className="inline-block w-8 h-8 rounded-full"
-                        src="https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
+                        src={
+                          User && User.user && User.user.photoURL
+                            ? User.user.photoURL
+                            : "https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
+                        }
+                        alt="Profile"
                         alt="Dan_Abromov"
                       />
                     </NavLink>

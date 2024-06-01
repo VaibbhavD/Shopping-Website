@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import Navbar from "../../Components/Header/navbar";
 import Context from "../../context/data/Context";
 import PageLoader from "../../Components/Loader/PageLoader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Order() {
   const context = useContext(Context);
   const { Orders, Pageloader, GetOrders, mode } = context;
   console.log(Orders);
+  const navigate = useNavigate();
   // GetOrders();
   return (
     <div
@@ -64,16 +65,16 @@ function Order() {
                       <div className="flex-shrink-0 w-full aspect-w-1 aspect-h-1 md:-mt-5 rounded-lg overflow-hidden sm:aspect-none sm:w-40 sm:h-40">
                         <img
                           src={Cart[0].imageUrl}
-                          // alt={product.imageAlt}
-                          className="w-full h-full object-center sm:object-cover max-w-[150px] max-h-[200px] sm:w-full sm:h-full"
+                          alt="Product Image"
+                          className="w-full h-full object-top sm:object-cover max-w-[150px] max-h-[200px] sm:w-full sm:h-full"
                         />
                       </div>
 
-                      <div className="mt-6 sm:mt-0 -ml-40 sm:ml-10">
+                      <div className="mt-6 sm:mt-0 -ml-48 sm:ml-10">
                         <h3 className="text-base font-medium text-gray-900">
-                          <a>{Cart[0].title}</a>
+                          <a className="text-pink-500">{Cart[0].title}</a>
                         </h3>
-                        <p className="mt-2 text-sm font-medium text-gray-900">
+                        <p className="mt-2 text-sm font-medium text-green-500">
                           Rs.{bill || Cart[0].price}
                         </p>
                         <p className="mt-3 text-sm ">{Cart[0].brand}</p>
@@ -97,11 +98,11 @@ function Order() {
                             </span>
                           </dd>
                         </div>
-                        <div>
-                          <dt className="font-medium text-gray-900">
+                        <div className="-ml-5 ">
+                          <dt className="font-medium  text-gray-900">
                             Shipping updates
                           </dt>
-                          <dd className="mt-3  space-y-3">
+                          <dd className="mt-3  space-y-3 overflow-auto ">
                             <p>Email- {email}</p>
                             <p>MobileNo- {addressInfo.PhoneNo}</p>
                           </dd>

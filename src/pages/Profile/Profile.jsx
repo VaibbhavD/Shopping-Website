@@ -7,7 +7,7 @@ import PageLoader from "../../Components/Loader/PageLoader";
 
 const ProfilePage = () => {
   const context = useContext(Context);
-  const { mode, UserProfile, VerifyEmail, Pageloader } = context;
+  const { mode, UserProfile, VerifyEmail, Pageloader, User } = context;
 
   const [isopen, Setisopen] = useState(false);
   const OpenCheckoutpage = () => {
@@ -27,7 +27,7 @@ const ProfilePage = () => {
       <Navbar />
       {Pageloader && <PageLoader />}
       <div
-        className="container mx-auto pb-12 lg:px-72"
+        className="container mx-auto pb-5 md:pb-12 lg:px-72"
         style={{
           backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
           color: mode === "dark" ? "white" : "",
@@ -38,7 +38,11 @@ const ProfilePage = () => {
             <div className="image overflow-hidden w-32 h-32 rounded-full">
               <img
                 className="w-full h-full object-cover"
-                src="https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
+                src={
+                  User && User.user && User.user.photoURL
+                    ? User.user.photoURL
+                    : "https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
+                }
                 alt="Profile"
               />
             </div>
@@ -70,17 +74,17 @@ const ProfilePage = () => {
           </div>
           <div className="">
             <div className="grid md:grid-cols-2 text-sm">
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 <div className="px-4 py-2 font-semibold">First Name</div>
-                <div className="px-4 py-2">{UserProfile.FirstName}</div>
+                <div className=" py-2">{UserProfile.FirstName}</div>
               </div>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 <div className="px-4 py-2 font-semibold">Last Name</div>
-                <div className="px-4 py-2">{UserProfile.LastName}</div>
+                <div className=" py-2">{UserProfile.LastName}</div>
               </div>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 <div className="px-4 py-2 font-semibold">Email</div>
-                <div className="px-4 py-2">
+                <div className=" py-2">
                   <p>{UserProfile.email}</p>
                   <div className="mt-4">
                     <button
@@ -122,19 +126,19 @@ const ProfilePage = () => {
           </div>
           <div className="">
             <div className="grid md:grid-cols-2 text-sm">
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 <div className="px-4 py-2 font-semibold">Address Line</div>
                 <div className="px-4 py-2">{UserProfile.AddressLine}</div>
               </div>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 <div className="px-4 py-2 font-semibold">City</div>
                 <div className="px-4 py-2">{UserProfile.City}</div>
               </div>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 <div className="px-4 py-2 font-semibold">State</div>
                 <div className="px-4 py-2">{UserProfile.State}</div>
               </div>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-3">
                 <div className="px-4 py-2 font-semibold">Zip Code</div>
                 <div className="px-4 py-2">{UserProfile.ZipCode}</div>
               </div>
