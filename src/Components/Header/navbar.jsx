@@ -219,7 +219,6 @@ export default function Navbar() {
                     </div>
                   )}
                   {/* About */}
-
                   <div className="flow-root">
                     <NavLink
                       to={"/aboutus"}
@@ -233,9 +232,8 @@ export default function Navbar() {
                       About
                     </NavLink>
                   </div>
-
                   {/* Login */}
-                  {!isLoggedin && (
+                  {/* {!isLoggedin && (
                     <div className="flow-root">
                       <NavLink
                         to={"/login"}
@@ -249,7 +247,7 @@ export default function Navbar() {
                         Login
                       </NavLink>
                     </div>
-                  )}
+                  )} */}
                   {/* Wishlist */}
                   {isLoggedin && (
                     <div className="flow-root">
@@ -597,7 +595,7 @@ export default function Navbar() {
                 )}
                 {/* Login */}
                 {!isLoggedin && (
-                  <div className="hidden lg:ml-6 lg:-mr-10 lg:flex bg-pink-600 p-1.5 px-3 rounded-md shadow-sm hover:shadow-pink-300  text-white">
+                  <div className=" lg:ml-6 lg:-mr-10 -mr-5 ml-3 lg:flex bg-pink-600 p-1.5 px-3 rounded-md shadow-sm hover:shadow-pink-300  text-white">
                     <Link
                       to={"/login"}
                       className={`text-md font-bold cursor-pointer`}
