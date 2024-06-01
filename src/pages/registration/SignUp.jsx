@@ -13,7 +13,7 @@ import shoppe from "../../assets/Images/shoppe.png";
 
 function SignUp() {
   const context = useContext(Context);
-  const { mode, loader, Setloader, NewUserProfile } = context;
+  const { mode, loader, Setloader, NewUserProfile, UserLogin } = context;
 
   const dispatch = useDispatch();
 
@@ -35,6 +35,7 @@ function SignUp() {
       localStorage.setItem("User", JSON.stringify(User));
       localStorage.setItem("Password", JSON.stringify(password));
       dispatch(AuthActions.Login(email));
+      UserLogin(User);
       const UserDetails = {
         FirstName: firstname,
         LastName: lastname,
@@ -70,8 +71,9 @@ function SignUp() {
       const result = await signInWithPopup(Auth, googleProvider);
       const user = result.user;
 
-      localStorage.setItem("User", JSON.stringify(user));
+      localStorage.setItem("User", JSON.stringify(result));
       dispatch(AuthActions.Login(user.email));
+      UserLogin(result);
 
       const UserDetails = {
         FirstName: user.displayName.split(" ")[0],

@@ -43,10 +43,11 @@ function Login() {
     try {
       const result = await signInWithPopup(Auth, googleProvider);
       const user = result.user;
+      console.log(result);
 
-      localStorage.setItem("User", JSON.stringify(user));
+      localStorage.setItem("User", JSON.stringify(result));
       dispatch(AuthActions.Login(user.email));
-      UserLogin(user);
+      UserLogin(result);
 
       toast.success("Signed in successfully with Google");
       Setloader(false);
