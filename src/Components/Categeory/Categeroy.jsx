@@ -24,8 +24,8 @@ function Categeroy() {
         <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-6">
           <div class="flex items-center gap-12">
             <h2
-              class="text-2xl font-bold text-gray-800 lg:text-3xl dark:text-white"
-              style={{ color: mode === "dark" ? "white" : "" }}
+              class="text-2xl font-bold text-gray-800 lg:text-3xl "
+              style={{ color: mode === "dark" ? "white" : "black" }}
             >
               Categeory
               <p class="h-1 w-20 mt-3 bg-pink-600 rounded"></p>
