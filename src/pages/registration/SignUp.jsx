@@ -5,7 +5,14 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { Auth, fireDB, googleProvider } from "../../firebase/FirebaseConfig";
-import { Timestamp, addDoc, collection } from "firebase/firestore";
+import {
+  Timestamp,
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+} from "firebase/firestore";
 import Loader from "../../Components/Loader/Loader";
 import { AuthActions } from "../../redux/AuthSlice";
 import { useDispatch } from "react-redux";
@@ -64,43 +71,54 @@ function SignUp() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignUp = async () => {
     Setloader(true);
     try {
       const result = await signInWithPopup(Auth, googleProvider);
       const user = result.user;
 
-      localStorage.setItem("User", JSON.stringify(result));
-      dispatch(AuthActions.Login(user.email));
-      UserLogin(result);
-
-      const UserDetails = {
-        FirstName: user.displayName.split(" ")[0],
-        LastName: user.displayName.split(" ").slice(1).join(" "),
-        email: user.email,
-        uid: user.uid,
-        time: Timestamp.now(),
-        date: new Date().toLocaleString("en-US", {
-          month: "short",
-          day: "2-digit",
-          year: "numeric",
-        }),
-      };
-
+      // Check if the user already exists in Firestore
       const userRef = collection(fireDB, "Users");
-      await addDoc(userRef, UserDetails);
+      const userDoc = await getDoc(doc(userRef, user.uid));
 
-      // Assuming NewUserProfile is a function that updates the user profile in your app
-      NewUserProfile(UserDetails);
+      if (!userDoc.exists()) {
+        // User does not exist, proceed with sign up
+        const UserDetails = {
+          FirstName: user.displayName.split(" ")[0],
+          LastName: user.displayName.split(" ").slice(1).join(" "),
+          email: user.email,
+          uid: user.uid,
+          time: Timestamp.now(),
+          date: new Date().toLocaleString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+          }),
+        };
 
-      toast.success("SignUp successfully with Google");
-      Setloader(false);
+        await setDoc(doc(userRef, user.uid), UserDetails);
+
+        // Assuming NewUserProfile is a function that updates the user profile in your app
+        NewUserProfile(UserDetails);
+
+        localStorage.setItem("User", JSON.stringify(result));
+        dispatch(AuthActions.Login(user.email));
+        UserLogin(result);
+
+        toast.success("Signed up successfully with Google");
+        // navigate("/"); // Redirect to home or profile page
+      } else {
+        // User already exists
+        toast.error("User already exists. Please sign in.");
+        await Auth.signOut(); // Sign out the user to clear the state
+      }
     } catch (error) {
       toast.error(error.message);
-      console.log(error);
+    } finally {
       Setloader(false);
     }
   };
+
   return (
     <>
       <Navbar />
@@ -164,7 +182,7 @@ function SignUp() {
               </div>
               <h1
                 class={`px-4 py-3 w-5/6 text-center font-bold `}
-                onClick={handleGoogleSignIn}
+                onClick={handleGoogleSignUp}
               >
                 Sign up with Google
               </h1>
