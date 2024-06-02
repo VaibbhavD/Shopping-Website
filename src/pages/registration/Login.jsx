@@ -4,11 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Header/navbar";
 import Loader from "../../Components/Loader/Loader";
 import { toast } from "react-toastify";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { Auth, googleProvider } from "../../firebase/FirebaseConfig";
+import {
+  fetchSignInMethodsForEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { Auth, fireDB, googleProvider } from "../../firebase/FirebaseConfig";
 import { AuthActions } from "../../redux/AuthSlice";
 import { useDispatch } from "react-redux";
 import shoppe from "../../assets/Images/shoppe.png";
+import { collection, doc, getDoc } from "firebase/firestore";
 
 function Login() {
   const context = useContext(Context);
@@ -43,17 +48,26 @@ function Login() {
     try {
       const result = await signInWithPopup(Auth, googleProvider);
       const user = result.user;
-      console.log(result);
 
-      localStorage.setItem("User", JSON.stringify(result));
-      dispatch(AuthActions.Login(user.email));
-      UserLogin(result);
+      // Check if the user already exists in Firestore
+      const userRef = collection(fireDB, "Users");
+      const userDoc = await getDoc(doc(userRef, user.uid));
 
-      toast.success("Signed in successfully with Google");
-      Setloader(false);
-      navigate("/");
+      if (userDoc.exists()) {
+        // User exists, proceed with login
+        localStorage.setItem("User", JSON.stringify(result));
+        dispatch(AuthActions.Login(user.email));
+        UserLogin(result);
+        toast.success("Signed in successfully with Google");
+        navigate("/"); // Redirect to home or profile page
+      } else {
+        // User does not exist
+        await Auth.signOut(); // Sign out the user if they do not exist
+        toast.error("No account found with this email. Please sign up first.");
+      }
     } catch (error) {
       toast.error(error.message);
+    } finally {
       Setloader(false);
     }
   };
