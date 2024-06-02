@@ -4,7 +4,7 @@ const initialState = { isLoggedin: false, isAdmin: false };
 const User = JSON.parse(localStorage.getItem("User"));
 if (User) {
   initialState.isLoggedin = true;
-  if (User.user.email == "adminvaibhav@gmail.com") {
+  if (User.user.email == "vaibhavdhamanage12@gmail.com") {
     initialState.isAdmin = true;
   }
 }
@@ -14,7 +14,7 @@ const AuthSlice = createSlice({
   reducers: {
     Login(state, action) {
       state.isLoggedin = true;
-      if (action.payload === "adminvaibhav@gmail.com") {
+      if (action.payload === "vaibhavdhamanage12@gmail.com") {
         state.isAdmin = true;
       }
     },
