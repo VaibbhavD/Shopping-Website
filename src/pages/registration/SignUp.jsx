@@ -65,7 +65,6 @@ function SignUp() {
   };
 
   const handleGoogleSignIn = async () => {
-    console.log("Hi");
     Setloader(true);
     try {
       const result = await signInWithPopup(Auth, googleProvider);
@@ -98,6 +97,7 @@ function SignUp() {
       Setloader(false);
     } catch (error) {
       toast.error(error.message);
+      console.log(error);
       Setloader(false);
     }
   };

@@ -102,7 +102,7 @@ const ContextProider = (props) => {
       SetUserProfile(cartitems);
       SetPageloader(false);
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       console.log(error);
       SetPageloader(false);
     }
@@ -529,7 +529,6 @@ const ContextProider = (props) => {
           ...doc.data(),
         })
       );
-      console.log(cartitems);
       SetAllUsers(cartitems);
       SetPageloader(false);
     } catch (error) {
@@ -551,7 +550,6 @@ const ContextProider = (props) => {
           ...doc.data(),
         })
       );
-      console.log(cartitems);
       SetAllOrders(cartitems);
       SetPageloader(false);
     } catch (error) {
@@ -587,6 +585,7 @@ const ContextProider = (props) => {
     // Clear user data from local storage
     localStorage.removeItem("User");
     localStorage.removeItem("Password");
+    localStorage.removeItem("Mode");
 
     // Perform any additional logout actions
     dispatch(AuthActions.Logout());
