@@ -588,8 +588,8 @@ export default function Navbar() {
                       <img
                         className="inline-block w-8 h-8 rounded-full"
                         src={
-                          User && User.user && User.user.photoURL
-                            ? User.user.photoURL
+                          User.user.photoURL
+                            ? User.user.photoURl
                             : "https://tse4.mm.bing.net/th?id=OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH&pid=Api&P=0&h=180"
                         }
                         alt="Profile"
