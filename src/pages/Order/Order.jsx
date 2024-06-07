@@ -70,7 +70,7 @@ function Order() {
                         />
                       </div>
 
-                      <div className="mt-6 sm:mt-0 -ml-48 sm:ml-10">
+                      <div className="mt-6 sm:mt-0 -ml-40 sm:ml-10">
                         <h3 className="text-base font-medium text-gray-900">
                           <a className="text-pink-500">{Cart[0].title}</a>
                         </h3>
@@ -98,7 +98,7 @@ function Order() {
                             </span>
                           </dd>
                         </div>
-                        <div className="-ml-5 ">
+                        <div className=" ">
                           <dt className="font-medium  text-gray-900">
                             Shipping updates
                           </dt>
