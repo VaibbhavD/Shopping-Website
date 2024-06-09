@@ -7,12 +7,12 @@ function DiscountSection() {
 
   return (
     <div
-      class={`mt-0 relative bg-white p-2 md:p-7  `}
+      class={`mt-0 relative bg-white p-2 md:p-0`}
       style={{ backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "" }}
     >
       <section
         aria-labelledby="sale-heading"
-        class="relative mx-auto flex max-w-screen flex-col items-center rounded-2xl text-stone-100 bg-black text-center sm:px-6 md:p-5 lg:px-6 shadow-gray-100 shadow-md"
+        class="relative mx-auto flex max-w-screen flex-col items-center rounded-2xl md:rounded-none text-stone-100 bg-black text-center sm:px-6 md:p-5 lg:px-6 shadow-gray-100 shadow-md"
       >
         <div class="mx-auto max-w-2xl lg:max-w-none p-4">
           <h3
