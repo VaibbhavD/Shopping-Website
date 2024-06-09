@@ -12,7 +12,7 @@ function HeroSection() {
   return (
     <div style={{ background: mode == "dark" ? "rgb(46 49 55)" : "" }}>
       <img
-        src={Heros_image1}
+        src={Heros_image2}
         alt=""
         className="hidden md:block lg:h-full h-96 object-cover"
       />
